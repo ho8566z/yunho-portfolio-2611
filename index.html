@@ -89,13 +89,15 @@ section{padding:84px 0 0}
 h2{font-size:clamp(26px,3.4vw,36px);letter-spacing:-.03em;line-height:1.25;margin:0;font-weight:800}
 .sec-sub{color:var(--muted);margin:10px 0 0;max-width:38em}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) :is(.nav,.hero,section,footer,.card,.stat,.btn,.icon-btn,.chip-btn){--surface:#3c3c3c; --surface-2:#4b4b4b; --line:#5a5a5a; --text:#eef1f6; --muted:#c3c8d2; --accent:#ff7a45; --accent-soft:#2a1b14; --accent-text:#ff9a70; --ink:#eef1f6; --on-ink:#14171f; --ok:#3ddbb0; --name:#4ade80;}}
-:root[data-theme="dark"] :is(.nav,.hero,section,footer,.card,.stat,.btn,.icon-btn,.chip-btn){--surface:#3c3c3c; --surface-2:#4b4b4b; --line:#5a5a5a; --text:#eef1f6; --muted:#c3c8d2; --accent:#ff7a45; --accent-soft:#2a1b14; --accent-text:#ff9a70; --ink:#eef1f6; --on-ink:#14171f; --ok:#3ddbb0; --name:#4ade80;}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .nav{--bg:#3c3c3c}:root:not([data-theme="light"]) footer,:root:not([data-theme="light"]) .hero,:root:not([data-theme="light"]) section{background:#3c3c3c}}
-:root[data-theme="dark"] .nav{--bg:#3c3c3c}
-:root[data-theme="dark"] :is(footer,.hero,section){background:#3c3c3c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) :is(.nav,.hero,section,footer,.card,.stat,.btn,.icon-btn,.chip-btn){--surface:#1f2020; --surface-2:#4b4b4b; --line:#5a5a5a; --text:#eef1f6; --muted:#c3c8d2; --accent:#ff7a45; --accent-soft:#2a1b14; --accent-text:#ff9a70; --ink:#eef1f6; --on-ink:#14171f; --ok:#3ddbb0; --name:#4ade80;}}
+:root[data-theme="dark"] :is(.nav,.hero,section,footer,.card,.stat,.btn,.icon-btn,.chip-btn){--surface:#1f2020; --surface-2:#4b4b4b; --line:#5a5a5a; --text:#eef1f6; --muted:#c3c8d2; --accent:#ff7a45; --accent-soft:#2a1b14; --accent-text:#ff9a70; --ink:#eef1f6; --on-ink:#14171f; --ok:#3ddbb0; --name:#4ade80;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .nav{--bg:#1f2020}:root:not([data-theme="light"]) footer,:root:not([data-theme="light"]) .hero,:root:not([data-theme="light"]) section{background:#1f2020}}
+:root[data-theme="dark"] .nav{--bg:#1f2020}
+:root[data-theme="dark"] :is(footer,.hero,section){background:#1f2020}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) :is(.card,.stat){border-color:#9aa4b5;border-width:4px}}
 :root[data-theme="dark"] :is(.card,.stat){border-color:#9aa4b5;border-width:4px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .card{--surface:#3c3c3c}}
+:root[data-theme="dark"] .card{--surface:#3c3c3c}
 
 /* about */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:18px}
