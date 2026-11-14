@@ -96,8 +96,8 @@ h2{font-size:clamp(26px,3.4vw,36px);letter-spacing:-.03em;line-height:1.25;margi
 :root[data-theme="dark"] :is(footer,.hero,section){background:#1f2020}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) :is(.card,.stat){border-color:#9aa4b5;border-width:4px}}
 :root[data-theme="dark"] :is(.card,.stat){border-color:#9aa4b5;border-width:4px}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .card{--surface:#3c3c3c}}
-:root[data-theme="dark"] .card{--surface:#3c3c3c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) :is(.card,.stat){--surface:#3c3c3c}}
+:root[data-theme="dark"] :is(.card,.stat){--surface:#3c3c3c}
 
 /* about */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:18px}
