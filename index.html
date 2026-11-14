@@ -206,7 +206,7 @@ body.lock{overflow:hidden}
     <ul id="menu">
       <li><a href="#about">소개</a></li>
       <li><a href="#projects">프로젝트</a></li>
-      <li><a href="#cases">문제 해결</a></li>
+      <!-- 비공개: <li><a href="#cases">문제 해결</a></li> -->
       <li><a href="#skills">기술</a></li>
       <li><a href="#contact">연락처</a></li>
     </ul>
@@ -222,7 +222,7 @@ body.lock{overflow:hidden}
       <div>
         <p class="eyebrow"><b></b>Java · Spring 백엔드 신입 개발자</p>
         <h1>기능이 <em>동작하는 것</em>에서<br>끝내지 않는<br>개발자 이윤호입니다</h1>
-        <p class="lead">실패하는 상황까지 확인해야 사용자가 서비스를 믿고 쓸 수 있다고 생각합니다. 테스트를 먼저 쓰고, 문제는 원인까지 기록합니다.</p>
+        <p class="lead">실패하는 상황까지 확인해야 사용자가 서비스를 믿고 쓸 수 있다고 생각합니다.<!-- 비공개: 테스트를 먼저 쓰고, 문제는 원인까지 기록합니다. --></p>
         <div class="cta">
           <a class="btn primary" href="#projects">프로젝트 보기 →</a>
           <a class="btn" href="https://github.com/ho8566z" target="_blank" rel="noopener">GitHub</a>
@@ -289,18 +289,19 @@ body.lock{overflow:hidden}
   </div>
 </section>
 
-<!-- CASES -->
+<!-- CASES (비공개) 
 <section id="cases">
   <div class="wrap">
     <div class="sec-head reveal"><div><small>03 — TROUBLESHOOTING</small><h2>문제를 어떻게 풀었는가</h2><p class="sec-sub">추정으로 단정하지 않고 재현하고 측정해서 원인을 확정한 사례들입니다.</p></div></div>
     <div class="cases" id="cases-grid"></div>
   </div>
 </section>
+-->
 
 <!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
-    <div class="sec-head reveal"><div><small>04 — SKILLS</small><h2>프로젝트에서 실제로 사용한 기술</h2></div></div>
+    <div class="sec-head reveal"><div><small>03 — SKILLS</small><h2>프로젝트에서 실제로 사용한 기술</h2></div></div>
     <div class="skills reveal">
       <div class="card"><h3>Backend</h3><div class="chips"><span>Java 17</span><span>Spring Boot</span><span>Spring Security</span><span>Spring Data JPA</span><span>MyBatis</span><span>Spring Session JDBC</span><span>JUnit 5</span></div></div>
       <div class="card"><h3>Data · Infra</h3><div class="chips"><span>MySQL</span><span>H2</span><span>SQLite</span><span>Docker</span><span>WSL2 (Ubuntu)</span><span>nginx</span><span>Flyway</span></div></div>
@@ -441,7 +442,7 @@ P.forEach(function(p){
 });
 
 var cg=document.getElementById("cases-grid");
-CASES.forEach(function(c){
+if(cg)CASES.forEach(function(c){
   cg.appendChild(el('<article class="card case reveal"><span class="id">'+esc(c[0])+'</span><h3>'+esc(c[1])+'</h3>'+
    '<p><span class="lab p">문제</span>'+esc(c[2])+'</p><p><span class="lab f">해결</span><b>'+esc(c[3])+'</b></p></article>'));
 });
