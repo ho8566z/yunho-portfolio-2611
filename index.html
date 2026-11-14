@@ -64,6 +64,7 @@ html,body{overflow-x:hidden}
 .eyebrow b{width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block}
 h1{font-size:clamp(34px,5.4vw,60px);line-height:1.15;letter-spacing:-.035em;margin:0 0 20px;font-weight:800}
 h1 em{font-style:normal;color:var(--accent)}
+h1 .name{color:#22703e}
 .lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:34em;margin:0 0 30px}
 .cta{display:flex;flex-wrap:wrap;gap:10px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:14px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer;font-family:inherit}
@@ -221,7 +222,7 @@ body.lock{overflow:hidden}
     <div class="hero-grid">
       <div>
         <p class="eyebrow"><b></b>Java · Spring 백엔드 신입 개발자</p>
-        <h1>기능이 <em>동작하는 것</em>에서<br>끝내지 않는<br>개발자 이윤호입니다</h1>
+        <h1>기능이 <em>동작하는 것</em>에서<br>끝내지 않는<br>개발자 <span class="name">이윤호</span>입니다</h1>
         <p class="lead">실패하는 상황까지 확인해야 사용자가 서비스를 믿고 쓸 수 있다고 생각합니다.<!-- 비공개: 테스트를 먼저 쓰고, 문제는 원인까지 기록합니다. --></p>
         <div class="cta">
           <a class="btn primary" href="#projects">프로젝트 보기 →</a>
