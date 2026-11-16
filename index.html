@@ -360,7 +360,7 @@ var P = [
    meta:"2차 팀 프로젝트 · 2026.10.06 ~ 11.23 · 6인", role:"담당: 보안 · 계정 · 이벤트",
    stack:["Java 17","Spring Boot","Spring Security","JPA","MySQL","Flask","YOLOv8","Docker"],
    metrics:[["41","PR (39건 dev 병합)"],["27","담당 기능 통과"],["2,248","팀 자동 테스트 (실패 0)"]],
-   links:[["소개 Repo","https://github.com/white-eyes1/white-eyes-introduce"],["코드 Repo","https://github.com/white-eyes1/white-eyes-spring"]],
+   links:[["소개 Repo","https://github.com/white-eyes1/white-eyes-introduce"],["코드 Repo","https://github.com/white-eyes1/white-eyes-spring"],["Notion","https://app.notion.com/41400b1cd77d8003b89edf0efe261379"]],
    detail:{
      summary:"사용자 앱·관리자 앱(Spring Boot)과 분석 서버(Flask, YOLOv8 + OpenCV)를 분리한 멀티 서비스 구조입니다. 저는 인증·권한 보안, 계정 관리, 혼잡·급증·캠 이상 이벤트 판정과 실시간 알림을 맡았습니다.",
      role:["비밀번호 bcrypt(강도 10), 공통 오류 처리, 로그인, 접근 권한 검사, 세션 만료를 가장 먼저 만들어 다른 기능의 기반으로 삼았습니다.","사용자 앱과 관리자 앱의 로그인을 서로 독립시켰습니다. 세션 테이블·쿠키 이름도 앱별로 분리했습니다.","최고 관리자 초기 등록, 관리자 비활성화·강제 로그아웃(접속 중인 세션도 함께 삭제), 비밀번호 재설정을 구현했습니다.","혼잡·급증·캠 이상 판정, 목록·상세, 처리 상태 변경, 엑셀 다운로드, SSE 관리자 알림 스트림을 구현했습니다.","기능 하나 = 이슈 하나 = PR 하나로 white-eyes-spring에 PR 41건(39건 병합), 이슈 27건, white-eyes-docs에 PR 41건(37건 병합)을 남겼습니다."],
@@ -374,7 +374,7 @@ var P = [
    meta:"1차 팀 프로젝트 · 2026.06.25 ~ 07.24 · 5인", role:"담당: 로그 분석",
    stack:["Python","Flask","OpenCV","YOLOv8n","InsightFace","SSE"],
    metrics:[["23","PR (19건 병합)"],["6","담당 기능"]],
-   links:[["Repo","https://github.com/Kanabig/obsidian-shield"]],
+   links:[["Repo","https://github.com/Kanabig/obsidian-shield"],["Notion","https://app.notion.com/41400b1cd77d800fb83bcc3a81c240c1"]],
    detail:{
      summary:"이벤트 로그 히스토리 기능 전체를 맡았습니다. AI 탐지 이벤트를 저장하고, 조회·검색·필터·읽음 처리·엑셀 내보내기·실시간 알림까지 구현했습니다.",
      role:["HST-001~006: 조회·자동 갱신, 탐지 히스토리, 읽음 처리, 목록·내보내기, 검색, 필터·정렬","logger 브랜치를 logger → logger9로 단계별로 나눠 PR 23건(19건 main 병합)","SSE로 새 이벤트가 생기면 목록이 자동 갱신되고 알림음·토스트가 나오도록 구현"],
@@ -388,7 +388,7 @@ var P = [
    meta:"1차 개인 프로젝트 · 2026.11.07 ~ 11.12 · 1인", role:"기획 · 설계 · 구현 · 테스트 · 문서",
    stack:["Java 17","Spring Boot","Spring Security","JPA","MyBatis","MySQL"],
    metrics:[["318","자동 테스트"],["29","트러블슈팅 기록"]],
-   links:[["코드","https://github.com/ho8566z/calendar-bot"],["문서","https://github.com/ho8566z/calendar-bot_word"]],
+   links:[["코드","https://github.com/ho8566z/calendar-bot"],["문서","https://github.com/ho8566z/calendar-bot_word"],["Notion","https://app.notion.com/41400b1cd77d80a1a8faf9bc78e7d37d"]],
    detail:{
      summary:"일정을 등록해 두고 다시 열어 보지 않으면 놓치는 문제를 주간 브리핑으로 풀었습니다. 단순 CRUD에서 끝내지 않고 시간·검색·통계·보안·모바일까지 기본기를 채웠습니다.",
      role:["주간 브리핑: 1회용 연동 코드(10분 만료) + 텔레그램 롱 폴링, 일요일 21:00(KST) 스케줄러, '지금 보내기'(10초 제한), 발송 기록","일정 관리: 월간 달력, 등록·수정·삭제, 시작 시간, 이미지 선택 첨부, 검색, 월별 통계 (쓰기는 JPA, 동적 조회는 MyBatis)","회원·관리자: 가입 후 관리자 승인(PRE_USER → USER), 사용자 목록·승인 취소","모바일 대응: 768px 이하 접는 메뉴·모달, 13개 화면에 viewport 적용"],
@@ -402,7 +402,7 @@ var P = [
    meta:"2차 개인 프로젝트 · 2026.11.10 ~ 11.13 · 1인", role:"기획 · 점검 · 결정 (Claude·Codex 협업)",
    stack:["Python","FastAPI","SQLAlchemy","SQLite","Chart.js"],
    metrics:[["556","pytest 통과"],["204","검색 1회 units"]],
-   links:[["코드","https://github.com/ho8566z/tube-filter"],["문서","https://github.com/ho8566z/tube-filter_word"]],
+   links:[["코드","https://github.com/ho8566z/tube-filter"],["문서","https://github.com/ho8566z/tube-filter_word"],["Notion","https://app.notion.com/41400b1cd77d8018ac7bf0af12fb8720"]],
    detail:{
      summary:"외부 API 쿼터(하루 10,000 units) 안에서 동작하도록 설계한 프로젝트입니다. 기능 수보다 외부 API 제약(쿼터·정책) 안에서 어떻게 설계했는지를 보여 주는 것이 목표였습니다.",
      role:["본인: 주제 선정, YouTube API 정책 검토, 명세서 검토와 최종 결정, ERD·구성도, PPT","Claude: 명세서 초안, 단계별 위임 지시, pytest·ruff 직접 실행 후 커밋","Codex: 명세서 기준으로 한 단계씩 구현, 단계별 단위·경계값 테스트"],
@@ -416,7 +416,7 @@ var P = [
    meta:"3차 개인 프로젝트 · 2026.11.10 ~ 11.13 · 1인", role:"기획 · 설계 · 구현 · 테스트 · 문서",
    stack:["Java 17","Spring Boot","JPA","MySQL / H2","Notion API"],
    metrics:[["64","자동 테스트"],["14/14","노션 전송 성공"]],
-   links:[["코드","https://github.com/ho8566z/job-feed"],["문서","https://github.com/ho8566z/job-feed_word"]],
+   links:[["코드","https://github.com/ho8566z/job-feed"],["문서","https://github.com/ho8566z/job-feed_word"],["Notion","https://app.notion.com/41500b1cd77d814dbae5d3498b3116ce"]],
    detail:{
      summary:"채용공고가 여러 곳에 흩어져 있어 매일 직접 확인해야 하는 문제를 해결합니다. 고용24 공채속보를 1시간마다 수집해 (소스, 공고 ID) 기준으로 중복을 거르고, 속도 제한에 맞춰 노션 DB로 전달합니다.",
      role:["스케줄러 수집(1시간) → 중복 제거 → send_log 대기열(PENDING) → 노션 전송(1분마다 10건) 파이프라인 설계·구현","실패·재시도·격리 정책과 내부 운영 API(수동 수집, 전송 현황) 구현","개인회원이 쓸 수 있는 API 제약을 확인해 소스를 공채속보 API로 변경"],
