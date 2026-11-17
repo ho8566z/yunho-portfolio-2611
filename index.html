@@ -464,7 +464,7 @@ h1.big span{display:block}
 .art .hand{right:0;top:0;left:auto;margin:0;font:700 clamp(24px,3.3vw,42px)/1.02 "Caveat","Noto Sans KR",cursive;transform:rotate(-6deg);color:var(--ink);text-align:left}
 .art .hand svg{display:block;width:100%;height:.4em;margin-top:2px}
 .art .smile{right:-3%;top:47%;left:auto;width:15%;height:auto;transform:rotate(8deg);filter:drop-shadow(4px 4px 0 var(--ink))}
-.art .sticky{right:-2%;bottom:7%;left:auto;top:auto;transform:rotate(4deg);font-size:clamp(11.5px,1.2vw,14.5px)}
+.art .sticky{right:-2%;bottom:17%;left:auto;top:auto;transform:rotate(4deg);font-size:clamp(11.5px,1.2vw,14.5px)}
 .marquee{margin-top:0;position:relative;z-index:2}
 @media (max-width:980px){
   .hero-grid{grid-template-columns:1fr;align-items:start}
@@ -474,6 +474,51 @@ h1.big span{display:block}
 @media (max-width:620px){
   .art{max-width:340px}
   .art .sticky{right:0;bottom:6%}
+}
+
+/* 최상단 하단부: ABOUT / SKILLS / PROJECTS 카드 줄 + CTA 배너 (참고 이미지) */
+.art{margin-bottom:-60px;position:relative;z-index:1}
+.top-cards{position:relative;z-index:3;display:grid;grid-template-columns:.9fr .85fr 1.5fr;gap:24px;margin-top:0;align-items:stretch}
+.tc{position:relative;padding:22px 24px 24px;border:var(--bd);border-radius:var(--radius);box-shadow:var(--hard);background:var(--surface)}
+.tc h2{font:900 clamp(24px,2.6vw,34px)/1 var(--display);letter-spacing:-.03em;margin:0 0 12px;max-width:none;text-transform:uppercase}
+.tc p{margin:0 0 8px;font-weight:700;font-size:15px;line-height:1.5}
+.tc p.sm{font-weight:500;font-size:13.5px;color:var(--muted);margin-bottom:14px}
+.tc .btn{padding:8px 16px;font-size:13.5px}
+.tc-about .bulb{position:absolute;right:18px;top:14px;width:54px;height:auto;overflow:visible}
+.tc-about p{padding-right:58px}
+.tc-about p.sm{padding-right:0}
+.tc.skl{background:var(--blue);color:#fff}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills span{padding:5px 14px;border:3px solid var(--ink);border-radius:999px;background:#fffaf0;color:var(--fix);font:700 13px var(--display)}
+.tc.prj{background:var(--yellow);color:var(--fix)}
+.tc-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.tc-head a{font-weight:800;font-size:14px;text-decoration:none;white-space:nowrap}
+.tc-head a:hover{text-decoration:underline}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.th{display:flex;flex-direction:column;text-decoration:none;color:var(--fix);min-width:0}
+.th svg{width:100%;height:auto;background:var(--cv);border:3px solid var(--ink);display:block}
+.th b{margin-top:8px;font:700 14px/1.2 var(--display);overflow-wrap:anywhere}
+.th span{font-size:12px;font-weight:600}
+.th:hover svg{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.cta-band{display:flex;align-items:center;gap:18px;margin:46px 0 0;position:relative;z-index:3}
+.social{display:flex;gap:12px}
+.social a{width:46px;height:46px;display:grid;place-items:center;color:var(--ink);transition:transform .15s}
+.social a:hover{transform:translateY(-3px) rotate(-6deg)}
+.social svg{width:34px;height:34px}
+.cta-band .bar{flex:1;margin:0;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 28px;background:var(--ink);color:var(--on-ink);font:700 clamp(18px,2.4vw,30px)/1.1 var(--display);font-style:italic;letter-spacing:-.02em;transform:rotate(-1.2deg);box-shadow:6px 6px 0 var(--red)}
+.cta-band .bar svg{width:80px;height:auto;flex:none}
+.cta-band .go{background:var(--red);color:var(--fix);padding:16px 26px;font-size:17px}
+.stats{margin-top:70px}
+@media (max-width:980px){
+  .art{margin-bottom:0}
+  .top-cards{grid-template-columns:1fr;margin-top:36px}
+  .cta-band{flex-wrap:wrap;margin-top:36px}
+  .cta-band .bar{flex-basis:100%;order:3;transform:none}
+}
+@media (max-width:620px){
+  .thumbs{grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .th b{font-size:12px}
+  .th span{display:none}
 }
 </style>
 </head>
@@ -501,6 +546,7 @@ h1.big span{display:block}
   <div class="wrap">
     <a class="logo" href="#top"><i></i>이윤호</a>
     <ul id="menu">
+      <li><a class="on" href="#top">홈</a></li>
       <li><a href="#about">소개</a></li>
       <li><a href="#projects">프로젝트</a></li>
       <!-- 비공개: <li><a href="#cases">문제 해결</a></li> -->
@@ -556,10 +602,37 @@ h1.big span{display:block}
         <div class="sticky"><span>✓ 테스트로 확인</span><span>✓ 문제는 기록으로</span><span>✓ 한계는 솔직하게</span></div>
       </div>
     </div>
+    <div class="top-cards">
+      <article class="tc tc-about">
+        <svg class="bulb" viewBox="0 0 80 100" aria-hidden="true"><path d="M40 6c-18 0-30 13-30 29 0 10 5 17 11 23 3 3 4 6 4 10h30c0-4 1-7 4-10 6-6 11-13 11-23C70 19 58 6 40 6z" fill="#ffd93d" stroke="#14120f" stroke-width="5" stroke-linejoin="round"/><path d="M30 76h20M32 86h16" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><path d="M32 40c4 8 12 8 16 0M32 40l4 20M48 40l-4 20" stroke="#14120f" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M40 -2v-0M8 14L2 8M72 14l6-6M4 36H-2M76 36h6" stroke="#14120f" stroke-width="4" stroke-linecap="round"/></svg>
+        <h2>ABOUT ME</h2>
+        <p>서버와 데이터를 책임지는 개발자를 지향합니다.</p>
+        <p class="sm">기능이 동작하는 것에서 끝내지 않고, 실패하는 상황까지 확인합니다.</p>
+        <a class="btn" href="#about">더 알아보기 →</a>
+      </article>
+      <article class="tc skl">
+        <h2>SKILLS</h2>
+        <div class="pills"><span>Java 17</span><span>Spring Boot</span><span>Security</span><span>JPA</span><span>MySQL</span><span>Docker</span><span>Flask</span><span>Python</span><span>Git</span></div>
+      </article>
+      <article class="tc prj">
+        <div class="tc-head"><h2>PROJECTS</h2><a href="#projects">전체 보기 →</a></div>
+        <div class="thumbs">
+          <a href="#projects" class="th" style="--cv:var(--c1)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.62) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h1"/></g></svg><b>white-eyes</b><span>Java · Spring Boot</span></a>
+          <a href="#projects" class="th" style="--cv:var(--c2)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.78) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h2"/></g></svg><b>obsidian-shield</b><span>Python · Flask</span></a>
+          <a href="#projects" class="th" style="--cv:var(--c3)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.94) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h3"/></g></svg><b>calendar-bot</b><span>Java · Spring Boot</span></a>
+        </div>
+      </article>
+    </div>
+    <div class="cta-band">
+      <div class="social">
+        <a href="https://github.com/ho8566z" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+        <a href="https://app.notion.com/p/5bf00b1cd77d83e6abff018c339379b6?source=copy_link" target="_blank" rel="noopener" aria-label="Notion"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M8 17V7l8 10V7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg></a>
+        <a href="mailto:ho8566z@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg></a>
+      </div>
+      <p class="bar">Let's Build Something Great Together! <svg viewBox="0 0 120 30" aria-hidden="true"><path d="M2 16C40 6 80 6 114 14M100 4l14 10-14 12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></p>
+      <a class="btn go" href="#contact">Contact Me →</a>
+    </div>
   </div>
-  <div class="marquee" aria-hidden="true"><div>
-    <span>Java 17</span><span>Spring Boot</span><span>Spring Security</span><span>JPA</span><span>MySQL</span><span>Flask</span><span>YOLOv8</span><span>Docker</span><span>Java 17</span><span>Spring Boot</span><span>Spring Security</span><span>JPA</span><span>MySQL</span><span>Flask</span><span>YOLOv8</span><span>Docker</span>
-  </div></div>
   <div class="wrap">
     <div class="stats">
       <div class="stat reveal"><b>5</b><span>프로젝트 (팀 2 · 개인 3)</span></div>
