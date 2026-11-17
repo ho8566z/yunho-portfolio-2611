@@ -479,6 +479,53 @@ body.lock{overflow:hidden}
   :root[data-design="modern"] #contact{padding:112px 0 80px}
   :root[data-design="modern"] .cover{min-height:170px}
 }
+/* ---- 빨강·파랑 강화 ---- */
+:root[data-design="modern"] .nav{border-bottom:3px solid var(--up)}
+:root[data-design="modern"] h1 .hl{background:var(--down);color:#fff;padding:0 .12em}
+:root[data-design="modern"] .btn:not(.primary){border-color:var(--down);color:var(--down)}
+:root[data-design="modern"] .btn:not(.primary):hover{background:var(--down);color:#fff}
+:root[data-design="modern"] .art{border:2px solid var(--down)}
+:root[data-design="modern"] .art::before{background:var(--down)}
+:root[data-design="modern"] .stat:nth-child(2){background:var(--up)!important;color:#fff}
+:root[data-design="modern"] .stat:nth-child(4){background:var(--down)!important;color:#fff}
+:root[data-design="modern"] .stat:nth-child(2) :is(b,span),:root[data-design="modern"] .stat:nth-child(4) :is(b,span),:root[data-design="modern"] .stat:nth-child(2)::before,:root[data-design="modern"] .stat:nth-child(4)::before{color:#fff}
+:root[data-design="modern"] .stat:nth-child(4)::before{content:"▲"}
+:root[data-design="modern"] .stat:nth-child(2):hover{background:#c8231e!important}
+:root[data-design="modern"] .stat:nth-child(4):hover{background:#164ba8!important}
+:root[data-design="modern"] .stat:nth-child(3) b{color:var(--down)}
+:root[data-design="modern"] .stat:nth-child(3)::before{color:var(--down)}
+:root[data-design="modern"] #projects{border-top:6px solid var(--up)}
+:root[data-design="modern"] #skills{border-top:6px solid var(--down)}
+:root[data-design="modern"] #skills .sec-head small{color:var(--down)}
+:root[data-design="modern"] .pr:nth-child(2) i{background:var(--down)}
+:root[data-design="modern"] .pr:nth-child(3) i{background:var(--up)}
+:root[data-design="modern"] .pr:nth-child(2) h3{color:var(--down)}
+:root[data-design="modern"] .pr:nth-child(1) h3,:root[data-design="modern"] .pr:nth-child(3) h3{color:var(--up)}
+:root[data-design="modern"] .principles{border-right:2px solid var(--up)}
+/* 프로젝트 커버: 빨강/파랑 단색 */
+:root[data-design="modern"] .proj:nth-child(odd) .cover{background:var(--up);color:#fff}
+:root[data-design="modern"] .proj:nth-child(even) .cover{background:var(--down);color:#fff}
+:root[data-design="modern"] .cover::after{filter:brightness(0) invert(1);opacity:.55}
+:root[data-design="modern"] .proj:hover .cover::after{opacity:.9}
+:root[data-design="modern"] .proj:nth-child(odd):hover{background:#fff4f3}
+:root[data-design="modern"] .proj:nth-child(even):hover{background:#f0f5ff}
+:root[data-design="modern"] .proj:nth-child(even) .role{background:var(--down)}
+:root[data-design="modern"] .proj:nth-child(odd) .role{background:var(--up)}
+:root[data-design="modern"] .proj:nth-child(even) .metrics div b{color:var(--down)}
+:root[data-design="modern"] .proj:nth-child(even) .btn.primary{background:var(--down);border-color:var(--down)}
+:root[data-design="modern"] .filters .chip-btn[aria-pressed="true"]{background:var(--up);border-color:var(--up)}
+/* 기술 칩 */
+:root[data-design="modern"] .skills .card:nth-child(odd) .chips span{border-color:var(--up);color:var(--up)}
+:root[data-design="modern"] .skills .card:nth-child(even) .chips span{border-color:var(--down);color:var(--down)}
+:root[data-design="modern"] .skills .card:nth-child(odd) h3{color:var(--up)}
+:root[data-design="modern"] .skills .card:nth-child(even) h3{color:var(--down)}
+:root[data-design="modern"] .dlg-head{border-bottom:3px solid var(--up)}
+:root[data-design="modern"] .dlg-body h4{background:var(--down)}
+/* 연락처 */
+:root[data-design="modern"] #contact{border-top:0;background-image:linear-gradient(90deg,var(--up) 50%,var(--down) 50%);background-size:100% 8px;background-repeat:no-repeat;background-position:top}
+:root[data-design="modern"] .links a:nth-child(even):hover{color:#7fa8ff}
+:root[data-design="modern"] footer{border-top:0;color:var(--muted)}
+
 @media (prefers-reduced-motion:reduce){:root[data-design="modern"] .mk .cd{animation:none}}
 </style>
 <script>try{if(localStorage.getItem("design")==="modern")document.documentElement.setAttribute("data-design","modern");}catch(e){}</script>
