@@ -211,12 +211,6 @@ dialog::backdrop{background:rgba(20,18,15,.65);backdrop-filter:blur(3px)}
 .warn b{font-weight:800}
 body.lock{overflow:hidden}
 
-.seg{display:flex;gap:2px;padding:3px;border:var(--bd);border-radius:999px;background:var(--surface)}
-.seg button{border:0;background:transparent;color:var(--text);font:800 13px var(--font);padding:7px 14px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink)}
-.seg button:not([aria-pressed="true"]):hover{background:var(--yellow);color:var(--fix)}
-:root[data-design="modern"] .seg button:not([aria-pressed="true"]):hover{background:var(--surface-2);color:var(--text)}
-
 /* reveal */
 .js .reveal{opacity:0;transform:translateY(30px) scale(.98);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
 .js .reveal.in{opacity:1;transform:none}
@@ -256,279 +250,7 @@ body.lock{overflow:hidden}
 }
 @media print{.nav,.icon-btn,.cta,.filters,.marquee{display:none}.reveal{opacity:1!important;transform:none!important}}
 
-/* =====================================================================
-   모던 디자인 (html[data-design="modern"]) — 주식시장 (트레이딩 터미널)
-   한국 시장 색 관례: 상승 = 빨강, 하락 = 파랑. 흰 바탕 + 남색 잉크 + 모노스페이스 숫자.
-   ===================================================================== */
-.mk{display:none}
-:root[data-design="modern"]{
-  --bg:#ffffff; --surface:#ffffff; --surface-2:#f3f5f8; --line:#dde2ea;
-  --text:#0b1220; --muted:#566074; --ink:#0b1220; --on-ink:#ffffff; --dark:#0b1220;
-  --up:#e5322d; --down:#1d5fd6; --blue:#1d5fd6; --red:#e5322d; --yellow:#e5322d; --accent:#e5322d;
-  --radius:0px; --bd:1px solid var(--ink); --hard:none;
-  --geo:"Jost",var(--font);
-  --mono:ui-monospace,"JetBrains Mono","D2Coding",Consolas,"SFMono-Regular",monospace;
-  --lab:clamp(120px,17vw,230px);
-}
-:root[data-design="modern"] *{box-shadow:none!important}
-:root[data-design="modern"] :focus-visible{outline:3px solid var(--down);outline-offset:2px;border-radius:0}
-:root[data-design="modern"] #contact :focus-visible,:root[data-design="modern"] .nav :focus-visible{outline-color:#fff}
-:root[data-design="modern"] :is(.btn,.chip-btn,.tag,.role,.chips span,.seg,.seg button,.eyebrow,.links a,.icon-btn,.dlg-body pre,.warn,dialog,.stat,.card,.proj,.note-card){border-radius:0}
-:root[data-design="modern"] :is(.stat,.eyebrow,.facts-card,.note-card){transform:none!important}
-:root[data-design="modern"] .proj{rotate:0deg!important}
-:root[data-design="modern"] .art .badge{display:none}
-:root[data-design="modern"] #contact::before,:root[data-design="modern"] #contact::after{animation:none}
-:root[data-design="modern"] .reveal{transition-duration:.3s!important}
-
-/* 스크롤 진행 바 = 상승 막대 */
-:root[data-design="modern"]::before{content:"";position:fixed;left:0;top:0;width:100%;height:3px;background:var(--up);transform:scaleX(0);transform-origin:0 50%;z-index:80}
-@supports (animation-timeline:scroll()){
-  :root[data-design="modern"]::before{animation:m-prog linear both;animation-timeline:scroll(root)}
-}
-@keyframes m-prog{to{transform:scaleX(1)}}
-
-/* nav: 다크 터미널 바 */
-:root[data-design="modern"] .nav{top:0;margin-top:0;padding:14px 0;background:var(--ink);backdrop-filter:none;border-bottom:1px solid var(--ink)}
-:root[data-design="modern"] .nav .wrap{height:60px;background:transparent;border:2.5px solid transparent;border-radius:0}
-:root[data-design="modern"] .logo{color:#fff;font:800 17px var(--font);letter-spacing:-.03em}
-:root[data-design="modern"] .logo i{width:24px;height:16px;border:0;border-radius:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16'%3E%3Cpolyline points='1,14 7,8 12,11 23,2' fill='none' stroke='%23e5322d' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E") left center/contain no-repeat;animation:none}
-:root[data-design="modern"] .nav ul{gap:0}
-:root[data-design="modern"] .nav li a{padding:6px 14px;border-radius:0;color:#c9d1e0;font:600 14px var(--mono);letter-spacing:-.01em}
-:root[data-design="modern"] .nav li a:hover{background:#1c2740;color:#fff}
-:root[data-design="modern"] .nav li a.on{background:var(--up);color:#fff}
-:root[data-design="modern"] .seg{border:1px solid #3a4763;background:transparent;padding:0;gap:0}
-:root[data-design="modern"] .seg button{padding:7px 14px;color:#c9d1e0;transition:none;font-weight:600}
-:root[data-design="modern"] .seg button[aria-pressed="true"]{background:#fff;color:var(--ink)}
-:root[data-design="modern"] .seg button:not([aria-pressed="true"]):hover{background:#1c2740;color:#fff}
-
-/* buttons */
-:root[data-design="modern"] .btn,:root[data-design="modern"] .chip-btn{border:1px solid var(--ink);background:#fff;color:var(--ink);font-weight:700;transition:background .12s linear,color .12s linear}
-:root[data-design="modern"] .btn:hover,:root[data-design="modern"] .chip-btn:hover{transform:none;background:var(--surface-2);color:var(--ink)}
-:root[data-design="modern"] .btn.primary{background:var(--up);border-color:var(--up);color:#fff}
-:root[data-design="modern"] .btn.primary:hover{background:#c8231e;border-color:#c8231e;color:#fff}
-:root[data-design="modern"] .chip-btn[aria-pressed="true"]{background:var(--ink);color:#fff}
-:root[data-design="modern"] .icon-btn{background:var(--ink);color:#fff;border:0}
-:root[data-design="modern"] .icon-btn:hover{transform:none;background:var(--up)}
-
-/* hero */
-:root[data-design="modern"] .hero{padding:48px 0 0;overflow:visible}
-:root[data-design="modern"] .eyebrow{background:var(--surface-2);border:1px solid var(--line);color:var(--ink);padding:5px 14px;font:600 13px var(--mono);margin-bottom:28px}
-:root[data-design="modern"] .eyebrow b{border-radius:0;background:var(--up);width:0;height:0;background:none;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid var(--up);display:inline-block}
-:root[data-design="modern"] h1{font:900 clamp(40px,7.2vw,104px)/1 var(--font);letter-spacing:-.07em;color:var(--ink);margin-bottom:30px}
-:root[data-design="modern"] h1 .hl{background:linear-gradient(transparent 62%,#e5322d33 62%);color:var(--ink);padding:0 .05em;margin-right:.04em}
-:root[data-design="modern"] h1 .hl::before{display:none}
-:root[data-design="modern"] h1 .nm{color:var(--up)}
-:root[data-design="modern"] .lead{color:var(--ink);font-weight:500;max-width:30em}
-/* 차트 패널 */
-:root[data-design="modern"] .art{aspect-ratio:auto;max-width:460px;border:1px solid var(--ink);background:#fff;margin-left:auto;overflow:hidden;padding-top:34px}
-:root[data-design="modern"] .art::before{content:"YUNHO · BACKEND   ▲ 신입";position:absolute;top:0;left:0;right:0;height:34px;line-height:34px;padding:0 14px;background:var(--ink);color:#fff;font:600 12px var(--mono);letter-spacing:.04em}
-:root[data-design="modern"] .art>span{display:none}
-:root[data-design="modern"] .art>.mk{position:static;display:block;width:100%;height:auto}
-:root[data-design="modern"] .mk .g{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
-:root[data-design="modern"] .mk .cd line{stroke-width:1.6}
-:root[data-design="modern"] .mk .cd.u line{stroke:var(--up)}
-:root[data-design="modern"] .mk .cd.u rect{fill:var(--up)}
-:root[data-design="modern"] .mk .cd.d line{stroke:var(--down)}
-:root[data-design="modern"] .mk .cd.d rect{fill:var(--down)}
-:root[data-design="modern"] .mk .cd{transform-box:fill-box;transform-origin:50% 100%;animation:m-cd .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*60ms)}
-:root[data-design="modern"] .mk .last{stroke:var(--up);stroke-width:1;stroke-dasharray:4 3}
-:root[data-design="modern"] .mk .tagbg{fill:var(--up)}
-:root[data-design="modern"] .mk .tagtx{fill:#fff;font:700 10px var(--mono)}
-@keyframes m-cd{from{opacity:0;transform:scaleY(.2)}to{opacity:1;transform:none}}
-
-/* 티커 테이프 */
-:root[data-design="modern"] .marquee{display:block;transform:none;width:100%;margin:64px 0 0;background:var(--ink);color:#fff;border:0}
-:root[data-design="modern"] .marquee span{font:600 15px var(--mono);letter-spacing:0;padding:12px 22px;color:#e7ecf6}
-:root[data-design="modern"] .marquee span::after{content:"▲";margin-left:14px;color:var(--up);font-size:12px}
-:root[data-design="modern"] .marquee span:nth-child(3n+2)::after{content:"▼";color:#5b94ff}
-:root[data-design="modern"] .marquee div{animation-duration:46s}
-:root[data-design="modern"] .marquee+.wrap{margin-top:0}
-/* 호가판 */
-:root[data-design="modern"] .stats{grid-template-columns:repeat(4,1fr);gap:0;margin:0;border-bottom:1px solid var(--ink)}
-:root[data-design="modern"] .stat{background:#fff!important;color:var(--ink);border:0;border-right:1px solid var(--ink);padding:26px clamp(18px,3vw,40px) 22px;transition:background .12s linear;position:relative}
-:root[data-design="modern"] .stat:last-child{border-right:0}
-:root[data-design="modern"] .stat::before{content:"▲";position:absolute;right:clamp(14px,2vw,26px);top:22px;font-size:13px;color:var(--up)}
-:root[data-design="modern"] .stat:nth-child(1)::before{content:"■";color:var(--muted)}
-:root[data-design="modern"] .stat:hover{background:var(--surface-2)!important}
-:root[data-design="modern"] .stat b{font:800 clamp(32px,4vw,56px)/1 var(--mono);letter-spacing:-.05em;white-space:nowrap;color:var(--up)}
-:root[data-design="modern"] .stat:nth-child(1) b{color:var(--ink)}
-:root[data-design="modern"] .stat span{margin-top:12px;color:var(--muted);font-weight:500;font-size:14px}
-
-/* sections */
-:root[data-design="modern"] :is(#about,#skills,#projects,#contact){margin:0;padding:72px 0 88px;background:transparent;border:0;border-top:1px solid var(--ink);color:var(--ink)}
-:root[data-design="modern"] #about{border-top:0}
-:root[data-design="modern"] .sec-head{display:block;margin-bottom:44px}
-:root[data-design="modern"] .sec-head>div:first-child{display:grid;grid-template-columns:var(--lab) 1fr;column-gap:24px;align-items:baseline}
-:root[data-design="modern"] :is(#about,#skills,#projects,#contact) .sec-head small{display:block;background:transparent;color:var(--up);padding:0;border-radius:0;margin:0;font:700 13px var(--mono);letter-spacing:.08em;text-transform:uppercase}
-:root[data-design="modern"] .sec-head small::before{display:none}
-:root[data-design="modern"] h2{font:900 clamp(30px,4.4vw,58px)/1.1 var(--font);letter-spacing:-.06em;color:var(--ink);max-width:16em}
-:root[data-design="modern"] .sec-sub{grid-column:2;color:var(--muted);font-weight:500;margin-top:14px}
-:root[data-design="modern"] .filters{margin:26px 0 0 calc(var(--lab) + 24px)}
-:root[data-design="modern"] .card{border:0}
-
-/* about */
-:root[data-design="modern"] .about{grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
-:root[data-design="modern"] .principles{align-content:start;padding-right:clamp(20px,4vw,48px);border-right:1px solid var(--ink);color:var(--ink)}
-:root[data-design="modern"] .pr{grid-template-columns:72px 1fr;border-top:1px solid var(--line);border-bottom:0;padding:24px 0;color:var(--ink)}
-:root[data-design="modern"] .pr:first-child{padding-top:0;border-top:0}
-:root[data-design="modern"] .pr i{width:56px;height:56px;display:grid;place-items:center;font:800 20px var(--mono);font-style:normal;color:#fff;background:var(--ink);border-radius:0}
-:root[data-design="modern"] .pr:nth-child(1) i{background:var(--up)}
-:root[data-design="modern"] .pr:nth-child(2) i{background:var(--ink)}
-:root[data-design="modern"] .pr:nth-child(3) i{background:var(--down);clip-path:none;padding-top:0}
-:root[data-design="modern"] .pr h3{font:800 20px/1.4 var(--font);letter-spacing:-.03em}
-:root[data-design="modern"] .pr p{color:var(--muted)}
-:root[data-design="modern"] .side{padding-left:clamp(20px,4vw,48px);gap:28px}
-:root[data-design="modern"] #about .card.facts-card{background:transparent;border:0;padding:0;color:var(--ink)}
-:root[data-design="modern"] dl.facts{gap:0;grid-template-columns:84px 1fr}
-:root[data-design="modern"] dl.facts dt,:root[data-design="modern"] dl.facts dd{padding:14px 0;border-bottom:1px solid var(--line);margin:0}
-:root[data-design="modern"] dl.facts dt{color:var(--ink);font-weight:800;padding-right:12px}
-:root[data-design="modern"] dl.facts dd{font-weight:500}
-:root[data-design="modern"] dd small{color:var(--muted);font-weight:400}
-:root[data-design="modern"] .note-card{background:var(--ink);color:#fff;border:0;margin-left:0;padding:24px 26px}
-:root[data-design="modern"] .note-card dl{font:500 14px/1.6 var(--mono)}
-:root[data-design="modern"] .note-card dt{color:#7fa8ff;font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase}
-
-/* projects: 종목 카드 */
-:root[data-design="modern"] .bento{gap:0;padding:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
-:root[data-design="modern"] .proj{background:#fff;border:0;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);transition:none}
-:root[data-design="modern"] .proj:hover{translate:0 0;box-shadow:none!important;background:var(--surface-2)}
-:root[data-design="modern"] .cover{min-height:200px;padding:20px 22px;border-bottom:1px solid var(--ink);color:#fff;background:var(--ink)}
-:root[data-design="modern"] .proj:nth-child(even) .cover{background:var(--surface-2);color:var(--ink)}
-:root[data-design="modern"] .cover::after{right:0;top:34px;left:0;bottom:auto;width:auto;height:44%;border:0;border-radius:0;opacity:.5;transition:opacity .2s;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60' preserveAspectRatio='none'%3E%3Cpolyline points='0,52 22,44 40,48 62,30 84,36 108,18 130,26 156,10 178,16 200,4' fill='none' stroke='%23e5322d' stroke-width='2.5' vector-effect='non-scaling-stroke' stroke-linejoin='round'/%3E%3C/svg%3E") center top/100% 100% no-repeat}
-:root[data-design="modern"] .proj:nth-child(3n+2) .cover::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60' preserveAspectRatio='none'%3E%3Cpolyline points='0,8 24,14 44,10 66,26 90,22 112,38 136,32 160,46 182,40 200,52' fill='none' stroke='%235b94ff' stroke-width='2.5' vector-effect='non-scaling-stroke' stroke-linejoin='round'/%3E%3C/svg%3E")}
-:root[data-design="modern"] .proj:nth-child(even):nth-child(3n+2) .cover::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60' preserveAspectRatio='none'%3E%3Cpolyline points='0,8 24,14 44,10 66,26 90,22 112,38 136,32 160,46 182,40 200,52' fill='none' stroke='%231d5fd6' stroke-width='2.5' vector-effect='non-scaling-stroke' stroke-linejoin='round'/%3E%3C/svg%3E")}
-:root[data-design="modern"] .proj.wide .cover::after{width:auto;height:48%}
-:root[data-design="modern"] .proj:hover .cover::after{transform:none;opacity:.85}
-:root[data-design="modern"] .cover h3{font:800 clamp(26px,2.7vw,40px)/.98 var(--geo);letter-spacing:-.04em;color:inherit;position:relative;z-index:1;overflow-wrap:anywhere}
-:root[data-design="modern"] .proj.wide .cover h3{font-size:clamp(32px,3.8vw,56px)}
-:root[data-design="modern"] .cover .no{font:700 16px var(--mono);color:inherit;opacity:.8}
-:root[data-design="modern"] .tag{background:transparent;border:1px solid currentColor;color:inherit;font:700 11px var(--mono);letter-spacing:.08em}
-:root[data-design="modern"] .pbody{padding:22px 22px 24px}
-:root[data-design="modern"] .proj .one{font-weight:500;color:var(--ink)}
-:root[data-design="modern"] .meta{color:var(--muted)}
-:root[data-design="modern"] .role{background:var(--ink);color:#fff;border:0;padding:2px 10px;font-weight:700}
-:root[data-design="modern"] .chips span{background:#fff;border:1px solid var(--ink);color:var(--ink);font:600 12.5px var(--mono);transition:background .12s linear}
-:root[data-design="modern"] .chips span:hover{background:var(--surface-2)}
-:root[data-design="modern"] .metrics{border-top:1px solid var(--ink)}
-:root[data-design="modern"] .metrics div b{font:800 32px/1.1 var(--mono);letter-spacing:-.05em;color:var(--up)}
-:root[data-design="modern"] .metrics div span{color:var(--muted)}
-:root[data-design="modern"] .stretch::after{border-radius:0}
-:root[data-design="modern"] :is(.proj-actions) .btn{padding:8px 14px}
-
-/* skills: 종목 현황표 */
-:root[data-design="modern"] .skills{grid-template-columns:1fr;gap:0;border-top:1px solid var(--ink)}
-:root[data-design="modern"] .skills .card{display:grid;grid-template-columns:var(--lab) 1fr;gap:24px;align-items:center;background:transparent!important;color:var(--ink);border:0;border-bottom:1px solid var(--line);padding:20px 0}
-:root[data-design="modern"] .skills h3{display:flex;align-items:center;gap:12px;margin:0;font:800 20px var(--geo);letter-spacing:-.01em}
-:root[data-design="modern"] .skills h3::before{content:"";width:0;height:0;flex:none;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid var(--up);background:none;border-radius:0;clip-path:none}
-:root[data-design="modern"] .skills .card:nth-child(2) h3::before,:root[data-design="modern"] .skills .card:nth-child(4) h3::before{border-bottom:0;border-top:12px solid var(--down)}
-:root[data-design="modern"] .skills .chips span{background:#fff;border:1px solid var(--ink);color:var(--ink);font:600 12.5px var(--mono);padding:3px 12px}
-:root[data-design="modern"] .note{color:var(--ink);font-weight:500}
-
-/* contact */
-:root[data-design="modern"] #contact{background:var(--ink);color:#fff;padding:132px 0 100px;overflow:hidden}
-:root[data-design="modern"] #contact::before{display:block;content:"";position:absolute;inset:0;left:0;top:0;right:0;bottom:0;width:auto;height:auto;border:0;border-radius:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpolyline points='0,92 40,80 70,86 110,60 150,66 190,40 230,50 280,24 320,32 400,6' fill='none' stroke='%23e5322d' stroke-width='2' vector-effect='non-scaling-stroke' stroke-linejoin='round'/%3E%3C/svg%3E") center bottom/100% 40% no-repeat;opacity:.3}
-:root[data-design="modern"] #contact::after{display:none}
-:root[data-design="modern"] .contact{z-index:1}
-:root[data-design="modern"] .contact h2{font:900 clamp(34px,6vw,84px)/1 var(--font);letter-spacing:-.07em;color:#fff;max-width:none}
-:root[data-design="modern"] .contact p{color:#ffffffd9;font-weight:500;font-size:17px}
-:root[data-design="modern"] .links{gap:0}
-:root[data-design="modern"] .links a{background:transparent;color:#fff;border:0;border-bottom:1px solid #ffffff44;padding:18px 0;font-weight:700;font-size:17px;transition:padding .12s linear,color .12s linear}
-:root[data-design="modern"] .links a:hover{transform:none;background:transparent;padding-left:12px;color:#ff7a74}
-:root[data-design="modern"] .links a span{color:#ffffffb3;margin-left:auto;font:500 14px var(--mono)}
-:root[data-design="modern"] .links a::after{content:"↗";margin-left:14px;font-weight:400}
-:root[data-design="modern"] footer{padding:28px 0;color:var(--muted);font:500 13px var(--mono);border-top:0}
-
-/* dialog */
-:root[data-design="modern"] dialog{border:1px solid var(--ink);background:#fff}
-:root[data-design="modern"] dialog::backdrop{background:rgba(11,18,32,.6);backdrop-filter:none}
-:root[data-design="modern"] .dlg-head{background:#fff;color:var(--ink);border-bottom:1px solid var(--ink);padding:16px 26px}
-:root[data-design="modern"] .dlg-head h3{font:800 clamp(24px,3vw,34px) var(--geo);letter-spacing:-.03em}
-:root[data-design="modern"] .dlg-head .icon-btn{width:36px;height:36px;font-size:15px}
-:root[data-design="modern"] .dlg-body h4{display:inline-block;background:var(--ink);color:#fff;padding:3px 12px;border-radius:0;font:700 13px var(--font);letter-spacing:.02em;margin-bottom:14px}
-:root[data-design="modern"] .dgrid .card:nth-child(n){background:#fff;color:var(--ink);border:1px solid var(--ink);border-top-width:6px;padding:18px}
-:root[data-design="modern"] .dgrid .card:nth-child(odd){border-top-color:var(--up)}
-:root[data-design="modern"] .dgrid .card:nth-child(even){border-top-color:var(--down)}
-:root[data-design="modern"] .dlg-body pre{background:var(--ink);color:#fff}
-:root[data-design="modern"] .warn{background:#fff3f2;color:var(--ink);border:1px solid var(--up)}
-
-@media (min-width:981px){
-  :root[data-design="modern"] .proj:nth-child(n){grid-column:span 2;margin-top:0}
-  :root[data-design="modern"] .proj:nth-child(1){grid-column:span 4}
-  :root[data-design="modern"] .proj:nth-child(1) .cover{min-height:260px}
-  :root[data-design="modern"] .bento{grid-template-columns:repeat(6,1fr);align-items:stretch}
-}
-@media (max-width:980px){
-  :root[data-design="modern"] .proj:nth-child(n){margin-top:0}
-  :root[data-design="modern"] .art{margin:16px 0 0;max-width:340px}
-  :root[data-design="modern"] .about{grid-template-columns:1fr}
-  :root[data-design="modern"] .principles{border-right:0;padding-right:0;padding-bottom:32px}
-  :root[data-design="modern"] .side{padding-left:0;padding-top:32px;border-top:1px solid var(--ink)}
-}
-@media (max-width:720px){
-  :root[data-design="modern"] .sec-head>div:first-child{grid-template-columns:1fr;row-gap:14px}
-  :root[data-design="modern"] .sec-sub{grid-column:1}
-  :root[data-design="modern"] .filters{margin-left:0}
-  :root[data-design="modern"] .skills .card{grid-template-columns:1fr;gap:12px}
-}
-@media (max-width:620px){
-  :root[data-design="modern"] .stats{grid-template-columns:1fr 1fr}
-  :root[data-design="modern"] .stat:nth-child(2){border-right:0}
-  :root[data-design="modern"] .stat:nth-child(3){border-right:1px solid var(--ink)}
-  :root[data-design="modern"] .stat:nth-child(n+3){border-top:1px solid var(--ink)}
-  :root[data-design="modern"] :is(#about,#skills,#projects){padding:56px 0 64px}
-  :root[data-design="modern"] #contact{padding:112px 0 80px}
-  :root[data-design="modern"] .cover{min-height:170px}
-}
-/* ---- 빨강·파랑 강화 ---- */
-:root[data-design="modern"] .nav{border-bottom:3px solid var(--up)}
-:root[data-design="modern"] h1 .hl{background:var(--down);color:#fff;padding:0 .12em}
-:root[data-design="modern"] .btn:not(.primary){border-color:var(--down);color:var(--down)}
-:root[data-design="modern"] .btn:not(.primary):hover{background:var(--down);color:#fff}
-:root[data-design="modern"] .art{border:2px solid var(--down)}
-:root[data-design="modern"] .art::before{background:var(--down)}
-:root[data-design="modern"] .stat:nth-child(2){background:var(--up)!important;color:#fff}
-:root[data-design="modern"] .stat:nth-child(4){background:var(--down)!important;color:#fff}
-:root[data-design="modern"] .stat:nth-child(2) :is(b,span),:root[data-design="modern"] .stat:nth-child(4) :is(b,span),:root[data-design="modern"] .stat:nth-child(2)::before,:root[data-design="modern"] .stat:nth-child(4)::before{color:#fff}
-:root[data-design="modern"] .stat:nth-child(4)::before{content:"▲"}
-:root[data-design="modern"] .stat:nth-child(2):hover{background:#c8231e!important}
-:root[data-design="modern"] .stat:nth-child(4):hover{background:#164ba8!important}
-:root[data-design="modern"] .stat:nth-child(3) b{color:var(--down)}
-:root[data-design="modern"] .stat:nth-child(3)::before{color:var(--down)}
-:root[data-design="modern"] #projects{border-top:6px solid var(--up)}
-:root[data-design="modern"] #skills{border-top:6px solid var(--down)}
-:root[data-design="modern"] #skills .sec-head small{color:var(--down)}
-:root[data-design="modern"] .pr:nth-child(2) i{background:var(--down)}
-:root[data-design="modern"] .pr:nth-child(3) i{background:var(--up)}
-:root[data-design="modern"] .pr:nth-child(2) h3{color:var(--down)}
-:root[data-design="modern"] .pr:nth-child(1) h3,:root[data-design="modern"] .pr:nth-child(3) h3{color:var(--up)}
-:root[data-design="modern"] .principles{border-right:2px solid var(--up)}
-/* 프로젝트 커버: 빨강/파랑 단색 */
-:root[data-design="modern"] .proj:nth-child(odd) .cover{background:var(--up);color:#fff}
-:root[data-design="modern"] .proj:nth-child(even) .cover{background:var(--down);color:#fff}
-:root[data-design="modern"] .cover::after{filter:brightness(0) invert(1);opacity:.55}
-:root[data-design="modern"] .proj:hover .cover::after{opacity:.9}
-:root[data-design="modern"] .proj:nth-child(odd):hover{background:#fff4f3}
-:root[data-design="modern"] .proj:nth-child(even):hover{background:#f0f5ff}
-:root[data-design="modern"] .proj:nth-child(even) .role{background:var(--down)}
-:root[data-design="modern"] .proj:nth-child(odd) .role{background:var(--up)}
-:root[data-design="modern"] .proj:nth-child(even) .metrics div b{color:var(--down)}
-:root[data-design="modern"] .proj:nth-child(even) .btn.primary{background:var(--down);border-color:var(--down)}
-:root[data-design="modern"] .filters .chip-btn[aria-pressed="true"]{background:var(--up);border-color:var(--up)}
-/* 기술 칩 */
-:root[data-design="modern"] .skills .card:nth-child(odd) .chips span{border-color:var(--up);color:var(--up)}
-:root[data-design="modern"] .skills .card:nth-child(even) .chips span{border-color:var(--down);color:var(--down)}
-:root[data-design="modern"] .skills .card:nth-child(odd) h3{color:var(--up)}
-:root[data-design="modern"] .skills .card:nth-child(even) h3{color:var(--down)}
-:root[data-design="modern"] .dlg-head{border-bottom:3px solid var(--up)}
-:root[data-design="modern"] .dlg-body h4{background:var(--down)}
-/* 연락처 */
-:root[data-design="modern"] #contact{border-top:0;background-image:linear-gradient(90deg,var(--up) 50%,var(--down) 50%);background-size:100% 8px;background-repeat:no-repeat;background-position:top}
-:root[data-design="modern"] .links a:nth-child(even):hover{color:#7fa8ff}
-:root[data-design="modern"] footer{border-top:0;color:var(--muted)}
-
-@media (prefers-reduced-motion:reduce){:root[data-design="modern"] .mk .cd{animation:none}}
 </style>
-<script>try{if(localStorage.getItem("design")==="modern")document.documentElement.setAttribute("data-design","modern");}catch(e){}</script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -543,7 +265,6 @@ body.lock{overflow:hidden}
       <li><a href="#skills">기술</a></li>
       <li><a href="#contact">연락처</a></li>
     </ul>
-    <div class="seg" id="design" role="group" aria-label="디자인 선택"><button type="button" data-d="pop" aria-pressed="true">팝송</button><button type="button" data-d="modern" aria-pressed="false">주식시장</button></div>
   </div>
 </header>
 
@@ -563,7 +284,7 @@ body.lock{overflow:hidden}
         </div>
       </div>
       <div class="art" aria-hidden="true">
-        <span class="a"></span><span class="b"></span><span class="c"></span><span class="d"></span><svg class="mk" viewBox="0 0 400 330" role="img" aria-label="우상향하는 주가 차트 모양 장식"><line x1="0" x2="400" y1="40" y2="40" class="g"/><line x1="0" x2="400" y1="98" y2="98" class="g"/><line x1="0" x2="400" y1="155" y2="155" class="g"/><line x1="0" x2="400" y1="212" y2="212" class="g"/><line x1="0" x2="400" y1="270" y2="270" class="g"/><g class="cd u" style="--i:0"><line x1="23.5" x2="23.5" y1="218.4" y2="270.0"/><rect x="17.5" y="229.0" width="12" height="19.4"/></g><g class="cd d" style="--i:1"><line x1="47.1" x2="47.1" y1="210.0" y2="265.3"/><rect x="41.1" y="229.0" width="12" height="20.9"/></g><g class="cd u" style="--i:2"><line x1="70.6" x2="70.6" y1="208.7" y2="258.1"/><rect x="64.6" y="227.1" width="12" height="22.8"/></g><g class="cd u" style="--i:3"><line x1="94.1" x2="94.1" y1="204.6" y2="236.4"/><rect x="88.1" y="213.5" width="12" height="13.6"/></g><g class="cd d" style="--i:4"><line x1="117.6" x2="117.6" y1="188.0" y2="246.5"/><rect x="111.6" y="213.5" width="12" height="23.0"/></g><g class="cd u" style="--i:5"><line x1="141.2" x2="141.2" y1="182.9" y2="264.6"/><rect x="135.2" y="204.0" width="12" height="32.5"/></g><g class="cd u" style="--i:6"><line x1="164.7" x2="164.7" y1="164.9" y2="232.7"/><rect x="158.7" y="180.9" width="12" height="23.1"/></g><g class="cd d" style="--i:7"><line x1="188.2" x2="188.2" y1="154.8" y2="208.5"/><rect x="182.2" y="180.9" width="12" height="14.0"/></g><g class="cd u" style="--i:8"><line x1="211.8" x2="211.8" y1="160.9" y2="208.9"/><rect x="205.8" y="170.8" width="12" height="24.1"/></g><g class="cd d" style="--i:9"><line x1="235.3" x2="235.3" y1="159.5" y2="215.5"/><rect x="229.3" y="170.8" width="12" height="24.6"/></g><g class="cd u" style="--i:10"><line x1="258.8" x2="258.8" y1="156.0" y2="214.8"/><rect x="252.8" y="171.5" width="12" height="23.9"/></g><g class="cd u" style="--i:11"><line x1="282.4" x2="282.4" y1="132.7" y2="183.3"/><rect x="276.4" y="141.3" width="12" height="30.2"/></g><g class="cd u" style="--i:12"><line x1="305.9" x2="305.9" y1="107.3" y2="155.5"/><rect x="299.9" y="124.0" width="12" height="17.3"/></g><g class="cd u" style="--i:13"><line x1="329.4" x2="329.4" y1="61.6" y2="137.9"/><rect x="323.4" y="78.9" width="12" height="45.1"/></g><g class="cd d" style="--i:14"><line x1="352.9" x2="352.9" y1="56.2" y2="101.9"/><rect x="346.9" y="78.9" width="12" height="10.3"/></g><g class="cd u" style="--i:15"><line x1="376.5" x2="376.5" y1="40.0" y2="115.7"/><rect x="370.5" y="58.8" width="12" height="30.4"/></g><line x1="0" x2="400" y1="58.8" y2="58.8" class="last"/><rect x="334" y="47.8" width="66" height="22" class="tagbg"/><text x="367" y="62.8" text-anchor="middle" class="tagtx">BACKEND ▲</text></svg>
+        <span class="a"></span><span class="b"></span><span class="c"></span><span class="d"></span>
         <svg class="badge" viewBox="0 0 200 200"><defs><path id="cp" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs><circle cx="100" cy="100" r="98" fill="#ff5a36" stroke="#14120f" stroke-width="5"/><text font-family="Pretendard Variable,Pretendard,sans-serif" font-weight="800" font-size="20" fill="#14120f" letter-spacing="2"><textPath href="#cp">Java · Spring 백엔드 · Portfolio · 2026 ·</textPath></text><circle cx="100" cy="100" r="22" fill="#ffd93d" stroke="#14120f" stroke-width="5"/></svg>
       </div>
     </div>
@@ -822,21 +543,6 @@ fbtns.forEach(function(b){b.addEventListener("click",function(){
   fbtns.forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
   var f=b.getAttribute("data-f");
   document.querySelectorAll(".proj").forEach(function(c){c.hidden=!(f==="all"||c.getAttribute("data-kind")===f);});
-});});
-
-/* ---------- design switch ---------- */
-var root=document.documentElement;
-var dbtns=document.querySelectorAll("#design [data-d]");
-function paintDesign(d){
-  if(d==="modern"){root.setAttribute("data-design","modern");}else{root.removeAttribute("data-design");}
-  dbtns.forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-d")===d?"true":"false");});
-}
-paintDesign(root.getAttribute("data-design")==="modern"?"modern":"pop");
-dbtns.forEach(function(b){b.addEventListener("click",function(){
-  var d=b.getAttribute("data-d");
-  var go=function(){paintDesign(d);};
-  if(document.startViewTransition&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.startViewTransition(go);}else{go();}
-  try{localStorage.setItem("design",d);}catch(e){}
 });});
 
 /* ---------- reveal + active nav ---------- */
