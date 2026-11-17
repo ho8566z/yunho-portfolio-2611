@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Serif:ital@0;1&family=Jost:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
   /* 팔레트: 크림 바탕 + 코발트 · 토마토 · 레몬 · 민트 · 핑크 · 라일락 */
@@ -288,6 +288,127 @@ body.lock{overflow:hidden}
 .grow .g:hover svg{transform:translateY(-4px) rotate(-1.5deg)}
 @media (max-width:620px){.grow{grid-template-columns:1fr 1fr;gap:16px}}
 @media (prefers-reduced-motion:reduce){.rh-break *{animation:none!important}.grow svg{transition:none}}
+
+/* =====================================================================
+   네오브루탈리즘: 4px 검정 테두리 · 번지지 않는 하드 그림자 · 각진 큰 블록
+   색: 주황 · 파랑 · 노랑 (민트는 작은 포인트), 파란 면에는 흰 글자
+   ===================================================================== */
+:root{
+  --radius:10px; --bd:4px solid var(--ink); --hard:8px 8px 0 var(--ink);
+  --c1:var(--yellow); --c2:var(--red); --c3:#8fa0ff; --c4:var(--mint); --c5:#fffaf0;
+  --font:"Noto Sans KR","Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+  --display:"Space Grotesk","Noto Sans KR","Pretendard Variable",Pretendard,sans-serif;
+  --mono:"Space Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+body{background-image:radial-gradient(rgba(20,18,15,.16) 1px,transparent 1.2px);background-size:20px 20px}
+:focus-visible{border-radius:0}
+
+/* nav: 납작한 바 + 노란 활성 메뉴 + 검정 CTA */
+.nav{top:0;margin-top:0;background:var(--bg);border-bottom:var(--bd)}
+.nav .wrap{height:68px;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
+.logo{font:900 20px var(--display);text-transform:uppercase;letter-spacing:-.01em}
+.logo i{width:20px;height:20px;border-radius:0;background:var(--yellow);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transform:rotate(12deg);animation:none}
+.nav li a{border:3px solid transparent;border-radius:0;font-weight:800;transition:none}
+.nav li a:hover{background:var(--yellow);border-color:var(--ink)}
+.nav li a.on{background:var(--yellow);color:var(--fix);border-color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.nav-cta{padding:10px 20px;background:var(--ink);color:var(--on-ink);margin-left:8px;white-space:nowrap}
+.nav-cta:hover{background:var(--yellow);color:var(--fix)}
+.icon-btn{border-radius:6px}
+
+/* 버튼 · 칩 · 태그: 각지게 */
+.btn{border-radius:6px;box-shadow:5px 5px 0 var(--ink);padding:12px 22px}
+.btn:hover{transform:translate(5px,5px);box-shadow:0 0 0 var(--ink)}
+.btn.primary{background:var(--ink);color:var(--on-ink)}
+.btn.primary:hover{background:var(--yellow);color:var(--fix)}
+.chip-btn{border-radius:6px;box-shadow:4px 4px 0 var(--ink)}
+.chip-btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.eyebrow,.tag,.role,.sec-head small,.dlg-body h4{border-radius:0}
+.eyebrow{background:var(--mint);box-shadow:4px 4px 0 var(--ink)}
+.sec-head small{border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.chips span{border-radius:0;border-width:3px}
+.role{border-width:3px}
+
+/* hero: 초대형 제목 + 노란 띠 */
+h1{font-size:clamp(38px,6.9vw,98px);line-height:1.16;font-weight:900;letter-spacing:-.06em}
+h1 .hl::before{inset:.1em -.12em .04em;border-radius:0;transform:rotate(-2deg);box-shadow:8px 8px 0 var(--ink)}
+.art .a{inset:2% 8% 30% 6%;border-radius:0;background:var(--blue);transform:rotate(-4deg);box-shadow:var(--hard)}
+.art .b{inset:36% 0 0 30%;background:var(--yellow);border-radius:999px 999px 0 0;box-shadow:var(--hard)}
+.art .c{border-radius:0;background:var(--c5);box-shadow:5px 5px 0 var(--ink)}
+.art .d{border-radius:0;background:var(--mint);box-shadow:4px 4px 0 var(--ink)}
+.art .sticky{right:-6%;bottom:6%;left:auto;top:auto;display:flex;flex-direction:column;gap:6px;padding:14px 18px;background:var(--red);color:var(--fix);border:var(--bd);box-shadow:var(--hard);transform:rotate(4deg);font:700 14px/1.3 var(--display);white-space:nowrap}
+.marquee{border-block:var(--bd)}
+.marquee span{font-family:var(--display);font-weight:700}
+
+/* stats: 큰 색 블록 */
+.stat{border-radius:var(--radius);box-shadow:var(--hard)}
+.stat:nth-child(1){background:var(--yellow)}
+.stat:nth-child(2){background:var(--red)}
+.stat:nth-child(3){background:var(--blue);color:#fff}
+.stat:nth-child(4){background:var(--c5)}
+.stat b{font-family:var(--display);font-weight:700}
+
+/* 섹션 · 카드 */
+h2{font-weight:900;letter-spacing:-.05em}
+.card{border-radius:var(--radius);box-shadow:var(--hard)}
+.pr i{font:700 52px/1 var(--display);font-style:normal;color:var(--yellow)}
+.pr{border-top:4px solid #fff}
+.pr:first-child{border-top:0}
+.pr h3{font-weight:900}
+#about .card.facts-card{box-shadow:10px 10px 0 #14120f;transform:rotate(.8deg)}
+.note-card{border-radius:var(--radius);border-width:4px;transform:rotate(-1deg);box-shadow:8px 8px 0 #14120f}
+.note-card dl{font-family:var(--mono)}
+
+/* 프로젝트: 질서 있는 큰 블록 */
+.proj:nth-child(n){--rot:0deg}
+@media (min-width:981px){
+  .bento{align-items:stretch;gap:36px 32px}
+  .proj:nth-child(n){margin-top:0}
+  .proj:nth-child(1){grid-column:1/span 7}
+  .proj:nth-child(2){grid-column:8/span 5}
+  .proj:nth-child(3){grid-column:1/span 4}
+  .proj:nth-child(4){grid-column:5/span 4}
+  .proj:nth-child(5){grid-column:9/span 4}
+}
+.proj:hover{translate:-5px -5px;box-shadow:13px 13px 0 var(--ink)}
+.cover::after{border-radius:0;transform:rotate(14deg)}
+.proj:hover .cover::after{transform:rotate(14deg) scale(1.3)}
+.cover h3{font-family:var(--display);font-weight:700}
+.cover .no{font:700 26px var(--mono)}
+.metrics{border-top:4px solid var(--ink)}
+.metrics div b{font-family:var(--display);font-weight:700}
+.stretch::after{border-radius:var(--radius)}
+
+/* 기술: 노란 면 */
+.skills .card{box-shadow:8px 8px 0 #14120f}
+.skills .card:nth-child(1){background:var(--c5)}
+.skills .card:nth-child(2){background:var(--mint)}
+.skills .card:nth-child(3){background:var(--red)}
+.skills .card:nth-child(4){background:var(--c3)}
+.skills h3{font-family:var(--display);font-weight:700}
+
+/* 연락처: 주황 면 */
+#contact::before{border-radius:0;transform:rotate(14deg);box-shadow:var(--hard)}
+#contact::after{border-radius:0;box-shadow:var(--hard)}
+.links a{border-radius:6px;box-shadow:6px 6px 0 #14120f}
+.links a:hover{transform:translate(6px,6px)}
+
+/* dialog */
+dialog{border-radius:var(--radius);box-shadow:14px 14px 0 var(--ink)}
+.dlg-head h3{font-family:var(--display);font-weight:700}
+.dlg-body pre,.warn{border-radius:6px}
+.dgrid .card{box-shadow:6px 6px 0 var(--ink)}
+
+/* 코뿔소 성장 블록 */
+.grow .g{border-radius:var(--radius);box-shadow:8px 8px 0 var(--ink)}
+
+@media (max-width:620px){
+  .nav-cta{padding:8px 14px;font-size:14px}
+  .pr{grid-template-columns:64px 1fr}
+  .pr i{font-size:38px;white-space:nowrap}
+  .stat b{font-size:30px;white-space:nowrap}
+  .art .sticky{right:-2%;font-size:12.5px;padding:10px 14px}
+  .links a{border-radius:6px}
+}
 </style>
 </head>
 <body>
@@ -319,6 +440,7 @@ body.lock{overflow:hidden}
       <li><a href="#skills">기술</a></li>
       <li><a href="#contact">연락처</a></li>
     </ul>
+    <a class="btn nav-cta" href="#contact">연락하기 →</a>
   </div>
 </header>
 
@@ -353,7 +475,7 @@ body.lock{overflow:hidden}
         </svg>
       </div>
       <div class="art" aria-hidden="true">
-        <span class="a"></span><span class="b"></span><span class="c"></span><span class="d"></span>
+        <span class="a"></span><span class="b"></span><span class="c"></span><span class="d"></span><div class="sticky"><span>✓ 테스트로 확인</span><span>✓ 문제는 기록으로</span><span>✓ 한계는 솔직하게</span></div>
         <svg class="badge" viewBox="0 0 200 200"><defs><path id="cp" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs><circle cx="100" cy="100" r="98" fill="#ff5a36" stroke="#14120f" stroke-width="5"/><text font-family="Pretendard Variable,Pretendard,sans-serif" font-weight="800" font-size="20" fill="#14120f" letter-spacing="2"><textPath href="#cp">Java · Spring 백엔드 · Portfolio · 2026 ·</textPath></text><circle cx="100" cy="100" r="22" fill="#ffd93d" stroke="#14120f" stroke-width="5"/></svg>
       </div>
     </div>
