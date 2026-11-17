@@ -250,9 +250,63 @@ body.lock{overflow:hidden}
 }
 @media print{.nav,.icon-btn,.cta,.filters,.marquee{display:none}.reveal{opacity:1!important;transform:none!important}}
 
+
+/* 코뿔소: 바위 깨기 + 성장 4단계 (글자 없음) */
+.rh-break{display:block;width:min(400px,100%);height:auto;margin-top:44px;overflow:visible}
+.rh-break .rh{transform-origin:0 0;animation:rh-lunge 5s ease-in-out infinite}
+.rh-break .rock{animation:rk-g 5s linear infinite}
+.rh-break .pa{transform-box:fill-box;transform-origin:center;animation:rk-a 5s ease-out infinite}
+.rh-break .pb{transform-box:fill-box;transform-origin:center;animation:rk-b 5s ease-out infinite}
+.rh-break .pc{transform-box:fill-box;transform-origin:center;animation:rk-c 5s ease-out infinite}
+.rh-break .ck1{opacity:0;animation:ck1 5s linear infinite}
+.rh-break .ck2{opacity:0;animation:ck2 5s linear infinite}
+.rh-break .hit{opacity:0;transform-box:fill-box;transform-origin:center;animation:hit 5s ease-out infinite}
+@keyframes rh-lunge{
+  0%,12%{transform:translate(8px,35px) scale(.9)}
+  20%{transform:translate(52px,35px) scale(.9)}
+  28%,36%{transform:translate(8px,35px) scale(.9)}
+  44%{transform:translate(52px,35px) scale(.9)}
+  52%,60%{transform:translate(8px,35px) scale(.9)}
+  68%{transform:translate(52px,35px) scale(.9)}
+  80%,100%{transform:translate(8px,35px) scale(.9)}
+}
+@keyframes rk-g{0%{opacity:0}5%,21%{opacity:1;transform:translateX(0)}23%{transform:translateX(5px)}26%,45%{transform:translateX(0)}47%{transform:translateX(5px)}50%,100%{transform:translateX(0)}}
+@keyframes rk-a{0%,69%{opacity:1;transform:none}92%,100%{opacity:0;transform:translate(8px,-50px) rotate(-38deg)}}
+@keyframes rk-b{0%,69%{opacity:1;transform:none}92%,100%{opacity:0;transform:translate(78px,-34px) rotate(30deg)}}
+@keyframes rk-c{0%,69%{opacity:1;transform:none}92%,100%{opacity:0;transform:translate(64px,-8px) rotate(46deg)}}
+@keyframes ck1{0%,20%{opacity:0}22%,69%{opacity:1}70%,100%{opacity:0}}
+@keyframes ck2{0%,44%{opacity:0}46%,69%{opacity:1}70%,100%{opacity:0}}
+@keyframes hit{
+  0%,19%{opacity:0;transform:scale(.4)}22%{opacity:1;transform:scale(1.1)}30%{opacity:0;transform:scale(1.5)}
+  43%{opacity:0;transform:scale(.4)}46%{opacity:1;transform:scale(1.1)}54%{opacity:0;transform:scale(1.5)}
+  67%{opacity:0;transform:scale(.4)}70%{opacity:1;transform:scale(1.5)}84%,100%{opacity:0;transform:scale(2.2)}
+}
+.grow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:0 0 38px}
+.grow .g{margin:0;padding:10px 10px 6px;border:var(--bd);border-radius:22px;box-shadow:5px 5px 0 var(--ink)}
+.grow .g1{background:var(--c1)}.grow .g2{background:var(--c2)}.grow .g3{background:var(--c3)}.grow .g4{background:var(--c4)}
+.grow svg{display:block;width:100%;height:auto;transition:transform .25s}
+.grow .g:hover svg{transform:translateY(-4px) rotate(-1.5deg)}
+@media (max-width:620px){.grow{grid-template-columns:1fr 1fr;gap:16px}}
+@media (prefers-reduced-motion:reduce){.rh-break *{animation:none!important}.grow svg{transition:none}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <g id="rh-body" stroke="#14120f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M30 62 q-14 4 -16 22" fill="none"/>
+    <rect x="62" y="96" width="20" height="32" rx="7" fill="#aab3c7"/><rect x="122" y="96" width="20" height="32" rx="7" fill="#aab3c7"/>
+    <rect x="28" y="42" width="124" height="68" rx="32" fill="#cfd6e4"/>
+    <rect x="40" y="96" width="22" height="32" rx="7" fill="#cfd6e4"/><rect x="104" y="96" width="22" height="32" rx="7" fill="#cfd6e4"/>
+    <path d="M128 50h34q26 0 30 30q-2 22 -22 24h-34z" fill="#cfd6e4"/>
+    <path d="M136 50l6 -16l12 14z" fill="#cfd6e4"/>
+    <path d="M96 52q10 20 0 52" fill="none" stroke-width="3"/>
+    <circle cx="168" cy="68" r="3.5" fill="#14120f" stroke="none"/>
+  </g>
+  <g id="rh-h1" stroke="#14120f" stroke-width="4" stroke-linejoin="round" fill="#fff4df"><path d="M177 54L190 63L187 46Z"/></g>
+  <g id="rh-h2" stroke="#14120f" stroke-width="4" stroke-linejoin="round" fill="#fff4df"><path d="M174 53L190 62L189 38Z"/></g>
+  <g id="rh-h3" stroke="#14120f" stroke-width="4" stroke-linejoin="round" fill="#fff4df"><path d="M173 52L190 62L192 30Z"/></g>
+  <g id="rh-h4" stroke="#14120f" stroke-width="4" stroke-linejoin="round" fill="#fff4df"><path d="M172 52L190 62L196 20Z"/><path d="M156 50L170 52L164 36Z"/></g>
+</defs></svg>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 
 <header class="nav">
@@ -282,6 +336,21 @@ body.lock{overflow:hidden}
           <a class="btn" href="https://github.com/ho8566z" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="https://app.notion.com/p/5bf00b1cd77d83e6abff018c339379b6?source=copy_link" target="_blank" rel="noopener">Notion 포트폴리오</a>
         </div>
+        <svg class="rh-break" viewBox="0 0 380 170" role="img" aria-label="코뿔소가 바위를 세 번 들이받아 부수는 장면">
+          <path d="M0 152H380" stroke="#14120f" stroke-width="4" stroke-linecap="round"/>
+          <g class="rh"><use href="#rh-body"/><use href="#rh-h4"/></g>
+          <g class="rock" stroke="#14120f" stroke-width="4" stroke-linejoin="round">
+            <path class="pa" d="M228 150L236 70L280 38L290 95L270 150Z" fill="#b9ad98"/>
+            <path class="pb" d="M280 38L335 52L354 110L290 95Z" fill="#cfc4ae"/>
+            <path class="pc" d="M270 150L290 95L354 110L348 150Z" fill="#a39884"/>
+            <path class="ck1" d="M236 100l22 -8l-6 -14l16 -8" fill="none"/>
+            <path class="ck2" d="M290 95l-6 30l12 20" fill="none"/>
+          </g>
+          <g class="hit" stroke="#14120f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M234 85l5 -12l5 12l12 5l-12 5l-5 12l-5 -12l-12 -5z" fill="#ffd93d"/>
+            <path d="M262 62l10 -8M268 98l14 2M256 118l10 10" fill="none"/>
+          </g>
+        </svg>
       </div>
       <div class="art" aria-hidden="true">
         <span class="a"></span><span class="b"></span><span class="c"></span><span class="d"></span>
@@ -346,6 +415,12 @@ body.lock{overflow:hidden}
         <button class="chip-btn" data-f="team" aria-pressed="false">팀</button>
         <button class="chip-btn" data-f="solo" aria-pressed="false">개인</button>
       </div>
+    </div>
+    <div class="grow reveal" role="img" aria-label="어린 코뿔소가 점점 자라 성체가 되는 4단계 그림">
+      <figure class="g g1"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="4" stroke-linecap="round"/><g transform="translate(100 128) scale(.5) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h1"/></g></svg></figure>
+      <figure class="g g2"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="4" stroke-linecap="round"/><g transform="translate(100 128) scale(.66) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h2"/></g></svg></figure>
+      <figure class="g g3"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="4" stroke-linecap="round"/><g transform="translate(100 128) scale(.82) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h3"/></g></svg></figure>
+      <figure class="g g4"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="4" stroke-linecap="round"/><g transform="translate(100 128) scale(1) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h4"/></g></svg></figure>
     </div>
     <div class="bento" id="bento"></div>
   </div>
