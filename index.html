@@ -693,6 +693,11 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
   .nav li a{padding:6px 10px;font-size:13.5px}
   .nav .nav-cta{padding:7px 14px;font-size:13px}
 }
+/* 모바일: 연락처 노란 장식이 제목과 겹치지 않게 작게 하고 위쪽 여백 확보 */
+@media (max-width:620px){
+  #contact{padding-top:100px}
+  #contact::before{width:130px;height:130px;right:-60px;top:-60px}
+}
 </style>
 </head>
 <body>
