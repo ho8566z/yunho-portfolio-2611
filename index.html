@@ -281,7 +281,7 @@ body.lock{overflow:hidden}
   43%{opacity:0;transform:scale(.4)}46%{opacity:1;transform:scale(1.1)}54%{opacity:0;transform:scale(1.5)}
   67%{opacity:0;transform:scale(.4)}70%{opacity:1;transform:scale(1.5)}84%,100%{opacity:0;transform:scale(2.2)}
 }
-@media (prefers-reduced-motion:reduce){.rh-break *{animation:none!important}.rcell svg{transition:none}}
+@media (prefers-reduced-motion:reduce){.rh-break *{animation:none!important}}
 
 /* =====================================================================
    네오브루탈리즘: 4px 검정 테두리 · 번지지 않는 하드 그림자 · 각진 큰 블록
@@ -395,28 +395,9 @@ dialog{border-radius:var(--radius);box-shadow:14px 14px 0 var(--ink)}
   .links a{border-radius:6px}
 }
 
-/* 프로젝트: 코뿔소(성장 단계) + 카드를 한 줄로, 줄마다 좌우 지그재그 */
-.bento{display:flex;flex-direction:column;align-items:stretch;gap:48px;padding-bottom:0}
-.prow{display:grid;grid-template-columns:minmax(200px,.34fr) 1fr;gap:40px;align-items:stretch}
-.prow.flip{grid-template-columns:1fr minmax(200px,.34fr)}
-.prow[hidden]{display:none}
-.rcell{grid-row:1;grid-column:1;margin:0;display:flex;align-items:flex-end;padding:14px 14px 22px;background:var(--cv);border:var(--bd);border-radius:var(--radius);box-shadow:var(--hard)}
-.prow.flip .rcell{grid-column:2}
-.rcell svg{display:block;width:100%;height:auto;transition:transform .25s}
-.prow:hover .rcell svg{transform:translateY(-6px)}
-.prow>.proj{grid-row:1;grid-column:2!important;margin-top:0!important}
-.prow.flip>.proj{grid-column:1!important}
-@media (max-width:760px){
-  .prow,.prow.flip{grid-template-columns:1fr;gap:20px}
-  .rcell,.prow.flip .rcell{grid-column:1;padding:8px}
-  .rcell svg{max-height:150px}
-  .prow>.proj,.prow.flip>.proj{grid-column:1!important;grid-row:2}
-}
+.bento{display:flex;flex-direction:column;align-items:stretch;gap:34px;padding-bottom:0}
 
 /* 프로젝트 카드 축소 + 코뿔소 레벨 표시 */
-.prow{grid-template-columns:minmax(150px,.24fr) 1fr;gap:28px}
-.prow.flip{grid-template-columns:1fr minmax(150px,.24fr)}
-.bento{gap:34px}
 .cover,.proj.wide .cover{min-height:104px;padding:14px 20px 16px}
 .cover h3,.proj.wide .cover h3{font-size:clamp(22px,2.4vw,32px)}
 .cover .no{font-size:20px}
@@ -433,11 +414,6 @@ dialog{border-radius:var(--radius);box-shadow:14px 14px 0 var(--ink)}
 .proj-actions .btn{padding:6px 14px;font-size:13px}
 .proj{box-shadow:6px 6px 0 var(--ink)}
 .proj:hover{box-shadow:10px 10px 0 var(--ink)}
-.rcell{box-shadow:6px 6px 0 var(--ink)}
-@media (max-width:760px){
-  .prow,.prow.flip{grid-template-columns:1fr;gap:16px}
-  .rcell svg{max-height:110px}
-}
 
 /* =====================================================================
    히어로 리디자인 (참고 이미지): 초대형 HELLO / I'M A / DEVELOPER + 컷아웃 사진
@@ -494,7 +470,7 @@ h1.big span{display:block}
 .tc-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .tc-head a{font-weight:800;font-size:14px;text-decoration:none;white-space:nowrap}
 .tc-head a:hover{text-decoration:underline}
-.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.thumbs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .th{display:flex;flex-direction:column;text-decoration:none;color:var(--fix);min-width:0}
 .th svg{width:100%;height:auto;background:var(--cv);border:3px solid var(--ink);display:block}
 .th b{margin-top:8px;font:700 14px/1.2 var(--display);overflow-wrap:anywhere}
@@ -516,7 +492,7 @@ h1.big span{display:block}
   .cta-band .bar{flex-basis:100%;order:3;transform:none}
 }
 @media (max-width:620px){
-  .thumbs{grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .thumbs{grid-template-columns:1fr 1fr;gap:8px}
   .th b{font-size:12px}
   .th span{display:none}
 }
@@ -580,6 +556,70 @@ h1.big span{display:block}
   .cta-band .go{padding:10px 20px}
 }
 @media (max-width:980px){.rh-strip{margin-top:28px}}
+
+/* 히어로 재배치: 사진은 파란 박스 왼쪽 / 오른쪽에 작은 코뿔소 + 그 아래 카드 3개 */
+h1.big{margin:0 0 min(22px,2.4vh)}
+h1.big .kr{display:inline-block!important;padding:.3em .55em .36em;background:var(--ink);color:#fff4df;border:var(--bd);box-shadow:8px 8px 0 var(--blue);transform:rotate(-1.6deg);font:900 clamp(30px,min(4.2vw,6.2vh),62px)/1.3 var(--font);letter-spacing:-.05em;white-space:normal}
+h1.big .kr .st{color:#ffd93d}
+h1.big .kr .nm{color:#ff5a36}
+.hero-grid{grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);align-items:center;gap:30px}
+.hero-right{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:26px;align-items:end}
+.hero-right .art{max-width:none;width:100%;margin:0;aspect-ratio:1/1.2}
+.hero-right .art .sq{left:0;top:8%;width:90%}
+.hero-right .art .me{left:-4%;right:auto;width:88%}
+.hero-right .art .laptop{left:auto;right:0;top:34%;width:34%}
+.hero-right .art .burst{left:auto;right:8%;top:2%;width:13%}
+.hero-right .art .hand{display:none}
+.hero-right .art .smile{right:-2%;top:62%;width:14%}
+.hero-right .art .sticky{display:none}
+.side-col{display:flex;flex-direction:column;gap:12px;min-width:0}
+.side-col .rh-strip{margin:0}
+.side-col .rh-break{width:100%;max-width:230px;margin:0 auto}
+.side-col .top-cards{grid-template-columns:1fr;gap:12px;margin:0}
+.side-col .tc{padding:10px 14px 12px;box-shadow:5px 5px 0 var(--ink)}
+.side-col .tc h2{font-size:18px;margin-bottom:6px}
+.side-col .tc p{font-size:12.5px;margin-bottom:4px}
+.side-col .tc-about p{padding-right:44px}
+.side-col .tc-about .bulb{width:34px;top:8px;right:12px}
+.side-col .tc .btn{padding:4px 12px;font-size:12px}
+.side-col .pills{gap:5px}
+.side-col .pills span{padding:2px 9px;font-size:11.5px;border-width:2px}
+.side-col .thumbs{gap:10px}
+.side-col .th svg{height:56px;border-width:2.5px}
+.side-col .th b{margin-top:4px;font-size:12px}
+.side-col .th span{display:none}
+.side-col .cta-band{margin:0;justify-content:space-between;flex-wrap:nowrap}
+.side-col .cta-band .go{padding:8px 16px;font-size:13px}
+.side-col .social a{width:34px;height:34px}.side-col .social svg{width:26px;height:26px}
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:30px}
+}
+@media (max-width:700px){
+  .hero-right{grid-template-columns:1fr}
+  .hero-right .art{max-width:340px;margin:0 auto}
+}
+
+/* 프로젝트: 팀 2개(윗줄) / 개인 3개(아랫줄), 코뿔소(Lv)는 커버 안 프로젝트명 반대편 */
+.pgrid{display:grid;gap:34px 28px;align-items:stretch}
+.pgrid.team{grid-template-columns:repeat(2,1fr)}
+.pgrid.solo{grid-template-columns:repeat(3,1fr)}
+.pgrid[hidden]{display:none}
+.pgrid>.proj{grid-column:auto!important;margin-top:0!important;rotate:0deg}
+.pgrid>.proj:hover{rotate:0deg}
+.cover,.proj.wide .cover{min-height:150px}
+.cover::after,.proj.wide .cover::after{display:none}
+.cover-top{justify-content:flex-start;gap:10px}
+.cover h3{max-width:56%}
+.cover .rh-lv{position:absolute;right:12px;bottom:0;width:42%;height:auto;z-index:1;transition:transform .25s}
+.proj:hover .rh-lv{transform:translateY(-6px)}
+@media (max-width:1000px){
+  .pgrid.solo{grid-template-columns:repeat(2,1fr)}
+  .pgrid.solo>.proj:last-child:nth-child(odd){grid-column:1/-1!important}
+}
+@media (max-width:700px){
+  .pgrid.team,.pgrid.solo{grid-template-columns:1fr}
+  .pgrid.solo>.proj:last-child:nth-child(odd){grid-column:auto!important}
+}
 </style>
 </head>
 <body>
@@ -624,11 +664,7 @@ h1.big span{display:block}
     <div class="hero-grid">
       <div>
         <p class="eyebrow"><b></b>Java · Spring 백엔드 신입 개발자</p>
-        <h1 class="big" aria-label="Hello! I'm a developer. 배움을 멈추지 않는 개발자 이윤호입니다.">
-          <span class="hello">HELLO!<svg viewBox="0 0 60 50" aria-hidden="true"><path d="M8 40L26 8M24 46L52 28" stroke="#14120f" stroke-width="5" stroke-linecap="round" fill="none"/></svg></span>
-          <span class="iam-row"><span class="iam">I'M A</span><span class="kr">배움을 멈추지 않는<br>개발자 <b>이윤호</b>입니다.</span></span>
-          <span class="band">DEVELOPER</span>
-        </h1>
+        <h1 class="big" aria-label="배움을 멈추지 않는 개발자 이윤호입니다"><span class="kr">배움을 <b class="st">멈추지 않는</b><br>개발자 <b class="nm">이윤호</b>입니다</span></h1>
         <p class="lead">실패하는 상황까지 확인해야 사용자가 서비스를 믿고 쓸 수 있다고 생각합니다.<!-- 비공개: 테스트를 먼저 쓰고, 문제는 원인까지 기록합니다. --></p>
         <div class="cta">
           <a class="btn primary" href="#projects">프로젝트 보기 →</a>
@@ -636,6 +672,7 @@ h1.big span{display:block}
           <a class="btn" href="https://app.notion.com/p/5bf00b1cd77d83e6abff018c339379b6?source=copy_link" target="_blank" rel="noopener">Notion 포트폴리오</a>
         </div>
       </div>
+      <div class="hero-right">
       <div class="art" aria-hidden="true">
         <span class="sq"></span>
         <svg class="laptop" viewBox="0 0 220 170"><g stroke="#14120f" stroke-width="5" stroke-linejoin="round"><path d="M40 14h140a8 8 0 0 1 8 8v92a8 8 0 0 1-8 8H40a8 8 0 0 1-8-8V22a8 8 0 0 1 8-8z" fill="#14120f"/><path d="M12 130h196l-14 28H26z" fill="#e6e6e6"/></g><text x="110" y="82" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="44" fill="#fff4df">&lt;/&gt;</text></svg>
@@ -645,6 +682,23 @@ h1.big span{display:block}
         <svg class="smile" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#ffd93d" stroke="#14120f" stroke-width="6"/><circle cx="36" cy="40" r="6" fill="#14120f"/><circle cx="64" cy="40" r="6" fill="#14120f"/><path d="M26 58q24 28 48 0" stroke="#14120f" stroke-width="6" stroke-linecap="round" fill="none"/></svg>
         <div class="sticky"><span>✓ 테스트로 확인</span><span>✓ 문제는 기록으로</span><span>✓ 한계는 솔직하게</span></div>
       </div>
+      <div class="side-col">
+    <div class="rh-strip">
+    <svg class="rh-break" viewBox="0 0 380 170" role="img" aria-label="코뿔소가 바위를 세 번 들이받아 부수는 장면">
+      <path d="M0 152H380" stroke="#14120f" stroke-width="4" stroke-linecap="round"/>
+      <g class="rh"><use href="#rh-body"/><use href="#rh-h4"/></g>
+      <g class="rock" stroke="#14120f" stroke-width="4" stroke-linejoin="round">
+        <path class="pa" d="M228 150L236 70L280 38L290 95L270 150Z" fill="#b9ad98"/>
+        <path class="pb" d="M280 38L335 52L354 110L290 95Z" fill="#cfc4ae"/>
+        <path class="pc" d="M270 150L290 95L354 110L348 150Z" fill="#a39884"/>
+        <path class="ck1" d="M236 100l22 -8l-6 -14l16 -8" fill="none"/>
+        <path class="ck2" d="M290 95l-6 30l12 20" fill="none"/>
+      </g>
+      <g class="hit" stroke="#14120f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M234 85l5 -12l5 12l12 5l-12 5l-5 12l-5 -12l-12 -5z" fill="#ffd93d"/>
+        <path d="M262 62l10 -8M268 98l14 2M256 118l10 10" fill="none"/>
+      </g>
+    </svg>
     </div>
     <div class="top-cards">
       <article class="tc tc-about">
@@ -663,7 +717,6 @@ h1.big span{display:block}
         <div class="thumbs">
           <a href="#projects" class="th" style="--cv:var(--c1)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.62) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h1"/></g></svg><b>white-eyes</b><span>Java · Spring Boot</span></a>
           <a href="#projects" class="th" style="--cv:var(--c2)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.78) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h2"/></g></svg><b>obsidian-shield</b><span>Python · Flask</span></a>
-          <a href="#projects" class="th" style="--cv:var(--c3)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.94) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h3"/></g></svg><b>calendar-bot</b><span>Java · Spring Boot</span></a>
         </div>
       </article>
     </div>
@@ -673,25 +726,10 @@ h1.big span{display:block}
         <a href="https://app.notion.com/p/5bf00b1cd77d83e6abff018c339379b6?source=copy_link" target="_blank" rel="noopener" aria-label="Notion"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M8 17V7l8 10V7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg></a>
         <a href="mailto:ho8566z@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg></a>
       </div>
-      <p class="bar">Let's Build Something Great Together! <svg viewBox="0 0 120 30" aria-hidden="true"><path d="M2 16C40 6 80 6 114 14M100 4l14 10-14 12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></p>
       <a class="btn go" href="#contact">Contact Me →</a>
     </div>
-    <div class="rh-strip">
-    <svg class="rh-break" viewBox="0 0 380 170" role="img" aria-label="코뿔소가 바위를 세 번 들이받아 부수는 장면">
-      <path d="M0 152H380" stroke="#14120f" stroke-width="4" stroke-linecap="round"/>
-      <g class="rh"><use href="#rh-body"/><use href="#rh-h4"/></g>
-      <g class="rock" stroke="#14120f" stroke-width="4" stroke-linejoin="round">
-        <path class="pa" d="M228 150L236 70L280 38L290 95L270 150Z" fill="#b9ad98"/>
-        <path class="pb" d="M280 38L335 52L354 110L290 95Z" fill="#cfc4ae"/>
-        <path class="pc" d="M270 150L290 95L354 110L348 150Z" fill="#a39884"/>
-        <path class="ck1" d="M236 100l22 -8l-6 -14l16 -8" fill="none"/>
-        <path class="ck2" d="M290 95l-6 30l12 20" fill="none"/>
-      </g>
-      <g class="hit" stroke="#14120f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M234 85l5 -12l5 12l12 5l-12 5l-5 12l-5 -12l-12 -5z" fill="#ffd93d"/>
-        <path d="M262 62l10 -8M268 98l14 2M256 118l10 10" fill="none"/>
-      </g>
-    </svg>
+      </div>
+      </div>
     </div>
   </div>
   <div class="wrap">
@@ -721,7 +759,8 @@ h1.big span{display:block}
           <dt>학력</dt><dd>한남대학교 경영학과<small>학점 3.57 / 4.5</small></dd>
           <dt>자격</dt><dd>유통관리사 3급 · 6시그마 GB 1급 · 구글 AI Essential · 1종 보통</dd>
           <dt>병역</dt><dd>군필 (공군 병장 전역)</dd>
-          <dt>지원</dt><dd>Java · Spring 백엔드 개발자 (신입) · 대전·충남</dd>
+          <dt>지원</dt><dd>Java · Spring 백엔드 개발자 (신입) · 대전·충남·충북·세종</dd>
+          <dt>이메일</dt><dd><a href="mailto:ho8566z@gmail.com">ho8566z@gmail.com</a></dd>
         </dl>
       </div>
       <div class="note-card">
@@ -894,9 +933,14 @@ function el(h){var t=document.createElement("template");t.innerHTML=h.trim();ret
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
 
 var bento=document.getElementById("bento");
+var groups={team:el('<div class="pgrid team"></div>'),solo:el('<div class="pgrid solo"></div>')};
+bento.appendChild(groups.team);bento.appendChild(groups.solo);
 P.forEach(function(p,i){
-  var h='<article class="card proj reveal'+(p.wide?' wide':'')+'" data-kind="'+p.kind+'">'+
-   '<div class="cover" style="--cv:var(--c'+((i%5)+1)+')">'+
+  var st=[[.46,"rh-h1",46],[.6,"rh-h2",38],[.74,"rh-h3",30],[.88,"rh-h35",30],[1,"rh-h4",20]][i%5];
+  var top=Math.min(128-94*st[0],128-(128-st[2])*st[0]),ly=Math.round(top-30);
+  var rh='<svg class="rh-lv" viewBox="0 -16 200 156" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="4" stroke-linecap="round"/><g transform="translate(100 128) scale('+st[0]+') translate(-100 -128)"><use href="#rh-body"/><use href="#'+st[1]+'"/></g><g transform="translate(100 '+ly+')"><rect x="-26" y="4" width="56" height="24" fill="#fff4df"/><rect x="-30" y="0" width="56" height="24" fill="#14120f"/><text x="-2" y="18" text-anchor="middle" fill="#fff4df" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="16">Lv'+(i%5+1)+'</text></g></svg>';
+  var h='<article class="card proj reveal" data-kind="'+p.kind+'">'+
+   '<div class="cover" style="--cv:var(--c'+((i%5)+1)+')">'+rh+
      '<div class="cover-top"><span class="tag">'+(p.kind==="team"?"TEAM":"SOLO")+'</span><span class="no">0'+(i+1)+'</span></div>'+
      '<h3>'+esc(p.name)+'</h3></div>'+
    '<div class="pbody"><p class="one">'+esc(p.one)+'</p>'+
@@ -905,14 +949,8 @@ P.forEach(function(p,i){
    '<div class="metrics">'+p.metrics.map(function(m){return"<div><b>"+esc(m[0])+"</b><span>"+esc(m[1])+"</span></div>";}).join("")+'</div>'+
    '<div class="proj-actions"><button class="btn primary stretch" type="button" data-open="'+p.id+'">자세히 보기</button>'+
    p.links.map(function(l){return'<a class="btn" href="'+l[1]+'" target="_blank" rel="noopener" style="position:relative;z-index:1">'+esc(l[0])+'</a>';}).join("")+'</div></div></article>';
-  var st=[[.46,"rh-h1",46],[.6,"rh-h2",38],[.74,"rh-h3",30],[.88,"rh-h35",30],[1,"rh-h4",20]][i%5];
-  var top=Math.min(128-94*st[0],128-(128-st[2])*st[0]),ly=Math.round(top-30);
-  var rh='<figure class="rcell" style="--cv:var(--c'+((i%5)+1)+')"  aria-hidden="true"><svg viewBox="0 -16 200 156"><path d="M8 130H192" stroke="#14120f" stroke-width="4" stroke-linecap="round"/><g transform="translate(100 128) scale('+st[0]+') translate(-100 -128)"><use href="#rh-body"/><use href="#'+st[1]+'"/></g><g transform="translate(100 '+ly+')"><rect x="-26" y="4" width="56" height="24" fill="#fff4df"/><rect x="-30" y="0" width="56" height="24" fill="#14120f"/><text x="-2" y="18" text-anchor="middle" fill="#fff4df" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="16">Lv'+(i%5+1)+'</text></g></svg></figure>';
-  var row=el('<div class="prow">'+rh+h+'</div>');
-  bento.appendChild(row);
+  groups[p.kind].appendChild(el(h));
 });
-function zig(){var k=0;document.querySelectorAll(".prow").forEach(function(r){if(!r.hidden){r.classList.toggle("flip",k%2===1);k++;}});}
-zig();
 
 var cg=document.getElementById("cases-grid");
 if(cg)CASES.forEach(function(c){
@@ -950,8 +988,8 @@ var fbtns=document.querySelectorAll(".chip-btn");
 fbtns.forEach(function(b){b.addEventListener("click",function(){
   fbtns.forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
   var f=b.getAttribute("data-f");
-  document.querySelectorAll(".proj").forEach(function(c){c.closest(".prow").hidden=!(f==="all"||c.getAttribute("data-kind")===f);});
-  zig();
+  document.querySelectorAll(".proj").forEach(function(c){c.hidden=!(f==="all"||c.getAttribute("data-kind")===f);});
+  document.querySelectorAll(".pgrid").forEach(function(g){g.hidden=!g.querySelector(".proj:not([hidden])");});
 });});
 
 /* ---------- reveal + active nav ---------- */
