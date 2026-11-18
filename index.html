@@ -218,7 +218,7 @@ body.lock{overflow:hidden}
 .js .stat.reveal.in:nth-child(1){transform:rotate(-1.5deg)}.js .stat.reveal.in:nth-child(2){transform:rotate(1deg)}.js .stat.reveal.in:nth-child(3){transform:rotate(-.8deg)}.js .stat.reveal.in:nth-child(4){transform:rotate(1.4deg)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .reveal{opacity:1;transform:none;transition:none}.marquee div,.art>*,.logo i{animation:none}.proj,.btn,.stat{transition:none}}
 
-@media (max-width:980px){
+@media (max-width:760px){
   .hero{padding-top:36px}
   .hero-grid,.about,.contact{grid-template-columns:1fr}
   .art{max-width:300px;margin:8px 0 0}
@@ -443,7 +443,7 @@ h1.big span{display:block}
 .art .smile{right:-3%;top:47%;left:auto;width:15%;height:auto;transform:rotate(8deg);filter:drop-shadow(4px 4px 0 var(--ink))}
 .art .sticky{right:-2%;bottom:17%;left:auto;top:auto;transform:rotate(4deg);font-size:clamp(11.5px,1.2vw,14.5px)}
 .marquee{margin-top:0;position:relative;z-index:2}
-@media (max-width:980px){
+@media (max-width:760px){
   .hero-grid{grid-template-columns:1fr;align-items:start}
   .art{max-width:420px;margin:28px auto 0}
   .marquee{margin-top:0}
@@ -486,7 +486,7 @@ h1.big span{display:block}
 .cta-band .bar svg{width:80px;height:auto;flex:none}
 .cta-band .go{background:var(--red);color:var(--fix);padding:16px 26px;font-size:17px}
 .stats{margin-top:70px}
-@media (max-width:980px){
+@media (max-width:760px){
   .art{margin-bottom:0}
   .top-cards{grid-template-columns:1fr;margin-top:36px}
   .cta-band{flex-wrap:wrap;margin-top:36px}
@@ -509,7 +509,7 @@ h1.big span{display:block}
 /* 첫 화면(뷰포트) 안에 최상단이 전부 들어오도록: 화면 높이(vh)에 맞춰 축소 */
 .rh-strip{display:flex;justify-content:center;margin-top:36px}
 .rh-strip .rh-break{margin:0}
-@media (min-width:981px){
+@media (min-width:761px){
   .nav .wrap{height:58px}
   .hero{padding-top:min(26px,calc(3*var(--vh)))}
   .hero .eyebrow{margin-bottom:min(14px,calc(1.6*var(--vh)));padding:4px 14px}
@@ -540,12 +540,12 @@ h1.big span{display:block}
   .cta-band .go{padding:12px 22px;font-size:15px}
   .stats{margin-top:56px}
 }
-@media (min-width:981px){
+@media (min-width:761px){
   .art{max-width:min(560px,calc(54*var(--vh)))}
   .art .hand{font-size:clamp(18px,min(3.3vw,calc(4.4*var(--vh))),42px)}
   .art .sticky{font-size:clamp(10px,min(1.2vw,calc(1.7*var(--vh))),14.5px);padding:min(14px,calc(1.6*var(--vh))) min(18px,1.6vw)}
 }
-@media (min-width:981px){
+@media (min-width:761px){
   .hero .lead,.tc p.sm,.th span{display:none}
   .tc-about p{padding-right:50px}
   .hero{padding-top:14px}
@@ -555,7 +555,7 @@ h1.big span{display:block}
   .cta-band .bar{padding:8px 22px}
   .cta-band .go{padding:10px 20px}
 }
-@media (max-width:980px){.rh-strip{margin-top:28px}}
+@media (max-width:760px){.rh-strip{margin-top:28px}}
 
 /* 히어로: 문구(박스 없음) / 사진만 파란 박스 왼쪽으로 / 코뿔소는 사진 높이(카드 줄 바로 위) 오른쪽 */
 h1.big{--f0:clamp(32px,min(4.6vw,calc(6.8*var(--vh))),68px);--f1:clamp(38px,min(5.5vw,calc(8.2*var(--vh))),82px);margin:0 0 calc(min(22px,calc(2.4*var(--vh))) - 2.6*(var(--f1) - var(--f0)))}
@@ -571,7 +571,7 @@ h1.big .kr .nm{color:#ff5a36}
 .rh-strip{position:absolute;right:0;bottom:0;z-index:4;margin:0;width:min(210px,38%)}
 .rh-strip .rh-break{width:100%;margin:0}
 .hero-grid .cta-band{margin:18px 0 0;gap:14px}
-@media (max-width:980px){
+@media (max-width:760px){
   .rh-strip{position:static;width:min(250px,60%);margin:18px auto 0}
 }
 
@@ -639,11 +639,11 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 @media (min-width:1700px){html{zoom:1.2}}
 @media (min-width:2200px){html{zoom:1.5}}
 /* 'Java · Spring 백엔드 신입 개발자' 박스: 헤드라인 글자 위쪽에 겹치지 않게 */
-@media (min-width:981px){
+@media (min-width:761px){
   .hero .eyebrow{display:inline-flex;margin:0 0 38px;padding:4px 14px;font-size:13px;position:relative;top:-36px;z-index:2}
 }
 /* 소개·프로젝트·기술: 각 섹션이 한 화면에 들어오도록 카드 축소 (남는 높이는 JS가 화면에 맞춰 --avail/zoom 으로 보정) */
-@media (min-width:981px){
+@media (min-width:761px){
   #about,#projects,#skills{margin-top:0;padding:0;min-height:var(--avail,0px);display:flex;align-items:center;scroll-margin-top:-96px}
   #about>.wrap,#projects>.wrap,#skills>.wrap{padding:26px 0}
   #about{margin-top:40px} /* 히어로 통계 카드 줄과 파란 배경이 붙지 않게 */
@@ -677,7 +677,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
   #skills .note{margin-top:18px}
 }
 /* 모바일·태블릿: 사진이 박스 왼쪽으로 약 68% 튀어나오므로, 그만큼 왼쪽 공간이 생기도록 art를 오른쪽으로 붙이고 폭을 줄임 */
-@media (max-width:980px){
+@media (max-width:760px){
   .art{width:min(100%,calc((100vw - 32px)/1.72));max-width:420px;margin:28px 0 0 auto}
 }
 /* 모바일: 통계 카드는 숫자 위·설명 아래로 쌓아서 글자가 한 글자씩 꺾이지 않게 */
@@ -1098,7 +1098,7 @@ if("IntersectionObserver" in window){
 function fitSections(){
   var secs=document.querySelectorAll("#about,#projects,#skills");
   var root=document.documentElement;
-  if(window.innerWidth<981){
+  if(window.innerWidth<761){
     root.style.removeProperty("--avail");
     secs.forEach(function(sec){var w=sec.querySelector(".wrap");if(w)w.style.zoom="";});
     return;
