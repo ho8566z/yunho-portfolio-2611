@@ -630,6 +630,11 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 .stat span{margin-top:0;flex:1;line-height:1.3;font-size:13px}
 /* 통계 박스(기울기+그림자)가 .hero overflow:hidden에 잘리지 않도록 여유를 주고, 아래 간격은 그대로 유지 */
 .hero{padding-bottom:24px;margin-bottom:-24px}
+
+/* 히어로 코뿔소(바위 깨기) 좌우반전 */
+.rh-strip .rh-break{transform:scaleX(-1)}
+/* '자세히 보기' 점멸 방지: 버튼의 ::after가 카드 전체를 덮는데, 버튼에 transform이 걸리면 ::after 기준 영역이 버튼 크기로 줄어 hover가 풀렸다 다시 켜지는 것이 반복됨 → hover 때 transform을 쓰지 않는다 */
+.btn.stretch:hover{transform:none;box-shadow:5px 5px 0 var(--ink)}
 </style>
 </head>
 <body>
