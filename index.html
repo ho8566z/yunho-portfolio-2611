@@ -549,7 +549,6 @@ h1.big span{display:block}
   .hero .lead,.tc p.sm,.th span{display:none}
   .tc-about p{padding-right:50px}
   .hero{padding-top:14px}
-  .hero .eyebrow{display:none}
   .cta-band{margin-top:14px}
   .th svg{height:min(96px,calc(9*var(--vh)))}
   .tc{padding:12px 18px 14px}
@@ -639,6 +638,10 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 /* 큰 모니터 배율: 16인치 노트북 = 100%, 24인치 FHD = 120%, 27인치 이상 = 150% */
 @media (min-width:1700px){html{zoom:1.2}}
 @media (min-width:2200px){html{zoom:1.5}}
+/* 'Java · Spring 백엔드 신입 개발자' 박스: 헤드라인 글자 위쪽에 겹치지 않게 */
+@media (min-width:981px){
+  .hero .eyebrow{display:inline-flex;margin:0 0 38px;padding:4px 14px;font-size:13px;position:relative;z-index:2}
+}
 </style>
 </head>
 <body>
