@@ -1104,18 +1104,22 @@ function fitSections(){
   var hz=parseFloat(getComputedStyle(root).zoom)||1;
   var avail=Math.floor(window.innerHeight/hz); /* 메뉴로 이동하면 섹션 윗단이 화면 맨 위에 오므로 화면 전체 높이를 쓴다 */
   root.style.setProperty("--avail",avail+"px");
+  var narrow=window.innerWidth<1280; /* 폭이 좁으면 카드를 줄이지 않고 폭만 줄여 세로로 늘어나게 둔다 */
   secs.forEach(function(sec){
     var w=sec.querySelector(".wrap");if(!w)return;
     w.style.zoom="";
+    if(narrow)return;
     var h=w.offsetHeight;
     var z=h>avail?Math.max(.55,avail/h):1;
     w.style.zoom=z<1?z:"";
   });
 }
-/* 폭 761~1279px(반 화면, 브라우저 확대): 폭 1280px 때의 배치를 폭에 비례해 통째로 축소 → 요소가 겹치거나 뭉치지 않음 */
+/* 폭 761~1279px(반 화면, 브라우저 확대): 맨 위 히어로만 폭 1280px 때의 배치를 폭에 비례해 축소 → 요소가 겹치거나 뭉치지 않음.
+   소개·프로젝트·기술 섹션은 축소하지 않고 카드 폭만 줄어 세로로 늘어난다 */
 function fitScale(){
-  var w=window.innerWidth,r=document.documentElement;
-  if(w>=761&&w<1280)r.style.zoom=(w/1280).toFixed(4);else r.style.zoom="";
+  var w=window.innerWidth,h=document.querySelector(".hero");
+  if(!h)return;
+  if(w>=761&&w<1280)h.style.zoom=(w/1280).toFixed(4);else h.style.zoom="";
 }
 function fitAll(){fitScale();fitSections();}
 fitAll();
