@@ -636,6 +636,9 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 .rh-strip .rh-break{transform:scaleX(-1)}
 /* '자세히 보기' 점멸 방지: 버튼의 ::after가 카드 전체를 덮는데, 버튼에 transform이 걸리면 ::after 기준 영역이 버튼 크기로 줄어 hover가 풀렸다 다시 켜지는 것이 반복됨 → hover 때 transform을 쓰지 않는다 */
 .btn.stretch:hover{transform:none;box-shadow:5px 5px 0 var(--ink)}
+/* 큰 모니터 배율: 16인치 노트북 = 100%, 24인치 FHD = 120%, 27인치 이상 = 150% */
+@media (min-width:1700px){html{zoom:1.2}}
+@media (min-width:2200px){html{zoom:1.5}}
 </style>
 </head>
 <body>
