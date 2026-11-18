@@ -601,13 +601,11 @@ h1.big .kr .nm{color:#ff5a36}
 .cover h3{max-width:56%}
 .cover .rh-lv{position:absolute;right:12px;bottom:0;width:42%;height:auto;z-index:1;transition:transform .25s}
 .proj:hover .rh-lv{transform:translateY(-6px)}
-@media (max-width:1000px){
-  .pgrid.solo{grid-template-columns:repeat(2,1fr)}
-  .pgrid.solo>.proj:last-child:nth-child(odd){grid-column:1/-1!important}
+@media (max-width:760px){
+  .pgrid.solo{grid-template-columns:repeat(2,1fr)} /* 마지막 카드를 전체 폭으로 늘리지 않음 */
 }
 @media (max-width:700px){
   .pgrid.team,.pgrid.solo{grid-template-columns:1fr}
-  .pgrid.solo>.proj:last-child:nth-child(odd){grid-column:auto!important}
 }
 
 /* PPT에서 직접 조정한 히어로 배치 (2026-11-18): art 기준 % 좌표 */
