@@ -1121,11 +1121,24 @@ function fitScale(){
   if(!h)return;
   if(w>=761&&w<1280)h.style.zoom=(w/1280).toFixed(4);else h.style.zoom="";
 }
-function fitAll(){fitScale();fitSections();}
+/* 창 높이가 낮으면 'Java · Spring' 박스(위로 36px 올려 배치)가 히어로 윗선 밖으로 나가 메뉴바에 가려지므로, 잘릴 때만 히어로 윗 여백을 그만큼 늘린다 */
+function fitEyebrow(){
+  var h=document.querySelector(".hero"),e=h&&h.querySelector(".eyebrow");
+  if(!e)return;
+  h.style.paddingTop="";
+  if(window.innerWidth<761)return;
+  var hr=h.getBoundingClientRect(),er=e.getBoundingClientRect();
+  var def=hr.top+8-er.top;
+  if(def>0){
+    var z=(h.offsetHeight?hr.height/h.offsetHeight:1)||1;
+    h.style.paddingTop=(parseFloat(getComputedStyle(h).paddingTop)+def/z)+"px";
+  }
+}
+function fitAll(){fitScale();fitEyebrow();fitSections();}
 fitAll();
 window.addEventListener("resize",fitAll);
-window.addEventListener("load",fitSections);
-if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSections);
+window.addEventListener("load",fitAll);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitAll);
 document.querySelectorAll(".chip-btn").forEach(function(b){b.addEventListener("click",function(){setTimeout(fitSections,0);});});
 </script>
 </body>
