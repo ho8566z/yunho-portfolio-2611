@@ -686,6 +686,13 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
   .stat b{font-size:28px}
   .stat span{display:block;margin-top:4px;font-size:12.5px}
 }
+/* 모바일: 상단 메뉴를 두 번째 줄에 표시 (첫 줄: 로고 + 연락하기) */
+@media (max-width:620px){
+  .nav .wrap{flex-wrap:wrap;height:auto;row-gap:0;padding:8px 0 6px}
+  .nav ul{display:flex;order:3;width:100%;margin:0;justify-content:space-between;gap:2px}
+  .nav li a{padding:6px 10px;font-size:13.5px}
+  .nav .nav-cta{padding:7px 14px;font-size:13px}
+}
 </style>
 </head>
 <body>
