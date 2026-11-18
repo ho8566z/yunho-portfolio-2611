@@ -541,7 +541,7 @@ h1.big span{display:block}
   .stats{margin-top:56px}
 }
 @media (min-width:761px){
-  .art{max-width:min(560px,calc(54*var(--vh)))}
+  .art{max-width:min(560px,calc(54*var(--vh)),31.6vw)} /* 31.6vw: 폭 1280px에서 기존 크기(405px)와 같고, 더 좁아지면 제목 글자처럼 같이 줄어 사진이 글자를 가리지 않음 */
   .art .hand{font-size:clamp(18px,min(3.3vw,calc(4.4*var(--vh))),42px)}
   .art .sticky{font-size:clamp(10px,min(1.2vw,calc(1.7*var(--vh))),14.5px);padding:min(14px,calc(1.6*var(--vh))) min(18px,1.6vw)}
 }
