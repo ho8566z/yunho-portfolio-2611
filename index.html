@@ -164,7 +164,7 @@ dd small{display:block;color:var(--muted);font-weight:500;margin-top:2px}
 .stretch::after{content:"";position:absolute;inset:0;border-radius:var(--radius)}
 
 /* skills: 레몬 면 */
-#skills{margin-top:128px;padding:96px 0;background:var(--yellow);color:var(--fix);border-block:var(--bd)}
+#skills{margin-top:128px;padding:96px 0;background:#6fe0b0;color:var(--fix);border-block:var(--bd)}
 #skills .sec-head small{background:var(--fix);color:#fff4df}
 .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 .skills .card{--text:#14120f;--surface:#fffaf0;color:#14120f;padding:24px;box-shadow:6px 6px 0 #14120f;border-color:#14120f}
@@ -598,9 +598,7 @@ h1.big .kr .nm{color:#ff5a36}
 .cover,.proj.wide .cover{min-height:150px}
 .cover::after,.proj.wide .cover::after{display:none}
 .cover-top{justify-content:flex-start;gap:10px}
-.cover h3{max-width:56%}
-.cover .rh-lv{position:absolute;right:12px;bottom:0;width:42%;height:auto;z-index:1;transition:transform .25s}
-.proj:hover .rh-lv{transform:translateY(-6px)}
+.cover h3{max-width:none}
 @media (max-width:760px){
   .pgrid.solo{grid-template-columns:repeat(2,1fr)} /* 마지막 카드를 전체 폭으로 늘리지 않음 */
 }
@@ -612,7 +610,7 @@ h1.big .kr .nm{color:#ff5a36}
 .art .sq{left:-20.24%;top:11.02%;right:auto;bottom:auto}
 .art .laptop{left:-7.75%;top:15.85%;right:auto;bottom:auto}
 .art .burst{left:26.1%;top:-2.5%;right:auto;bottom:auto}
-.art .me{left:-68.2%;top:19.93%;right:auto;bottom:auto}
+.art .me{left:-87.7%;top:0.6%;width:87.12%;right:auto;bottom:auto}
 .art .hand{left:57.68%;top:9.3%;right:auto;bottom:auto}
 .art .smile{left:-8.87%;top:52.39%;right:auto;bottom:auto}
 .art .sticky{left:38.74%;top:41.43%;right:auto;bottom:auto}
@@ -662,7 +660,6 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
   .pgrid{gap:18px 20px}
   .cover,.proj.wide .cover{min-height:78px;padding:10px 16px 12px}
   .cover h3{font-size:clamp(20px,2vw,26px)}
-  .cover .rh-lv{width:auto;height:92%;right:10px}
   .pbody{padding:12px 16px 14px;gap:8px}
   .proj .one{font-size:13.5px;line-height:1.45}
   .meta,.role,.pbody .chips{display:none}
@@ -704,6 +701,76 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 .shots figure{margin:0}
 .shots img{display:block;width:100%;height:auto;border:3px solid var(--ink);border-radius:var(--radius);box-shadow:4px 4px 0 var(--ink);background:#fff}
 .shots figcaption{margin-top:6px;font-size:12.5px;font-weight:700;color:var(--muted)}
+
+/* 프로젝트 타임라인 (카드 위): 하나의 가로선, 코뿔소는 완료일 위치에 서 있음 */
+.tl{--u:79px;border:var(--bd);background:var(--surface);border-radius:20px;box-shadow:var(--hard);padding:28px 24px 6px;margin-bottom:26px}
+.tl-in{position:relative;height:calc(var(--u) + 30px + 8px + 12px + 40px)}
+.tl-line{position:absolute;left:0;right:0;top:calc(var(--u) + 30px);height:8px;background:var(--ink);border-radius:4px}
+.tl-it{position:absolute;top:0;transform:translateX(-50%);display:grid;grid-template-rows:calc(var(--u) + 30px) 20px auto;justify-items:center;width:128px;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:center;cursor:pointer}
+.tl-it[hidden]{display:none}
+.tl-it:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:8px}
+.tl-rhw{grid-row:1;align-self:end;display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:-1px;position:relative;z-index:1;transition:transform .2s}
+.tl-rh{height:calc(var(--s) * var(--u));width:auto;max-width:none;display:block}
+.tl-it:hover .tl-rhw{transform:translateY(-4px)}
+.tl-name{grid-row:3;display:flex;flex-direction:column;align-items:center;gap:2px}
+.tl-name b{font:800 13px/1.2 var(--display);letter-spacing:-.02em;white-space:nowrap}
+.tl-it .lv{font:700 14px/1 "Space Grotesk",var(--display);font-style:normal;background:var(--ink);color:var(--on-ink);padding:4px 9px;border-radius:6px;box-shadow:0 0 0 2px var(--surface),0 0 0 4.5px var(--cv)}
+.tl-name small{font:600 11px/1.2 var(--font);color:var(--muted);white-space:nowrap}
+/* 레벨업 표현: 코뿔소 사이 화살표가 뻗어 가고, 도착한 코뿔소가 번쩍이며 점프 + Lv 배지 팝 */
+.tl-ar{position:absolute;pointer-events:none;z-index:1}
+.tl-ar svg{display:block;width:100%;height:100%;overflow:visible}
+.tl-ar path{fill:none;stroke-linecap:round}
+.tl-ar .ar-o{stroke:var(--ink);stroke-width:11}
+.tl-ar .ar-i{stroke:var(--cv);stroke-width:6;stroke-dasharray:9 6}
+.tl-ar .ar-ho{fill:var(--ink);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+.tl-ar .ar-hi{fill:var(--cv)}
+.tl-ar em{position:absolute;transform:translateX(-50%);padding:1px 0 2px;font:800 10.5px/1 "Space Grotesk",var(--display);font-style:normal;letter-spacing:.08em;color:#ffd93d;-webkit-text-stroke:2.5px var(--ink);paint-order:stroke fill;white-space:nowrap}
+.tl-ar[hidden]{display:none}
+.tl-rh{transform-origin:50% 100%}
+.tl-ar{clip-path:inset(-20px 100% -20px 0)}
+.tl-ar.lvup{animation:lv-arrow .55s ease-out var(--d) both}
+.tl-ar.lvup .ar-i{animation:lv-flow .7s linear calc(var(--d) + .55s) infinite}
+.tl-it.lvup .tl-rh{animation:lv-hop .95s cubic-bezier(.3,1.3,.5,1) var(--d) both}
+.tl-it.lvup .lv{animation:lv-badge .8s cubic-bezier(.3,1.5,.5,1) var(--d) both}
+@keyframes lv-arrow{from{clip-path:inset(-20px 100% -20px 0)}to{clip-path:inset(-20px -2px -20px 0)}}
+@keyframes lv-flow{to{stroke-dashoffset:-15}}
+@keyframes lv-hop{0%{transform:scale(.62);filter:brightness(1)}30%{transform:translateY(-14px) scale(1.14);filter:brightness(1.5) drop-shadow(0 0 8px var(--cv))}58%{transform:translateY(0) scale(.95,.9)}78%{transform:scale(1.03)}100%{transform:none;filter:none}}
+@keyframes lv-badge{0%{transform:scale(0)}45%{transform:scale(1.5)}70%{transform:scale(.92)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.tl-ar{clip-path:none}.tl-ar.lvup,.tl-ar.lvup .ar-i,.tl-it.lvup .tl-rh,.tl-it.lvup .lv{animation:none}}
+/* 기술 분류: 노션 SKILL STACK의 '기술' 분류 10개 */
+.skills .card:nth-child(3n+1){background:#2f3dff}
+.skills .card:nth-child(3n+2){background:#ff5a36}
+.skills .card:nth-child(3n){background:#ffd93d}
+.skills .card:nth-child(3n+1) h3{color:#fff4df}
+.skills h3{display:flex;align-items:center;gap:10px}
+.skills h3 i{display:inline-grid;place-items:center;width:34px;height:34px;flex:none;font-style:normal;font-size:19px;line-height:1;background:#fffaf0;border:2.5px solid #14120f;border-radius:50%}
+.skills .chips a{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;padding:3px 12px 3px 8px;border-radius:999px;border:2px solid #14120f;background:#fffaf0;color:#14120f;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.skills .chips a:hover,.skills .chips a:focus-visible{transform:translate(-1px,-2px);box-shadow:3px 3px 0 #14120f}
+.skills .chips a img{width:16px;height:16px;flex:none}
+.skills .chips a b{font-size:14px;line-height:1;font-weight:400}
+@media (min-width:761px){
+  #skills .skills{grid-template-columns:repeat(2,1fr);gap:14px 20px}
+  #skills .skills .card{padding:10px 16px 12px;box-shadow:5px 5px 0 #14120f}
+  #skills .skills h3{margin:0 0 8px;font-size:16px}
+  #skills .skills h3 i{width:28px;height:28px;font-size:15px;border-width:2px}
+  #skills .skills .chips{gap:6px}
+  #skills .skills .chips a{font-size:12px;padding:2px 10px 2px 7px}
+}
+.swipe-dots{display:none}
+@media (max-width:760px){
+  .tl{--u:64px;padding:28px 16px 6px;margin-bottom:20px;overflow-x:auto;scrollbar-width:thin}
+  .tl-in{min-width:700px}
+  /* 프로젝트 카드: 옆으로 밀어서 넘기기 */
+  .bento{position:relative;flex-direction:row;align-items:stretch;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:4px;padding:6px 8px 20px 4px;margin:0 -8px 0 -4px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .bento::-webkit-scrollbar{display:none}
+  .pgrid{display:contents}
+  .pgrid>.proj{flex:0 0 86%;min-width:0;scroll-snap-align:start}
+  .js .bento .reveal{opacity:1;transform:none}
+  .cover,.proj.wide .cover{min-height:110px}
+  .swipe-dots{display:flex;justify-content:center;gap:8px;margin-top:-4px}
+  .swipe-dots i{width:9px;height:9px;border-radius:50%;border:2px solid var(--ink);background:transparent;transition:background .2s,width .2s}
+  .swipe-dots i.on{background:var(--ink);width:22px;border-radius:6px}
+}
 </style>
 </head>
 <body>
@@ -768,7 +835,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
         <span class="sq"></span>
         <svg class="laptop" viewBox="0 0 220 170"><g stroke="#14120f" stroke-width="5" stroke-linejoin="round"><path d="M40 14h140a8 8 0 0 1 8 8v92a8 8 0 0 1-8 8H40a8 8 0 0 1-8-8V22a8 8 0 0 1 8-8z" fill="#14120f"/><path d="M12 130h196l-14 28H26z" fill="#e6e6e6"/></g><text x="110" y="82" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="44" fill="#fff4df">&lt;/&gt;</text></svg>
         <svg class="burst" viewBox="0 0 80 70"><path d="M10 64L26 24M34 66L44 12M58 60L72 30" stroke="#14120f" stroke-width="6" stroke-linecap="round" fill="none"/></svg>
-        <img class="me" src="images/me-cutout.png" alt="" width="720" height="867">
+        <img class="me" src="images/me-cutout.png" alt="" width="720" height="802">
         <p class="hand">Test first,<br>Record it,<br>Be honest.<svg viewBox="0 0 220 20" aria-hidden="true"><path d="M4 14C60 4 140 4 216 8" stroke="#14120f" stroke-width="5" stroke-linecap="round" fill="none"/></svg></p>
         <svg class="smile" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#ffd93d" stroke="#14120f" stroke-width="6"/><circle cx="36" cy="40" r="6" fill="#14120f"/><circle cx="64" cy="40" r="6" fill="#14120f"/><path d="M26 58q24 28 48 0" stroke="#14120f" stroke-width="6" stroke-linecap="round" fill="none"/></svg>
         <div class="sticky"><span>✓ 테스트로 확인</span><span>✓ 문제는 기록으로</span><span>✓ 한계는 솔직하게</span></div>
@@ -806,8 +873,8 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
       <article class="tc prj">
         <div class="tc-head"><h2>PROJECTS</h2><a href="#projects">전체 보기 →</a></div>
         <div class="thumbs">
-          <a href="#projects" class="th" style="--cv:var(--c1)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.62) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h1"/></g><g transform="translate(100 34)"><rect x="-32" y="4" width="72" height="30" fill="#fff4df"/><rect x="-36" y="0" width="72" height="30" fill="#14120f"/><text x="0" y="22" text-anchor="middle" fill="#fff4df" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="20">Lv1</text></g></svg><b>white-eyes</b><span>Java · Spring Boot</span></a>
-          <a href="#projects" class="th" style="--cv:var(--c2)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.78) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h2"/></g><g transform="translate(100 19)"><rect x="-32" y="4" width="72" height="30" fill="#fff4df"/><rect x="-36" y="0" width="72" height="30" fill="#14120f"/><text x="0" y="22" text-anchor="middle" fill="#fff4df" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="20">Lv100</text></g></svg><b>obsidian-shield</b><span>Python · Flask</span></a>
+          <a href="#projects" class="th" style="--cv:var(--c2)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.62) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h1"/></g><g transform="translate(100 34)"><rect x="-32" y="4" width="72" height="30" fill="#fff4df"/><rect x="-36" y="0" width="72" height="30" fill="#14120f"/><text x="0" y="22" text-anchor="middle" fill="#fff4df" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="20">Lv1</text></g></svg><b>obsidian-shield</b><span>Python · Flask</span></a>
+          <a href="#projects" class="th" style="--cv:var(--c1)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.78) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h2"/></g><g transform="translate(100 19)"><rect x="-32" y="4" width="72" height="30" fill="#fff4df"/><rect x="-36" y="0" width="72" height="30" fill="#14120f"/><text x="0" y="22" text-anchor="middle" fill="#fff4df" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="20">Lv100</text></g></svg><b>white-eyes</b><span>Java · Spring Boot</span></a>
         </div>
       </article>
     </div>
@@ -868,6 +935,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
         <button class="chip-btn" data-f="solo" aria-pressed="false">개인</button>
       </div>
     </div>
+    <div class="tl reveal" id="tl" aria-label="프로젝트 타임라인"></div>
     <div class="bento" id="bento"></div>
   </div>
 </section>
@@ -884,12 +952,18 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 <!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
-    <div class="sec-head reveal"><div><small>03 — Skills</small><h2>프로젝트에서 실제로 사용한 기술</h2></div></div>
+    <div class="sec-head reveal"><div><small>03 — Skills</small><h2>K-디지털 과정으로 배운 기술들</h2></div></div>
     <div class="skills reveal">
-      <div class="card"><h3>Backend</h3><div class="chips"><span>Java 17</span><span>Spring Boot</span><span>Spring Security</span><span>Spring Data JPA</span><span>MyBatis</span><span>Spring Session JDBC</span><span>JUnit 5</span></div></div>
-      <div class="card"><h3>Data · Infra</h3><div class="chips"><span>MySQL</span><span>H2</span><span>SQLite</span><span>Docker</span><span>WSL2 (Ubuntu)</span><span>nginx</span><span>Flyway</span></div></div>
-      <div class="card"><h3>Python · AI</h3><div class="chips"><span>Flask</span><span>FastAPI</span><span>OpenCV</span><span>YOLOv8</span><span>InsightFace</span><span>pytest</span></div></div>
-      <div class="card"><h3>Frontend · Tool</h3><div class="chips"><span>Thymeleaf</span><span>JavaScript</span><span>Chart.js</span><span>Git · GitHub Actions</span><span>Postman</span><span>Notion</span></div></div>
+      <div class="card"><h3><i aria-hidden="true">💻</i>프로그래밍</h3><div class="chips"><a href="https://app.notion.com/p/2df00b1cd77d821e8514017b671c7276" target="_blank" rel="noopener" title="기초 개념 노트 (Notion)"><b aria-hidden="true">📘</b>기초 개념</a><a href="https://app.notion.com/p/62b00b1cd77d830e86c28129c22bf4b7" target="_blank" rel="noopener" title="심화 개념 노트 (Notion)"><b aria-hidden="true">📚</b>심화 개념</a></div></div>
+      <div class="card"><h3><i aria-hidden="true">⚙️</i>백엔드</h3><div class="chips"><a href="https://app.notion.com/p/0e900b1cd77d83cfad388130b8e6e43d" target="_blank" rel="noopener" title="Java 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="" loading="lazy">Java</a><a href="https://app.notion.com/p/ac300b1cd77d82d1bb1581a08cb0ac60" target="_blank" rel="noopener" title="Java Web (JSP) 노트 (Notion)"><b aria-hidden="true">🌐</b>Java Web (JSP)</a><a href="https://app.notion.com/p/69f00b1cd77d8210929181bd881475e7" target="_blank" rel="noopener" title="Python 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg" alt="" loading="lazy">Python</a><a href="https://app.notion.com/p/2da00b1cd77d838d9dd501927f645259" target="_blank" rel="noopener" title="WAS 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tomcat/tomcat-original.svg" alt="" loading="lazy">WAS</a><a href="https://app.notion.com/p/86900b1cd77d8305896601b550d8b05c" target="_blank" rel="noopener" title="YOLO 노트 (Notion)"><b aria-hidden="true">👁️</b>YOLO</a></div></div>
+      <div class="card"><h3><i aria-hidden="true">🧱</i>프레임워크</h3><div class="chips"><a href="https://app.notion.com/p/67500b1cd77d839590ca818e825d0ab2" target="_blank" rel="noopener" title="Spring 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/spring/spring-original.svg" alt="" loading="lazy">Spring</a><a href="https://app.notion.com/p/07000b1cd77d823b9f4101e4801e458f" target="_blank" rel="noopener" title="Spring Boot 노트 (Notion)"><b aria-hidden="true">🚀</b>Spring Boot</a><a href="https://app.notion.com/p/b7700b1cd77d8387b19c014d3b95b810" target="_blank" rel="noopener" title="Spring Security 노트 (Notion)"><b aria-hidden="true">🔐</b>Spring Security</a><a href="https://app.notion.com/p/4b400b1cd77d839fb5aa818cde143f29" target="_blank" rel="noopener" title="Spring Legacy 노트 (Notion)"><b aria-hidden="true">📜</b>Spring Legacy</a><a href="https://app.notion.com/p/6f100b1cd77d826ba81c013eb7136a60" target="_blank" rel="noopener" title="Flask 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/flask/flask-original.svg" alt="" loading="lazy">Flask</a></div></div>
+      <div class="card"><h3><i aria-hidden="true">🗄️</i>데이터베이스</h3><div class="chips"><a href="https://app.notion.com/p/f0500b1cd77d825c95c981ecf96ceaff" target="_blank" rel="noopener" title="MySQL 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mysql/mysql-original.svg" alt="" loading="lazy">MySQL</a><a href="https://app.notion.com/p/78c00b1cd77d829bae8f019ac9e1ed70" target="_blank" rel="noopener" title="JPA 노트 (Notion)"><b aria-hidden="true">🗂️</b>JPA</a><a href="https://app.notion.com/p/cfd00b1cd77d82b9a0cb010072ffc6a0" target="_blank" rel="noopener" title="MyBatis 노트 (Notion)"><b aria-hidden="true">🧩</b>MyBatis</a></div></div>
+      <div class="card"><h3><i aria-hidden="true">🔌</i>API 개발 / 테스트</h3><div class="chips"><a href="https://app.notion.com/p/07b00b1cd77d82d895ca81fd3f3dc012" target="_blank" rel="noopener" title="Swagger 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/swagger/swagger-original.svg" alt="" loading="lazy">Swagger</a><a href="https://app.notion.com/p/07b00b1cd77d82d895ca81fd3f3dc012" target="_blank" rel="noopener" title="Postman 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postman/postman-original.svg" alt="" loading="lazy">Postman</a></div></div>
+      <div class="card"><h3><i aria-hidden="true">☁️</i>인프라 / 서버 / 배포</h3><div class="chips"><a href="https://app.notion.com/p/dbf00b1cd77d82d897ba01a7356b74bf" target="_blank" rel="noopener" title="Docker 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/docker/docker-original.svg" alt="" loading="lazy">Docker</a><a href="https://app.notion.com/p/be500b1cd77d83028ea901adafb43071" target="_blank" rel="noopener" title="Ubuntu · Linux (WSL) 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/ubuntu/ubuntu-original.svg" alt="" loading="lazy">Ubuntu · Linux (WSL)</a><a href="https://app.notion.com/p/88900b1cd77d83b8bbc3012308745c6a" target="_blank" rel="noopener" title="서버 구축 (VirtualBox) 노트 (Notion)"><b aria-hidden="true">🖥️</b>서버 구축 (VirtualBox)</a></div></div>
+      <div class="card"><h3><i aria-hidden="true">🔀</i>버전 관리 / 협업</h3><div class="chips"><a href="https://app.notion.com/p/dd100b1cd77d83e180248122ad44bab8" target="_blank" rel="noopener" title="Git 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg" alt="" loading="lazy">Git</a><a href="https://app.notion.com/p/acc00b1cd77d83e19d98814c11fa8680" target="_blank" rel="noopener" title="GitHub 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/github/github-original.svg" alt="" loading="lazy">GitHub</a><a href="https://app.notion.com/p/4a600b1cd77d822480b881026c8b8896" target="_blank" rel="noopener" title="GitLab 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/gitlab/gitlab-original.svg" alt="" loading="lazy">GitLab</a><a href="https://app.notion.com/p/76f00b1cd77d8244bb6681e01f89b5f0" target="_blank" rel="noopener" title="Zoom 노트 (Notion)"><b aria-hidden="true">🎥</b>Zoom</a></div></div>
+      <div class="card"><h3><i aria-hidden="true">🎨</i>프론트엔드</h3><div class="chips"><a href="https://app.notion.com/p/59400b1cd77d82588a8c01fe7a2a5244" target="_blank" rel="noopener" title="HTML 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-original.svg" alt="" loading="lazy">HTML</a><a href="https://app.notion.com/p/f5f00b1cd77d8234a8d4011173af52e7" target="_blank" rel="noopener" title="CSS 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-original.svg" alt="" loading="lazy">CSS</a><a href="https://app.notion.com/p/1b900b1cd77d8385aa53018a3fd80853" target="_blank" rel="noopener" title="JavaScript 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg" alt="" loading="lazy">JavaScript</a></div></div>
+      <div class="card"><h3><i aria-hidden="true">🧰</i>개발 환경</h3><div class="chips"><a href="https://app.notion.com/p/8a100b1cd77d83579d8a81fbf7d0bf66" target="_blank" rel="noopener" title="IntelliJ 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/intellij/intellij-original.svg" alt="" loading="lazy">IntelliJ</a><a href="https://app.notion.com/p/ad600b1cd77d8291a55a81ada3ed5369" target="_blank" rel="noopener" title="Eclipse 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/eclipse/eclipse-original.svg" alt="" loading="lazy">Eclipse</a><a href="https://app.notion.com/p/b3600b1cd77d822dbfd201e4db34fe82" target="_blank" rel="noopener" title="VS Code 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vscode/vscode-original.svg" alt="" loading="lazy">VS Code</a></div></div>
+      <div class="card"><h3><i aria-hidden="true">📋</i>개발 규칙 / 문제 해결</h3><div class="chips"><a href="https://app.notion.com/p/a3e00b1cd77d83b1894681acee8f2455" target="_blank" rel="noopener" title="코드 컨벤션 노트 (Notion)"><b aria-hidden="true">📏</b>코드 컨벤션</a><a href="https://app.notion.com/p/04200b1cd77d83ef853301e474a74dee" target="_blank" rel="noopener" title="커밋 컨벤션 노트 (Notion)"><b aria-hidden="true">📝</b>커밋 컨벤션</a><a href="https://app.notion.com/p/6c800b1cd77d824c843f817900e1e1a1" target="_blank" rel="noopener" title="패키지 구조 노트 (Notion)"><b aria-hidden="true">📦</b>패키지 구조</a><a href="https://app.notion.com/p/49a00b1cd77d821abe44014e9ae1f946" target="_blank" rel="noopener" title="문제 해결 규칙 노트 (Notion)"><b aria-hidden="true">🧭</b>문제 해결 규칙</a><a href="https://app.notion.com/p/ddd00b1cd77d832a9fd9815aa69b3d81" target="_blank" rel="noopener" title="트러블 슈팅 노트 (Notion)"><b aria-hidden="true">🛠️</b>트러블 슈팅</a></div></div>
     </div>
     <p class="note">협업 규칙: 기능 1개 = 이슈 1개 = 브랜치 1개 = PR 1개 · main ← dev ← feature/* · 코드·커밋 컨벤션 문서화</p>
   </div>
@@ -926,21 +1000,6 @@ document.documentElement.classList.add("js");
 
 /* ---------- data ---------- */
 var P = [
- { id:"white-eyes", kind:"team", wide:true, name:"white-eyes",
-   one:"드론·CCTV 영상에서 사람 수, 유입/유출, 체류 시간을 분석해 구역별 통계와 혼잡 이벤트 알림으로 보여 주는 유동인구 분석 시스템",
-   meta:"2차 팀 프로젝트 · 2026.10.06 ~ 11.23 · 6인", role:"담당: 보안 · 계정 · 이벤트",
-   stack:["Java 17","Spring Boot","Spring Security","JPA","MySQL","Flask","YOLOv8","Docker"],
-   metrics:[["41","PR (39건 dev 병합)"],["27","담당 기능 통과"],["2,248","팀 자동 테스트 (실패 0)"]],
-   links:[["소개 Repo","https://github.com/white-eyes1/white-eyes-introduce"],["코드 Repo","https://github.com/white-eyes1/white-eyes-spring"],["Notion","https://app.notion.com/p/41400b1cd77d8003b89edf0efe261379"]],
-   detail:{
-     images:[["시스템 구성도","images/projects/white-eyes-architecture.png","white-eyes 서비스 구성도: nginx, 사용자 앱·관리자 앱, 분석 서버, MySQL, NFS 스토리지"],["ERD (주요 컬럼)","images/projects/white-eyes-erd.png","white-eyes ERD: 계정·세션, 지역·구역·캠, 이벤트·기록, 통계 테이블"],["실행 화면 · 사용자 대시보드 (데모 계정)","images/projects/white-eyes-user-dashboard.jpg","white-eyes 사용자 앱 대시보드: 지도 위 구역별 현재 인원과 통계 패널"]],
-     summary:"사용자 앱·관리자 앱(Spring Boot)과 분석 서버(Flask, YOLOv8 + OpenCV)를 분리한 멀티 서비스 구조입니다. 저는 인증·권한 보안, 계정 관리, 혼잡·급증·캠 이상 이벤트 판정과 실시간 알림을 맡았습니다.",
-     role:["비밀번호 bcrypt(강도 10), 공통 오류 처리, 로그인, 접근 권한 검사, 세션 만료를 가장 먼저 만들어 다른 기능의 기반으로 삼았습니다.","사용자 앱과 관리자 앱의 로그인을 서로 독립시켰습니다. 세션 테이블·쿠키 이름도 앱별로 분리했습니다.","최고 관리자 초기 등록, 관리자 비활성화·강제 로그아웃(접속 중인 세션도 함께 삭제), 비밀번호 재설정을 구현했습니다.","혼잡·급증·캠 이상 판정, 목록·상세, 처리 상태 변경, 엑셀 다운로드, SSE 관리자 알림 스트림을 구현했습니다.","기능 하나 = 이슈 하나 = PR 하나로 white-eyes-spring에 PR 41건(39건 병합), 이슈 27건, white-eyes-docs에 PR 41건(37건 병합)을 남겼습니다."],
-     design:[["동시 처리는 한 명만","이벤트 행을 잠그고 읽어, 화면이 보던 상태와 다르면 409 STATUS_CONFLICT로 거부합니다. 상태 저장과 작업 기록은 한 트랜잭션입니다."],["경계값 깜빡임 방지","혼잡 이벤트는 '주의' 미만이 5분 이상 유지될 때 닫습니다. 결과가 30초 미만인 불완전한 1분은 판정에서 제외합니다."],["엑셀 5만 건 제한","데이터를 읽기 전에 건수부터 세어 초과 시 400 TOO_MANY_ROWS와 기간 축소 안내를 응답합니다. 50,006건 시험 데이터로 확인했습니다."],["SSE 대기열","연결마다 대기열로 순서를 보장하고 200건 초과 시 연결을 끊어 재연결합니다. 30초 keepalive, 연결별 스레드 풀을 사용합니다."]],
-     code:"// EventStatusService (개념)\n행 잠금 후 조회 → 화면이 보던 상태와 비교\n일치  → 상태 저장 + 작업 기록 (한 트랜잭션)\n불일치 → 409 STATUS_CONFLICT",
-     numbers:"팀 전체 자동 테스트 2,248건 통과(spring 1,525 + flask 723), 기능 명세 98개 중 93개 통과(94.9%), 미해결 버그 36건 중 34건 해결. 담당 기능 27개는 자동 테스트와 화면·통합 시험으로 확인했습니다.",
-     limits:["혼잡 단계 경계(0.7 / 1.5명/㎡)가 실제 분석 결과의 밀집도(약 0.03명/㎡)와 맞지 않아 기본값으로는 이벤트가 생기지 않을 수 있습니다. 경계를 낮춰 판정 동작을 확인했고, 조정은 미해결로 남겼습니다.","강제 로그아웃을 해도 이미 열린 실시간 화면은 바로 끊기지 않습니다(알려진 한계).","화면 시험 다수가 H2와 가짜 서버로 진행되어 일부는 실제 MySQL·nginx 통합 시험으로 보완했고, 확인하지 못한 항목은 '미확인'으로 기록했습니다."]
-   }},
  { id:"obsidian", kind:"team", name:"obsidian-shield",
    one:"CCTV·드론 영상에서 AI가 보행자를 탐지·추적하고 등록된 대상이 발견되면 실시간으로 알리는 관제 시스템",
    meta:"1차 팀 프로젝트 · 2026.06.25 ~ 07.24 · 5인", role:"담당: 로그 분석",
@@ -955,6 +1014,21 @@ var P = [
      code:"for event_id in event_ids:\n    if events[event_id][KEY_IS_READ]:\n        continue                      # 중복 기록 방지\n    events[event_id][KEY_IS_READ] = True\n    add_user_log(event_id, viewer_id) # 반복문 안으로 이동",
      numbers:"PR 23건 중 19건 main 병합 (2026-06-26 ~ 07-14). 데이터는 DB 없이 JSON 파일에 저장했습니다.",
      limits:["구현에 집중한 나머지 검증이 부족해 같은 오류가 반복된 경험이 있습니다. 이후 2차 프로젝트에서 검증 기준을 먼저 세우고 test → feat 순서로 진행하게 된 계기가 되었습니다."]
+   }},
+ { id:"white-eyes", kind:"team", wide:true, name:"white-eyes",
+   one:"드론·CCTV 영상에서 사람 수, 유입/유출, 체류 시간을 분석해 구역별 통계와 혼잡 이벤트 알림으로 보여 주는 유동인구 분석 시스템",
+   meta:"2차 팀 프로젝트 · 2026.10.06 ~ 11.23 · 6인", role:"담당: 보안 · 계정 · 이벤트",
+   stack:["Java 17","Spring Boot","Spring Security","JPA","MySQL","Flask","YOLOv8","Docker"],
+   metrics:[["41","PR (39건 dev 병합)"],["27","담당 기능 통과"],["2,248","팀 자동 테스트 (실패 0)"]],
+   links:[["소개 Repo","https://github.com/white-eyes1/white-eyes-introduce"],["코드 Repo","https://github.com/white-eyes1/white-eyes-spring"],["Notion","https://app.notion.com/p/41400b1cd77d8003b89edf0efe261379"]],
+   detail:{
+     images:[["시스템 구성도","images/projects/white-eyes-architecture.png","white-eyes 서비스 구성도: nginx, 사용자 앱·관리자 앱, 분석 서버, MySQL, NFS 스토리지"],["ERD (주요 컬럼)","images/projects/white-eyes-erd.png","white-eyes ERD: 계정·세션, 지역·구역·캠, 이벤트·기록, 통계 테이블"],["실행 화면 · 사용자 대시보드 (데모 계정)","images/projects/white-eyes-user-dashboard.jpg","white-eyes 사용자 앱 대시보드: 지도 위 구역별 현재 인원과 통계 패널"]],
+     summary:"사용자 앱·관리자 앱(Spring Boot)과 분석 서버(Flask, YOLOv8 + OpenCV)를 분리한 멀티 서비스 구조입니다. 저는 인증·권한 보안, 계정 관리, 혼잡·급증·캠 이상 이벤트 판정과 실시간 알림을 맡았습니다.",
+     role:["비밀번호 bcrypt(강도 10), 공통 오류 처리, 로그인, 접근 권한 검사, 세션 만료를 가장 먼저 만들어 다른 기능의 기반으로 삼았습니다.","사용자 앱과 관리자 앱의 로그인을 서로 독립시켰습니다. 세션 테이블·쿠키 이름도 앱별로 분리했습니다.","최고 관리자 초기 등록, 관리자 비활성화·강제 로그아웃(접속 중인 세션도 함께 삭제), 비밀번호 재설정을 구현했습니다.","혼잡·급증·캠 이상 판정, 목록·상세, 처리 상태 변경, 엑셀 다운로드, SSE 관리자 알림 스트림을 구현했습니다.","기능 하나 = 이슈 하나 = PR 하나로 white-eyes-spring에 PR 41건(39건 병합), 이슈 27건, white-eyes-docs에 PR 41건(37건 병합)을 남겼습니다."],
+     design:[["동시 처리는 한 명만","이벤트 행을 잠그고 읽어, 화면이 보던 상태와 다르면 409 STATUS_CONFLICT로 거부합니다. 상태 저장과 작업 기록은 한 트랜잭션입니다."],["경계값 깜빡임 방지","혼잡 이벤트는 '주의' 미만이 5분 이상 유지될 때 닫습니다. 결과가 30초 미만인 불완전한 1분은 판정에서 제외합니다."],["엑셀 5만 건 제한","데이터를 읽기 전에 건수부터 세어 초과 시 400 TOO_MANY_ROWS와 기간 축소 안내를 응답합니다. 50,006건 시험 데이터로 확인했습니다."],["SSE 대기열","연결마다 대기열로 순서를 보장하고 200건 초과 시 연결을 끊어 재연결합니다. 30초 keepalive, 연결별 스레드 풀을 사용합니다."]],
+     code:"// EventStatusService (개념)\n행 잠금 후 조회 → 화면이 보던 상태와 비교\n일치  → 상태 저장 + 작업 기록 (한 트랜잭션)\n불일치 → 409 STATUS_CONFLICT",
+     numbers:"팀 전체 자동 테스트 2,248건 통과(spring 1,525 + flask 723), 기능 명세 98개 중 93개 통과(94.9%), 미해결 버그 36건 중 34건 해결. 담당 기능 27개는 자동 테스트와 화면·통합 시험으로 확인했습니다.",
+     limits:["혼잡 단계 경계(0.7 / 1.5명/㎡)가 실제 분석 결과의 밀집도(약 0.03명/㎡)와 맞지 않아 기본값으로는 이벤트가 생기지 않을 수 있습니다. 경계를 낮춰 판정 동작을 확인했고, 조정은 미해결로 남겼습니다.","강제 로그아웃을 해도 이미 열린 실시간 화면은 바로 끊기지 않습니다(알려진 한계).","화면 시험 다수가 H2와 가짜 서버로 진행되어 일부는 실제 MySQL·nginx 통합 시험으로 보완했고, 확인하지 못한 항목은 '미확인'으로 기록했습니다."]
    }},
  { id:"calendar", kind:"solo", name:"calendar-bot",
    one:"월간 달력으로 일정을 관리하고, 매주 일요일 21시에 다음 주 일정을 텔레그램으로 보내주는 서비스",
@@ -1021,15 +1095,13 @@ var CASES = [
 function el(h){var t=document.createElement("template");t.innerHTML=h.trim();return t.content.firstChild;}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
 
+var CI={"white-eyes":1,"obsidian":2,"calendar":3,"tube":4,"jobfeed":5}; /* 카드·타임라인 색은 프로젝트별로 고정 (순서를 바꿔도 유지) */
 var bento=document.getElementById("bento");
 var groups={team:el('<div class="pgrid team"></div>'),solo:el('<div class="pgrid solo"></div>')};
 bento.appendChild(groups.team);bento.appendChild(groups.solo);
 P.forEach(function(p,i){
-  var st=[[.46,"rh-h1",46],[.6,"rh-h2",38],[.74,"rh-h3",30],[.88,"rh-h35",30],[1,"rh-h4",20]][i%5];
-  var top=Math.min(128-94*st[0],128-(128-st[2])*st[0]),ly=Math.round(top-30);
-  var rh='<svg class="rh-lv" viewBox="0 -16 200 156" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="4" stroke-linecap="round"/><g transform="translate(100 128) scale('+st[0]+') translate(-100 -128)"><use href="#rh-body"/><use href="#'+st[1]+'"/></g><g transform="translate(100 '+ly+')"><rect x="-26" y="4" width="56" height="24" fill="#fff4df"/><rect x="-30" y="0" width="56" height="24" fill="#14120f"/><text x="-2" y="18" text-anchor="middle" fill="#fff4df" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="16">Lv'+(i%5+1)+'</text></g></svg>';
   var h='<article class="card proj reveal" data-kind="'+p.kind+'">'+
-   '<div class="cover" style="--cv:var(--c'+((i%5)+1)+')">'+rh+
+   '<div class="cover" style="'+(p.id==="jobfeed"?'--cv:#2f3dff;color:#fff4df':'--cv:var(--c'+CI[p.id]+')')+'">'+
      '<div class="cover-top"><span class="tag">'+(p.kind==="team"?"TEAM":"SOLO")+'</span><span class="no">0'+(i+1)+'</span></div>'+
      '<h3>'+esc(p.name)+'</h3></div>'+
    '<div class="pbody"><p class="one">'+esc(p.one)+'</p>'+
@@ -1040,6 +1112,82 @@ P.forEach(function(p,i){
    p.links.map(function(l){return'<a class="btn" href="'+l[1]+'" target="_blank" rel="noopener" style="position:relative;z-index:1">'+esc(l[0])+'</a>';}).join("")+'</div></div></article>';
   groups[p.kind].appendChild(el(h));
 });
+
+/* ---------- 타임라인: 하나의 가로선 위에 코뿔소를 시작 순서대로 같은 간격으로 배치, 코뿔소 사이는 레벨업 화살표 ---------- */
+(function(){
+  var ORDER=["obsidian","white-eyes","calendar","tube","jobfeed"];
+  var RANGE={"white-eyes":"10.06 ~ 11.23","obsidian":"06.25 ~ 07.24","calendar":"11.07 ~ 11.12","tube":"11.10 ~ 11.13","jobfeed":"11.10 ~ 11.13"};
+  var HORN=[[.46,"rh-h1"],[.6,"rh-h2"],[.74,"rh-h3"],[.88,"rh-h35"],[1,"rh-h4"]];
+  var info=[];
+  var items=ORDER.map(function(id,k){
+    var i=P.map(function(q){return q.id;}).indexOf(id),p=P[i],h=HORN[k],lab=(p.kind==="team"?"팀":"개인")+" · "+RANGE[id],x=10+k*20,cv=k===4?'#9fd3ff':'var(--c'+CI[p.id]+')'; /* Lv5 카드색(--c5)은 크림색이라 화살표가 비어 보여 하늘색으로 */
+    info.push({x:x,s:h[0],cv:cv,kind:p.kind});
+    return '<button type="button" class="tl-it" data-open="'+p.id+'" data-kind="'+p.kind+'" style="left:'+x+'%;--s:'+h[0]+';--cv:'+cv+'" aria-label="'+esc(p.name)+', Lv'+(k+1)+', '+lab+', 자세히 보기">'+
+      '<span class="tl-rhw"><em class="lv">Lv'+(k+1)+'</em><svg class="tl-rh" viewBox="8 12 192 120" aria-hidden="true"><use href="#rh-body"/><use href="#'+h[1]+'"/></svg></span>'+
+      '<span class="tl-name"><b>'+esc(p.name)+'</b><small>'+lab+'</small></span></button>';
+  }).join("");
+  var arrows=info.slice(0,-1).map(function(a,k){
+    var b=info[k+1];
+    return '<span class="tl-ar" data-kind="'+b.kind+'" data-from="'+a.kind+'" aria-hidden="true" style="--cv:'+b.cv+'"><svg></svg><em>LEVEL UP</em></span>';
+  }).join("");
+  var tl=document.getElementById("tl");
+  tl.innerHTML='<div class="tl-in"><div class="tl-line" aria-hidden="true"></div>'+arrows+items+'</div>';
+  /* 레벨업 화살표: Lv 박스 옆면에서 다음 Lv 박스 옆면으로 이어지는 직선 (폭이 달라지면 다시 계산) */
+  function layoutArrows(){
+    var box=tl.querySelector(".tl-in"),W=box.offsetWidth,u=parseFloat(getComputedStyle(tl).getPropertyValue("--u"))||66,lineTop=u+30;
+    var lvs=tl.querySelectorAll(".tl-it .lv");
+    function pos(k){var e=lvs[k],bw=e.offsetWidth,bh=e.offsetHeight;return{x:W*info[k].x/100,y:lineTop-1-u*info[k].s-4-bh/2,hw:bw/2+7};}
+    Array.prototype.forEach.call(tl.querySelectorAll(".tl-ar"),function(el,k){
+      var a=pos(k),b=pos(k+1);
+      var xa=a.x+a.hw,xb=b.x-b.hw,ya=a.y,yb=b.y;
+      var top=Math.min(ya,yb)-28,w=Math.max(xb-xa,20),h=Math.abs(ya-yb)+56;
+      var sx=0,sy=ya-top,ex=w,ey=yb-top;
+      var tx=ex-sx,ty=ey-sy,tn=Math.sqrt(tx*tx+ty*ty);tx/=tn;ty/=tn;
+      var L=15,bx=ex-tx*L,by=ey-ty*L,nx=-ty*9,ny=tx*9; /* 화살촉 */
+      var d="M"+sx.toFixed(1)+" "+sy.toFixed(1)+" L"+(bx+tx*3).toFixed(1)+" "+(by+ty*3).toFixed(1);
+      var f=function(q){return q[0].toFixed(1)+","+q[1].toFixed(1);};
+      var head=[[ex,ey],[bx+nx,by+ny],[bx-nx,by-ny]].map(f).join(" ");
+      var inner=[[ex-tx*4,ey-ty*4],[bx+nx*.55,by+ny*.55],[bx-nx*.55,by-ny*.55]].map(f).join(" ");
+      el.style.cssText+=";left:"+xa.toFixed(1)+"px;top:"+top.toFixed(1)+"px;width:"+w.toFixed(1)+"px;height:"+h.toFixed(1)+"px";
+      var sv=el.querySelector("svg");sv.setAttribute("viewBox","0 0 "+w.toFixed(1)+" "+h.toFixed(1));
+      sv.innerHTML='<path class="ar-o" d="'+d+'"/><path class="ar-i" d="'+d+'"/><polygon class="ar-ho" points="'+head+'"/><polygon class="ar-hi" points="'+inner+'"/>';
+      var em=el.querySelector("em");em.style.left="50%";em.style.top=((sy+ey)/2-24).toFixed(1)+"px";
+    });
+  }
+  layoutArrows();window.addEventListener("resize",layoutArrows);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layoutArrows);
+  /* 화면에 들어오면 Lv1부터 차례로: 화살표가 뻗어 가고 → 다음 코뿔소가 레벨업. 마우스를 올리면 그 코뿔소만 다시 재생 */
+  var its=tl.querySelectorAll(".tl-it"),ars=tl.querySelectorAll(".tl-ar"),STEP=.95;
+  function play(el,d){el.style.setProperty("--d",d+"s");el.classList.remove("lvup");void el.offsetWidth;el.classList.add("lvup");}
+  function playAll(){
+    Array.prototype.forEach.call(its,function(el,k){play(el,k*STEP);});
+    Array.prototype.forEach.call(ars,function(el,k){play(el,k*STEP+.3);});
+  }
+  /* 화면에 보이는 동안 10초마다 처음부터 다시 재생 */
+  var seen=!("IntersectionObserver" in window),started=false;
+  function kick(){if(seen&&!document.hidden){playAll();}}
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(es){seen=es[0].isIntersecting;if(seen&&!started){started=true;kick();}},{threshold:.6}).observe(tl);
+  }else kick();
+  setInterval(kick,10000);
+  Array.prototype.forEach.call(its,function(el){
+    el.addEventListener("mouseenter",function(){play(el,0);});
+    el.addEventListener("focus",function(){play(el,0);});
+  });
+})();
+
+/* ---------- 모바일 스와이프 점 ---------- */
+var dots=el('<div class="swipe-dots" aria-hidden="true"></div>');
+bento.parentNode.insertBefore(dots,bento.nextSibling);
+function visCards(){return Array.prototype.filter.call(bento.querySelectorAll(".proj"),function(c){return !c.hidden;});}
+function markDot(){
+  var cs=visCards(),ds=dots.children,best=0,bd=1e9;
+  cs.forEach(function(c,n){var d=Math.abs(c.offsetLeft-4-bento.scrollLeft);if(d<bd){bd=d;best=n;}});
+  for(var n=0;n<ds.length;n++)ds[n].className=n===best?"on":"";
+}
+function buildDots(){dots.innerHTML=new Array(visCards().length+1).join("<i></i>");markDot();}
+bento.addEventListener("scroll",markDot,{passive:true});
+buildDots();
 
 var cg=document.getElementById("cases-grid");
 if(cg)CASES.forEach(function(c){
@@ -1082,6 +1230,8 @@ fbtns.forEach(function(b){b.addEventListener("click",function(){
   var f=b.getAttribute("data-f");
   document.querySelectorAll(".proj").forEach(function(c){c.hidden=!(f==="all"||c.getAttribute("data-kind")===f);});
   document.querySelectorAll(".pgrid").forEach(function(g){g.hidden=!g.querySelector(".proj:not([hidden])");});
+  document.querySelectorAll("#tl [data-kind]").forEach(function(r){var on=(f==="all"||(r.getAttribute("data-kind")===f&&(!r.hasAttribute("data-from")||r.getAttribute("data-from")===f)));if(r.tagName==="button"||r.tagName==="BUTTON")r.hidden=!on;else r.style.display=on?"":"none";});
+  bento.scrollLeft=0;buildDots();
 });});
 
 /* ---------- reveal + active nav ---------- */
