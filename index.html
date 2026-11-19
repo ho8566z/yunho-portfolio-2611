@@ -109,6 +109,7 @@ h2{font-size:clamp(30px,5.2vw,68px);letter-spacing:-.055em;line-height:1.1;margi
 /* about: 코발트 면 */
 #about{margin-top:128px;padding:96px 0;background:var(--blue);color:#fff;border-block:var(--bd)}
 #about .sec-head small{background:var(--yellow);color:var(--fix)}
+.resume-dl{margin-top:24px}
 .about{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
 .principles{display:grid;gap:0;padding:0;background:transparent;border:0;box-shadow:none;color:#fff}
 .pr{display:grid;grid-template-columns:84px 1fr;gap:18px;align-items:start;padding:24px 0;border-top:2px solid #ffffff70}
@@ -630,7 +631,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 .hero-grid .cta{position:relative;top:-8px}
 .hero-grid .cta-band .social{position:relative;top:-4px}
 .hero-grid .cta-band .go{position:relative;top:-12px}
-.tc-about .btn{display:flex;width:fit-content;margin-left:auto;margin-right:5px;position:relative;top:-4px}
+.tc-about .btn{z-index:1;display:flex;width:fit-content;margin-left:auto;margin-right:5px;position:relative;top:-4px}
 /* 통계: 숫자 왼쪽, 설명 오른쪽 한 줄 배치 */
 .stat{display:flex;align-items:center;gap:14px;padding:6px 16px}
 .stat b{font-size:32px;line-height:1.1;flex:none}
@@ -872,10 +873,10 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
     <div class="top-cards">
       <article class="tc tc-about">
         <svg class="bulb" viewBox="0 0 80 100" aria-hidden="true"><path d="M40 6c-18 0-30 13-30 29 0 10 5 17 11 23 3 3 4 6 4 10h30c0-4 1-7 4-10 6-6 11-13 11-23C70 19 58 6 40 6z" fill="#ffd93d" stroke="#14120f" stroke-width="5" stroke-linejoin="round"/><path d="M30 76h20M32 86h16" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><path d="M32 40c4 8 12 8 16 0M32 40l4 20M48 40l-4 20" stroke="#14120f" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M40 -2v-0M8 14L2 8M72 14l6-6M4 36H-2M76 36h6" stroke="#14120f" stroke-width="4" stroke-linecap="round"/></svg>
-        <h2>ABOUT ME</h2>
+        <h2><a class="tc-go" href="#about">ABOUT ME</a></h2>
         <p>서버와 데이터를 책임지는 개발자를 지향합니다.</p>
         <p class="sm">기능이 동작하는 것에서 끝내지 않고, 실패하는 상황까지 확인합니다.</p>
-        <a class="btn" href="#about">더 알아보기 →</a>
+        <a class="btn" href="resume.pdf" download="Java_Spring 백엔드 신입 개발자 지원.pdf">더 알아보기 →</a>
       </article>
       <article class="tc skl">
         <h2><a class="tc-go" href="#skills">SKILLS</a></h2>
@@ -909,6 +910,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
         <div class="pr"><i>01</i><div><h3>테스트로 확인합니다</h3><p>구현 전에 실패하는 테스트를 먼저 쓰고, 정상 동작뿐 아니라 실패 상황까지 검증합니다.</p></div></div>
         <div class="pr"><i>02</i><div><h3>문제를 기록합니다</h3><p>문제 → 원인 → 해결 → 재발 방지를 트러블슈팅 시트로 남겨 같은 실수를 줄입니다.</p></div></div>
         <div class="pr"><i>03</i><div><h3>한계를 숨기지 않습니다</h3><p>확인하지 못한 것과 미해결 항목을 '확인 필요'로 구분해 문서에 적습니다.</p></div></div>
+        <a class="btn resume-dl" href="resume.pdf" download="Java_Spring 백엔드 신입 개발자 지원.pdf">이력서 다운로드 ↓</a>
       </div>
       <div class="side reveal">
       <div class="card facts-card">
