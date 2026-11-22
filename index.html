@@ -715,7 +715,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 .shots figcaption{margin-top:6px;font-size:12.5px;font-weight:700;color:var(--muted)}
 
 /* 프로젝트 타임라인 (카드 위): 하나의 가로선, 코뿔소는 완료일 위치에 서 있음 */
-.tl{--u:79px;border:var(--bd);background:var(--surface);border-radius:20px;box-shadow:var(--hard);padding:28px 24px 6px;margin-bottom:26px}
+.tl{--u:118px;border:var(--bd);background:var(--surface);border-radius:20px;box-shadow:var(--hard);padding:28px 24px 6px;margin-bottom:26px}
 .tl-in{position:relative;height:calc(var(--u) + 30px + 8px + 12px + 40px)}
 .tl-line{position:absolute;left:0;right:0;top:calc(var(--u) + 30px);height:8px;background:var(--ink);border-radius:4px}
 .tl-it{position:absolute;top:0;transform:translateX(-50%);display:grid;grid-template-rows:calc(var(--u) + 30px) 20px auto;justify-items:center;width:128px;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:center;cursor:pointer}
@@ -770,7 +770,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 }
 .swipe-dots{display:none}
 @media (max-width:760px){
-  .tl{--u:64px;padding:28px 16px 6px;margin-bottom:20px;overflow-x:auto;scrollbar-width:thin}
+  .tl{--u:96px;padding:28px 16px 6px;margin-bottom:20px;overflow-x:auto;scrollbar-width:thin}
   .tl-in{min-width:700px}
   /* 프로젝트 카드: 옆으로 밀어서 넘기기 */
   .bento{position:relative;flex-direction:row;align-items:stretch;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:4px;padding:6px 8px 20px 4px;margin:0 -8px 0 -4px;scrollbar-width:none;overscroll-behavior-x:contain}
@@ -1171,6 +1171,7 @@ P.forEach(function(p,i){
     });
   }
   layoutArrows();window.addEventListener("resize",layoutArrows);
+  if(window.ResizeObserver)new ResizeObserver(layoutArrows).observe(tl.querySelector(".tl-in")); /* 섹션 폭 보정이나 필터로 폭이 바뀌어도 화살표를 Lv 박스에 다시 맞춤 */
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layoutArrows);
   /* 화면에 들어오면 Lv1부터 차례로: 화살표가 뻗어 가고 → 다음 코뿔소가 레벨업. 마우스를 올리면 그 코뿔소만 다시 재생 */
   var its=tl.querySelectorAll(".tl-it"),ars=tl.querySelectorAll(".tl-ar"),STEP=.95;
