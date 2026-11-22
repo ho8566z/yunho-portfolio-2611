@@ -1152,7 +1152,8 @@ P.forEach(function(p,i){
   function layoutArrows(){
     var box=tl.querySelector(".tl-in"),W=box.offsetWidth,u=parseFloat(getComputedStyle(tl).getPropertyValue("--u"))||66,lineTop=u+30;
     var lvs=tl.querySelectorAll(".tl-it .lv");
-    function pos(k){var e=lvs[k],bw=e.offsetWidth,bh=e.offsetHeight;return{x:W*info[k].x/100,y:lineTop-1-u*info[k].s-4-bh/2,hw:bw/2+7};}
+    var zm=box.getBoundingClientRect().width/W||1,gap=38/zm; /* Lv 박스와 화살표 사이를 화면에서 약 1cm(38px) 띄움 (섹션 줄임 zoom 보정) */
+    function pos(k){var e=lvs[k],bw=e.offsetWidth,bh=e.offsetHeight;return{x:W*info[k].x/100,y:lineTop-1-u*info[k].s-4-bh/2,hw:bw/2+gap};}
     Array.prototype.forEach.call(tl.querySelectorAll(".tl-ar"),function(el,k){
       var a=pos(k),b=pos(k+1);
       var xa=a.x+a.hw,xb=b.x-b.hw,ya=a.y,yb=b.y;
