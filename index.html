@@ -1270,7 +1270,9 @@ function fitSections(){
     return;
   }
   var hz=parseFloat(getComputedStyle(root).zoom)||1;
-  var avail=Math.floor((window.innerHeight-96)/hz); /* 메뉴가 위에 고정돼 있어 그 아래(scroll-padding 96px)부터 섹션이 시작하므로 그만큼 뺀다 */
+  var nav=document.querySelector(".nav"),navH=nav?nav.getBoundingClientRect().height/hz:0; /* 고정 메뉴의 실제 높이 */
+  root.style.scrollPaddingTop=navH+"px"; /* 메뉴로 이동하면 섹션이 메뉴 바로 아래에서 시작 → 이전 섹션이 비쳐 보이지 않음 */
+  var avail=Math.floor(window.innerHeight/hz-navH);
   root.style.setProperty("--avail",avail+"px");
   var narrow=window.innerWidth<1280; /* 폭이 좁으면 카드를 줄이지 않고 폭만 줄여 세로로 늘어나게 둔다 */
   secs.forEach(function(sec){
