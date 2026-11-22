@@ -1043,14 +1043,14 @@ var P = [
      numbers:"팀 전체 자동 테스트 2,248건 통과(spring 1,525 + flask 723), 기능 명세 98개 중 93개 통과(94.9%), 미해결 버그 36건 중 34건 해결. 담당 기능 27개는 자동 테스트와 화면·통합 시험으로 확인했습니다.",
      limits:["혼잡 단계 경계(0.7 / 1.5명/㎡)가 실제 분석 결과의 밀집도(약 0.03명/㎡)와 맞지 않아 기본값으로는 이벤트가 생기지 않을 수 있습니다. 경계를 낮춰 판정 동작을 확인했고, 조정은 미해결로 남겼습니다.","강제 로그아웃을 해도 이미 열린 실시간 화면은 바로 끊기지 않습니다(알려진 한계).","화면 시험 다수가 H2와 가짜 서버로 진행되어 일부는 실제 MySQL·nginx 통합 시험으로 보완했고, 확인하지 못한 항목은 '미확인'으로 기록했습니다."]
    }},
- { id:"calendar", kind:"solo", name:"calendar-bot",
+ { id:"calendar", kind:"solo", name:"nado-ham",
    one:"월간 달력으로 일정을 관리하고, 매주 일요일 21시에 다음 주 일정을 텔레그램으로 보내주는 서비스",
    meta:"1차 개인 프로젝트 · 2026.11.07 ~ 11.12 · 1인", role:"기획 · 설계 · 구현 · 테스트 · 문서",
    stack:["Java 17","Spring Boot","Spring Security","JPA","MyBatis","MySQL"],
    metrics:[["318","자동 테스트"],["29","트러블슈팅 기록"]],
-   links:[["코드","https://github.com/ho8566z/calendar-bot"],["문서","https://github.com/ho8566z/calendar-bot_word"],["Notion","https://app.notion.com/p/41400b1cd77d80a1a8faf9bc78e7d37d"]],
+   links:[["코드","https://github.com/ho8566z/nado-ham"],["문서","https://github.com/ho8566z/nado-ham_word"],["Notion","https://app.notion.com/p/41400b1cd77d80a1a8faf9bc78e7d37d"]],
    detail:{
-     images:[["시스템 구성도","images/projects/calendar-architecture.png","calendar-bot 시스템 구성도: 브라우저에서 Spring Boot, MySQL·텔레그램·Gmail·로컬 디스크로 연결"],["DB 테이블 구조","images/projects/calendar-database.png","calendar-bot DB 테이블 6개 구조"]],
+     images:[["시스템 구성도","images/projects/calendar-architecture.png","nado-ham 시스템 구성도: 브라우저에서 Spring Boot, MySQL·텔레그램·Gmail·로컬 디스크로 연결"],["DB 테이블 구조","images/projects/calendar-database.png","nado-ham DB 테이블 6개 구조"]],
      summary:"일정을 등록해 두고 다시 열어 보지 않으면 놓치는 문제를 주간 브리핑으로 풀었습니다. 단순 CRUD에서 끝내지 않고 시간·검색·통계·보안·모바일까지 기본기를 채웠습니다.",
      role:["주간 브리핑: 1회용 연동 코드(10분 만료) + 텔레그램 롱 폴링, 일요일 21:00(KST) 스케줄러, '지금 보내기'(10초 제한), 발송 기록","일정 관리: 월간 달력, 등록·수정·삭제, 시작 시간, 이미지 선택 첨부, 검색, 월별 통계 (쓰기는 JPA, 동적 조회는 MyBatis)","회원·관리자: 가입 후 관리자 승인(PRE_USER → USER), 사용자 목록·승인 취소","모바일 대응: 768px 이하 접는 메뉴·모달, 13개 화면에 viewport 적용"],
      design:[["소유자 검증","일정 번호와 로그인 사용자 ID를 함께 조건으로 조회해 남의 일정 번호는 404가 됩니다. (T-0002)"],["로그인 시도 제한","같은 아이디·IP에서 연속 5회 실패하면 10분 잠금. LOGIN_LOCK 테이블에 횟수와 해제 시각을 저장합니다."],["비밀 값 분리","메일·DB 비밀번호가 설정 파일에 평문으로 커밋된 것을 환경변수로 분리하고 .gitignore 규칙을 추가했습니다. (T-0001)"]],
@@ -1058,14 +1058,14 @@ var P = [
      numbers:"자동 테스트 318개(317개는 DB 없이 통과), 실제 MySQL로 가입→승인→로그인→일정→검색→통계→브리핑 흐름 64개 점검 통과.",
      limits:["CSRF 보호가 꺼져 있습니다.","이미지 제공 경로가 로그인만 하면 다른 사용자 경로도 열립니다(T-0017, 미해결).","일정의 월·일을 서버가 검증하지 않아 2월 31일도 저장됩니다(T-0025, 미해결).","휴대폰 실기기는 갤럭시(Chrome)로만 확인했습니다."]
    }},
- { id:"nadogam", kind:"solo", name:"nado_gam",
+ { id:"nadogam", kind:"solo", name:"nado-gam",
    one:"여행지를 고르면 항공편·투어·호텔·크루즈를 보여 주고, 비행 경로를 3D 지구본으로 보여 주며 장바구니·모의 결제·QR 예약 확인까지 이어지는 여행사 웹",
    meta:"4차 개인 프로젝트 · 2026.11.19 ~ 11.22 · 1인", role:"기획 · 설계 · 구현 · 테스트 · 문서 · 발표",
    stack:["Java 17","Spring Boot","Spring Security","JPA / JdbcClient","MySQL / H2","Thymeleaf","globe.gl"],
    metrics:[["169","자동 테스트"],["98곳","해외 여행지"]],
-   links:[["코드","https://github.com/ho8566z/nado_gam"],["문서","https://github.com/ho8566z/nado_gam_word"],["Notion","https://app.notion.com/p/41f00b1cd77d8020a023e67adbd29f95"]],
+   links:[["코드","https://github.com/ho8566z/nado-gam"],["문서","https://github.com/ho8566z/nado-gam_word"],["Notion","https://app.notion.com/p/41f00b1cd77d8020a023e67adbd29f95"]],
    detail:{
-     images:[["메인 화면","images/projects/nadogam-home.jpg","nado_gam 메인: 왼쪽 3D 지구본, 오른쪽 이달의 특별전·베스트셀러"],["서비스 구성도","images/projects/nadogam-architecture.png","nado_gam 서비스 구성도: Spring Boot 앱 1개, DB, 정적 파일, 외부 CDN"],["ERD (테이블 25개)","images/projects/nadogam-erd.png","nado_gam ERD"]],
+     images:[["메인 화면","images/projects/nadogam-home.jpg","nado-gam 메인: 왼쪽 3D 지구본, 오른쪽 이달의 특별전·베스트셀러"],["서비스 구성도","images/projects/nadogam-architecture.png","nado-gam 서비스 구성도: Spring Boot 앱 1개, DB, 정적 파일, 외부 CDN"],["ERD (테이블 25개)","images/projects/nadogam-erd.png","nado-gam ERD"]],
      summary:"항공권·투어·숙소를 따로 찾고 노선이 표로만 보이는 불편을 풀고자 만든 여행사 웹입니다. 여행지 → 출발지 → 항공편 순서로 좁히고, 담기 → 모의 결제 → 좌석 차감 → QR 예약 확인·체크인까지 한 흐름으로 만들었습니다. 모든 항공사·상품·가격은 가상 데이터입니다.",
      role:["기획·DB 설계(25개 테이블)·더미 데이터 생성 스크립트(해외 여행지 98곳, 항공편 304편, 투어 142개, 호텔 354개)","사용자 화면: 지구본 메인, 해외 여행·투어·국내여행·호텔·크루즈, 장바구니·모의 결제·내 예약, QR, 고객문의, 정렬·필터","관리자 화면(/admin, 별도 계정 테이블): 상품 등록·수정·삭제·복구, 노출 중지, 회원 정지, 팝업·문의, QR 체크인","엑셀 명세서 13시트·설계서 3개·README·발표 PPT 32장·노션 정리"],
      design:[["서버가 가격을 계산","장바구니·결제 가격은 클라이언트 값이 아니라 DB 값으로 다시 계산합니다. 여행 날짜 필수, 최대 20개, 카드번호는 받지 않습니다."],["조건부 UPDATE 좌석 차감","seats_left >= 인원 조건으로 한 번에 차감하고, 하나라도 부족하면 결제 전체를 롤백합니다. 좌석 키를 정렬해 처리 순서를 고정합니다."],["관리자·사용자 분리","한 앱에서 /admin/** 필터 체인을 따로 두고 계정 테이블도 member / admin_account로 나눕니다."],["읽기·쓰기 분리","화면용 조회는 JdbcClient + record, 쓰기는 JPA. 정렬·필터 값은 화이트리스트로 검증합니다."],["파일 기반 사진 카드","여행지·투어 사진을 Wikimedia Commons에서 미리 받아 저장하고, 출처·라이선스를 /photo-credits에 표기합니다. 사진이 없으면 그라데이션 카드로 대체합니다."]],
@@ -1079,12 +1079,12 @@ var CASES = [
  ["white-eyes · TS 603","관리자 비활성화 순서","세션 삭제를 먼저 하면 기록 저장이 실패해도 로그아웃만 일어남","되돌릴 수 있는 일(상태 변경·작업 기록)을 먼저, 되돌릴 수 없는 세션 삭제를 마지막에 수행. 실패 시 세션이 남는지 시험으로 확인"],
  ["white-eyes · TS 604","가끔만 실패하던 SQL 수 테스트","'이벤트가 늘어도 SQL 수는 같다' 시험이 CI에서 가끔 실패","같은 요청 약 3,900번을 반복하며 스레드 이름을 기록해 원인(10초마다 도는 캠 이상 감지 스케줄러)을 확정. 현재 스레드 SQL만 세는 카운터로 교체"],
  ["white-eyes · TS 601","한글 Windows에서만 빌드 실패","소스 인코딩 설정이 없어 CP949로 UTF-8을 읽고, 오류 없이 한글이 깨져 테스트까지 실패","options.encoding = 'UTF-8' 제안 → PR #95 반영. 한글 메시지 검증 테스트가 '조용히 깨지는' 문제를 잡아냄"],
- ["calendar-bot · T-0023","남의 일정을 덮어쓸 수 있는 요청","폼 객체의 번호·소유자를 그대로 신뢰해, 남의 일정 번호를 넣으면 덮어쓸 수 있음","년·월·일·제목·내용만 폼에서 받고 나머지는 서버가 정한 값만 사용. 실제 DB로 위조 요청이 새 행으로만 처리됨을 확인"],
+ ["nado-ham · T-0023","남의 일정을 덮어쓸 수 있는 요청","폼 객체의 번호·소유자를 그대로 신뢰해, 남의 일정 번호를 넣으면 덮어쓸 수 있음","년·월·일·제목·내용만 폼에서 받고 나머지는 서버가 정한 값만 사용. 실제 DB로 위조 요청이 새 행으로만 처리됨을 확인"],
  ["obsidian-shield · 501","일괄 읽음 처리 시 로그 1건만 저장","이벤트 상태는 전부 읽음인데 사용자 로그에는 마지막 1건만 기록됨","add_user_log() 호출이 for문 밖으로 이동한 것이 원인. 반복문 안으로 옮기고 이미 읽은 이벤트는 continue로 건너뛰어 중복 방지"],
  ["obsidian-shield · 502","SSE 연결이 페이지마다 중복 생성","스크립트 최상단에서 EventSource를 바로 만들어, 그 스크립트를 쓰는 페이지마다 연결이 하나씩 늘어남","연결을 window.eventSource에 보관하고, 이미 있으면 새로 만들지 않도록 변경"],
  ["obsidian-shield · 503","캡처 이미지 키 불일치로 KeyError","configs.py 상수와 routes.py가 쓰는 문자열 키가 달라 저장된 이미지 키(IMG_ROOT)를 찾지 못함","상수 값을 저장된 실제 키(IMG_ROOT)와 일치시킴"],
- ["nado_gam · 결제 좌석 차감","동시에 결제하면 남은 좌석보다 많이 팔릴 수 있음","좌석 수를 읽은 뒤 따로 빼면 그 사이에 다른 결제가 끼어들 수 있음","UPDATE ... WHERE seats_left >= 인원 조건부 한 번 차감, 0건이면 예외로 결제 전체 롤백. 단가는 서버가 DB 값으로 다시 계산. 단위 테스트로 확인했고 100명 동시 예약 부하 테스트는 2단계"],
- ["nado_gam · 성공 색","성공 알림이 오류처럼 빨갛게 보임","라이트 테마 포인트(#ff5a36, 주황빨강)를 알림 색에도 그대로 써서 성공·판매 중과 오류·중지가 비슷해 보임","성공·판매 중·완료는 초록(--ok), 오류는 --hot으로 분리하고 ThemeTest로 변수 값, 화면 캡처로 눈 확인"]
+ ["nado-gam · 결제 좌석 차감","동시에 결제하면 남은 좌석보다 많이 팔릴 수 있음","좌석 수를 읽은 뒤 따로 빼면 그 사이에 다른 결제가 끼어들 수 있음","UPDATE ... WHERE seats_left >= 인원 조건부 한 번 차감, 0건이면 예외로 결제 전체 롤백. 단가는 서버가 DB 값으로 다시 계산. 단위 테스트로 확인했고 100명 동시 예약 부하 테스트는 2단계"],
+ ["nado-gam · 성공 색","성공 알림이 오류처럼 빨갛게 보임","라이트 테마 포인트(#ff5a36, 주황빨강)를 알림 색에도 그대로 써서 성공·판매 중과 오류·중지가 비슷해 보임","성공·판매 중·완료는 초록(--ok), 오류는 --hot으로 분리하고 ThemeTest로 변수 값, 화면 캡처로 눈 확인"]
 ];
 
 
