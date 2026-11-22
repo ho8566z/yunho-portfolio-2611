@@ -783,6 +783,19 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
   .swipe-dots i{width:9px;height:9px;border-radius:50%;border:2px solid var(--ink);background:transparent;transition:background .2s,width .2s}
   .swipe-dots i.on{background:var(--ink);width:22px;border-radius:6px}
 }
+
+/* 2차 수정: 프로젝트 섹션 폭을 다른 섹션과 동일하게, 프로젝트명은 커버 상단 오른쪽, SKILLS 노션 칩 1.5배 */
+@media (min-width:761px){#projects>.wrap{width:min(1200px,100% - 48px)}}
+.cover,.proj.wide .cover{min-height:0}
+.cover-top{flex-wrap:wrap}
+.cover-top h3{margin:0 0 0 auto;text-align:right}
+#skills .skills .chips a{font-size:18.75px;padding:4px 18px 4px 12px;gap:9px;border-width:3px}
+#skills .skills .chips a img{width:24px;height:24px}
+#skills .skills .chips a b{font-size:21px}
+#skills .skills .chips{gap:9px}
+.h-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.h-row h2{margin:0}
+.h-row .btn{flex:none}
 </style>
 </head>
 <body>
@@ -832,7 +845,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
         <div class="cta">
           <a class="btn primary" href="#projects">프로젝트 보기 →</a>
           <a class="btn" href="https://github.com/ho8566z" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="https://app.notion.com/p/5bf00b1cd77d83e6abff018c339379b6?source=copy_link" target="_blank" rel="noopener">Notion 포트폴리오</a>
+          <a class="btn" href="https://app.notion.com/p/5bf00b1cd77d83e6abff018c339379b6?source=copy_link" target="_blank" rel="noopener">Notion</a>
         </div>
     <div class="cta-band">
       <div class="social">
@@ -886,7 +899,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
         <div class="tc-head"><h2><a class="tc-go" href="#projects">PROJECTS</a></h2></div>
         <div class="thumbs">
           <a href="#projects" class="th" style="--cv:var(--c2)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.62) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h1"/></g><g transform="translate(100 34)"><rect x="-32" y="4" width="72" height="30" fill="#fff4df"/><rect x="-36" y="0" width="72" height="30" fill="#14120f"/><text x="0" y="22" text-anchor="middle" fill="#fff4df" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="20">Lv1</text></g></svg><b>obsidian-shield</b><span>Python · Flask</span></a>
-          <a href="#projects" class="th" style="--cv:var(--c1)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.78) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h2"/></g><g transform="translate(100 19)"><rect x="-32" y="4" width="72" height="30" fill="#fff4df"/><rect x="-36" y="0" width="72" height="30" fill="#14120f"/><text x="0" y="22" text-anchor="middle" fill="#fff4df" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="20">Lv100</text></g></svg><b>white-eyes</b><span>Java · Spring Boot</span></a>
+          <a href="#projects" class="th" style="--cv:var(--c1)"><svg viewBox="0 0 200 140" aria-hidden="true"><path d="M8 130H192" stroke="#14120f" stroke-width="5" stroke-linecap="round"/><g transform="translate(100 128) scale(.78) translate(-100 -128)"><use href="#rh-body"/><use href="#rh-h2"/></g><g transform="translate(100 19)"><rect x="-32" y="4" width="72" height="30" fill="#fff4df"/><rect x="-36" y="0" width="72" height="30" fill="#14120f"/><text x="0" y="22" text-anchor="middle" fill="#fff4df" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="20">Lv2</text></g></svg><b>white-eyes</b><span>Java · Spring Boot</span></a>
         </div>
       </article>
     </div>
@@ -965,7 +978,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 <!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
-    <div class="sec-head reveal"><div><small>03 — Skills</small><h2>K-디지털 과정으로 배운 기술들</h2></div></div>
+    <div class="sec-head reveal"><div><small>03 — Skills</small><div class="h-row"><h2>K-디지털 과정으로 배운 기술들</h2><a class="btn" href="https://app.notion.com/p/SKILL-STACK-41600b1cd77d80618890f10aa9af49c6?source=copy_link" target="_blank" rel="noopener">SKILL STACK Notion ↗</a></div></div></div>
     <div class="skills reveal">
       <div class="card"><h3><i aria-hidden="true">💻</i>프로그래밍</h3><div class="chips"><a href="https://app.notion.com/p/2df00b1cd77d821e8514017b671c7276" target="_blank" rel="noopener" title="기초 개념 노트 (Notion)"><b aria-hidden="true">📘</b>기초 개념</a><a href="https://app.notion.com/p/62b00b1cd77d830e86c28129c22bf4b7" target="_blank" rel="noopener" title="심화 개념 노트 (Notion)"><b aria-hidden="true">📚</b>심화 개념</a></div></div>
       <div class="card"><h3><i aria-hidden="true">⚙️</i>백엔드</h3><div class="chips"><a href="https://app.notion.com/p/0e900b1cd77d83cfad388130b8e6e43d" target="_blank" rel="noopener" title="Java 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="" loading="lazy">Java</a><a href="https://app.notion.com/p/ac300b1cd77d82d1bb1581a08cb0ac60" target="_blank" rel="noopener" title="Java Web (JSP) 노트 (Notion)"><b aria-hidden="true">🌐</b>Java Web (JSP)</a><a href="https://app.notion.com/p/69f00b1cd77d8210929181bd881475e7" target="_blank" rel="noopener" title="Python 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg" alt="" loading="lazy">Python</a><a href="https://app.notion.com/p/2da00b1cd77d838d9dd501927f645259" target="_blank" rel="noopener" title="WAS 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tomcat/tomcat-original.svg" alt="" loading="lazy">WAS</a><a href="https://app.notion.com/p/86900b1cd77d8305896601b550d8b05c" target="_blank" rel="noopener" title="YOLO 노트 (Notion)"><b aria-hidden="true">👁️</b>YOLO</a></div></div>
@@ -975,7 +988,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
       <div class="card"><h3><i aria-hidden="true">☁️</i>인프라 / 서버 / 배포</h3><div class="chips"><a href="https://app.notion.com/p/dbf00b1cd77d82d897ba01a7356b74bf" target="_blank" rel="noopener" title="Docker 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/docker/docker-original.svg" alt="" loading="lazy">Docker</a><a href="https://app.notion.com/p/be500b1cd77d83028ea901adafb43071" target="_blank" rel="noopener" title="Ubuntu · Linux (WSL) 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/ubuntu/ubuntu-original.svg" alt="" loading="lazy">Ubuntu · Linux (WSL)</a><a href="https://app.notion.com/p/88900b1cd77d83b8bbc3012308745c6a" target="_blank" rel="noopener" title="서버 구축 (VirtualBox) 노트 (Notion)"><b aria-hidden="true">🖥️</b>서버 구축 (VirtualBox)</a></div></div>
       <div class="card"><h3><i aria-hidden="true">🔀</i>버전 관리 / 협업</h3><div class="chips"><a href="https://app.notion.com/p/dd100b1cd77d83e180248122ad44bab8" target="_blank" rel="noopener" title="Git 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg" alt="" loading="lazy">Git</a><a href="https://app.notion.com/p/acc00b1cd77d83e19d98814c11fa8680" target="_blank" rel="noopener" title="GitHub 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/github/github-original.svg" alt="" loading="lazy">GitHub</a><a href="https://app.notion.com/p/4a600b1cd77d822480b881026c8b8896" target="_blank" rel="noopener" title="GitLab 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/gitlab/gitlab-original.svg" alt="" loading="lazy">GitLab</a><a href="https://app.notion.com/p/76f00b1cd77d8244bb6681e01f89b5f0" target="_blank" rel="noopener" title="Zoom 노트 (Notion)"><b aria-hidden="true">🎥</b>Zoom</a></div></div>
       <div class="card"><h3><i aria-hidden="true">🎨</i>프론트엔드</h3><div class="chips"><a href="https://app.notion.com/p/59400b1cd77d82588a8c01fe7a2a5244" target="_blank" rel="noopener" title="HTML 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-original.svg" alt="" loading="lazy">HTML</a><a href="https://app.notion.com/p/f5f00b1cd77d8234a8d4011173af52e7" target="_blank" rel="noopener" title="CSS 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-original.svg" alt="" loading="lazy">CSS</a><a href="https://app.notion.com/p/1b900b1cd77d8385aa53018a3fd80853" target="_blank" rel="noopener" title="JavaScript 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg" alt="" loading="lazy">JavaScript</a></div></div>
-      <div class="card"><h3><i aria-hidden="true">🧰</i>개발 환경</h3><div class="chips"><a href="https://app.notion.com/p/8a100b1cd77d83579d8a81fbf7d0bf66" target="_blank" rel="noopener" title="IntelliJ 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/intellij/intellij-original.svg" alt="" loading="lazy">IntelliJ</a><a href="https://app.notion.com/p/ad600b1cd77d8291a55a81ada3ed5369" target="_blank" rel="noopener" title="Eclipse 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/eclipse/eclipse-original.svg" alt="" loading="lazy">Eclipse</a><a href="https://app.notion.com/p/b3600b1cd77d822dbfd201e4db34fe82" target="_blank" rel="noopener" title="VS Code 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vscode/vscode-original.svg" alt="" loading="lazy">VS Code</a></div></div>
+      <div class="card"><h3><i aria-hidden="true">🧰</i>개발 환경</h3><div class="chips"><a href="https://app.notion.com/p/8a100b1cd77d83579d8a81fbf7d0bf66" target="_blank" rel="noopener" title="IntelliJ 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/intellij/intellij-original.svg" alt="" loading="lazy">IntelliJ</a><a href="https://app.notion.com/p/ad600b1cd77d8291a55a81ada3ed5369" target="_blank" rel="noopener" title="Eclipse 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/eclipse/eclipse-original.svg" alt="" loading="lazy">Eclipse</a><a href="https://app.notion.com/p/b3600b1cd77d822dbfd201e4db34fe82" target="_blank" rel="noopener" title="VS Code 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/vscode/vscode-original.svg" alt="" loading="lazy">VS Code</a><a href="https://app.notion.com/p/41f00b1cd77d8056956beb16782145f8" target="_blank" rel="noopener" title="AI 개발 도구(Claude &amp; Codex) 노트 (Notion)"><b aria-hidden="true">🤖</b>AI 개발 도구(Claude &amp; Codex)</a></div></div>
       <div class="card"><h3><i aria-hidden="true">📋</i>개발 규칙 / 문제 해결</h3><div class="chips"><a href="https://app.notion.com/p/a3e00b1cd77d83b1894681acee8f2455" target="_blank" rel="noopener" title="코드 컨벤션 노트 (Notion)"><b aria-hidden="true">📏</b>코드 컨벤션</a><a href="https://app.notion.com/p/04200b1cd77d83ef853301e474a74dee" target="_blank" rel="noopener" title="커밋 컨벤션 노트 (Notion)"><b aria-hidden="true">📝</b>커밋 컨벤션</a><a href="https://app.notion.com/p/6c800b1cd77d824c843f817900e1e1a1" target="_blank" rel="noopener" title="패키지 구조 노트 (Notion)"><b aria-hidden="true">📦</b>패키지 구조</a><a href="https://app.notion.com/p/49a00b1cd77d821abe44014e9ae1f946" target="_blank" rel="noopener" title="문제 해결 규칙 노트 (Notion)"><b aria-hidden="true">🧭</b>문제 해결 규칙</a><a href="https://app.notion.com/p/ddd00b1cd77d832a9fd9815aa69b3d81" target="_blank" rel="noopener" title="트러블 슈팅 노트 (Notion)"><b aria-hidden="true">🛠️</b>트러블 슈팅</a></div></div>
     </div>
     <p class="note">협업 규칙: 기능 1개 = 이슈 1개 = 브랜치 1개 = PR 1개 · main ← dev ← feature/* · 코드·커밋 컨벤션 문서화</p>
@@ -1098,9 +1111,8 @@ var groups={team:el('<div class="pgrid team"></div>'),solo:el('<div class="pgrid
 bento.appendChild(groups.team);bento.appendChild(groups.solo);
 P.forEach(function(p,i){
   var h='<article class="card proj reveal" data-kind="'+p.kind+'">'+
-   '<div class="cover" style="'+(p.id==="nadogam"?'--cv:#ff5a36':'--cv:var(--c'+CI[p.id]+')')+'">'+
-     '<div class="cover-top"><span class="tag">'+(p.kind==="team"?"TEAM":"SOLO")+'</span><span class="no">0'+(i+1)+'</span></div>'+
-     '<h3>'+esc(p.name)+'</h3></div>'+
+   '<div class="cover" style="'+(p.id==="nadogam"?'--cv:var(--mint)':'--cv:var(--c'+CI[p.id]+')')+'">'+
+     '<div class="cover-top"><span class="tag">'+(p.kind==="team"?"TEAM":"SOLO")+'</span><span class="no">0'+(i+1)+'</span><h3>'+esc(p.name)+'</h3></div></div>'+
    '<div class="pbody"><p class="one">'+esc(p.one)+'</p>'+
    '<div class="meta">'+esc(p.meta)+'</div><div class="role">'+esc(p.role)+'</div>'+
    '<div class="chips">'+p.stack.map(function(s){return"<span>"+esc(s)+"</span>";}).join("")+'</div>'+
@@ -1117,7 +1129,7 @@ P.forEach(function(p,i){
   var HORN=[[.5,"rh-h1"],[.67,"rh-h2"],[.83,"rh-h35"],[1,"rh-h4"]];
   var info=[];
   var items=ORDER.map(function(id,k){
-    var i=P.map(function(q){return q.id;}).indexOf(id),p=P[i],h=HORN[k],lab=(p.kind==="team"?"팀":"개인")+" · "+RANGE[id],x=12+k*25.3,cv=k===3?'#ff5a36':'var(--c'+CI[p.id]+')'; /* Lv5 카드색(--c5)은 크림색이라 화살표가 비어 보여 하늘색으로 */
+    var i=P.map(function(q){return q.id;}).indexOf(id),p=P[i],h=HORN[k],lab=(p.kind==="team"?"팀":"개인")+" · "+RANGE[id],x=12+k*25.3,cv=k===3?'var(--mint)':'var(--c'+CI[p.id]+')'; /* Lv5 카드색(--c5)은 크림색이라 화살표가 비어 보여 하늘색으로 */
     info.push({x:x,s:h[0],cv:cv,kind:p.kind});
     return '<button type="button" class="tl-it" data-open="'+p.id+'" data-kind="'+p.kind+'" style="left:'+x+'%;--s:'+h[0]+';--cv:'+cv+'" aria-label="'+esc(p.name)+', Lv'+(k+1)+', '+lab+', 자세히 보기">'+
       '<span class="tl-rhw"><em class="lv">Lv'+(k+1)+'</em><svg class="tl-rh" viewBox="8 12 192 120" aria-hidden="true"><use href="#rh-body"/><use href="#'+h[1]+'"/></svg></span>'+
@@ -1245,7 +1257,7 @@ function fitSections(){
   var root=document.documentElement;
   if(window.innerWidth<761){
     root.style.removeProperty("--avail");
-    secs.forEach(function(sec){var w=sec.querySelector(".wrap");if(w)w.style.zoom="";});
+    secs.forEach(function(sec){var w=sec.querySelector(".wrap");if(w){w.style.zoom="";w.style.width="";}});
     return;
   }
   var hz=parseFloat(getComputedStyle(root).zoom)||1;
@@ -1254,11 +1266,18 @@ function fitSections(){
   var narrow=window.innerWidth<1280; /* 폭이 좁으면 카드를 줄이지 않고 폭만 줄여 세로로 늘어나게 둔다 */
   secs.forEach(function(sec){
     var w=sec.querySelector(".wrap");if(!w)return;
-    w.style.zoom="";
+    w.style.zoom="";w.style.width="";
     if(narrow)return;
-    var h=w.offsetHeight;
-    var z=h>avail?Math.max(.55,avail/h):1;
-    w.style.zoom=z<1?z:"";
+    /* 줄인 만큼 안쪽 폭을 넓혀서, 세 섹션의 화면상 좌우 길이가 같게 유지 */
+    var vis=Math.min(1200,sec.clientWidth-48),z=1;
+    for(var i=0;i<6;i++){
+      var h=w.offsetHeight; /* 줌 적용 전 높이(로컬 단위) */
+      var nz=h>avail?Math.max(.55,avail/h):1;
+      if(nz>=1){z=1;w.style.zoom="";w.style.width="";break;}
+      if(Math.abs(nz-z)<.004){break;}
+      z=nz;w.style.zoom=z;w.style.width=(vis/z)+"px";
+    }
+    for(var j=0;j<20&&z<1&&z>.55&&w.offsetHeight*z>avail;j++){z=Math.max(.55,z*.97);w.style.zoom=z;w.style.width=(vis/z)+"px";} /* 마지막으로 화면보다 크면 조금씩 더 줄임 */
   });
 }
 /* 폭 761~1279px(반 화면, 브라우저 확대): 맨 위 히어로만 폭 1280px 때의 배치를 폭에 비례해 축소 → 요소가 겹치거나 뭉치지 않음.
