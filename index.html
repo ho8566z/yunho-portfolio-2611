@@ -652,7 +652,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 }
 /* 소개·프로젝트·기술: 각 섹션이 한 화면에 들어오도록 카드 축소 (남는 높이는 JS가 화면에 맞춰 --avail/zoom 으로 보정) */
 @media (min-width:761px){
-  #about,#projects,#skills{margin-top:0;padding:0;min-height:var(--avail,0px);display:flex;align-items:center;scroll-margin-top:-96px}
+  #about,#projects,#skills{margin-top:0;padding:0;min-height:var(--avail,0px);display:flex;align-items:center;scroll-margin-top:0}
   #about>.wrap,#projects>.wrap,#skills>.wrap{padding:26px 0}
   #about{margin-top:40px} /* 히어로 통계 카드 줄과 파란 배경이 붙지 않게 */
   #about .sec-head,#projects .sec-head,#skills .sec-head{margin-bottom:20px}
@@ -796,6 +796,13 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 .h-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .h-row h2{margin:0}
 .h-row .btn{flex:none}
+
+/* 섹션 머리: 번호 라벨과 제목을 같은 줄에 */
+.sec-head>div:first-child{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;min-width:0}
+.sec-head>div:first-child small{margin-bottom:0}
+.sec-head>div:first-child .sec-sub{flex-basis:100%;margin-top:2px}
+.sec-head{align-items:center}
+.sec-head .btn{flex:none}
 </style>
 </head>
 <body>
@@ -822,7 +829,8 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
   <div class="wrap">
     <a class="logo" href="#top"><i></i>이윤호</a>
     <ul id="menu">
-      <li><a href="#about">소개</a></li>
+      <li><a href="#top">소개</a></li>
+      <li><a href="#about">상세</a></li>
       <li><a href="#projects">프로젝트</a></li>
       <!-- 비공개: <li><a href="#cases">문제 해결</a></li> -->
       <li><a href="#skills">기술</a></li>
@@ -977,7 +985,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 <!-- SKILLS -->
 <section id="skills">
   <div class="wrap">
-    <div class="sec-head reveal"><div><small>03 — Skills</small><div class="h-row"><h2>K-디지털 과정으로 배운 기술들</h2><a class="btn" href="https://app.notion.com/p/SKILL-STACK-41600b1cd77d80618890f10aa9af49c6?source=copy_link" target="_blank" rel="noopener">SKILL STACK Notion ↗</a></div></div></div>
+    <div class="sec-head reveal"><div><small>03 — Skills</small><h2>K-디지털 과정으로 배운 기술들</h2></div><a class="btn" href="https://app.notion.com/p/SKILL-STACK-41600b1cd77d80618890f10aa9af49c6?source=copy_link" target="_blank" rel="noopener">SKILL STACK Notion ↗</a></div>
     <div class="skills reveal">
       <div class="card"><h3><i aria-hidden="true">💻</i>프로그래밍</h3><div class="chips"><a href="https://app.notion.com/p/2df00b1cd77d821e8514017b671c7276" target="_blank" rel="noopener" title="기초 개념 노트 (Notion)"><b aria-hidden="true">📘</b>기초 개념</a><a href="https://app.notion.com/p/62b00b1cd77d830e86c28129c22bf4b7" target="_blank" rel="noopener" title="심화 개념 노트 (Notion)"><b aria-hidden="true">📚</b>심화 개념</a></div></div>
       <div class="card"><h3><i aria-hidden="true">⚙️</i>백엔드</h3><div class="chips"><a href="https://app.notion.com/p/0e900b1cd77d83cfad388130b8e6e43d" target="_blank" rel="noopener" title="Java 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="" loading="lazy">Java</a><a href="https://app.notion.com/p/ac300b1cd77d82d1bb1581a08cb0ac60" target="_blank" rel="noopener" title="Java Web (JSP) 노트 (Notion)"><b aria-hidden="true">🌐</b>Java Web (JSP)</a><a href="https://app.notion.com/p/69f00b1cd77d8210929181bd881475e7" target="_blank" rel="noopener" title="Python 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg" alt="" loading="lazy">Python</a><a href="https://app.notion.com/p/2da00b1cd77d838d9dd501927f645259" target="_blank" rel="noopener" title="WAS 노트 (Notion)"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tomcat/tomcat-original.svg" alt="" loading="lazy">WAS</a><a href="https://app.notion.com/p/86900b1cd77d8305896601b550d8b05c" target="_blank" rel="noopener" title="YOLO 노트 (Notion)"><b aria-hidden="true">👁️</b>YOLO</a></div></div>
@@ -1248,7 +1256,7 @@ document.querySelectorAll(".reveal").forEach(function(n){io?io.observe(n):n.clas
 var links=document.querySelectorAll("#menu a");
 if("IntersectionObserver" in window){
   var so=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+en.target.id);});}});},{rootMargin:"-45% 0px -50% 0px"});
-  document.querySelectorAll("main section").forEach(function(s){so.observe(s);});
+  document.querySelectorAll("main section, #top").forEach(function(s){so.observe(s);});
 }
 /* ---------- 섹션 한 화면 맞춤: 노트북 크기가 달라도 소개·프로젝트·기술이 한 화면에 들어오게 보정 ---------- */
 function fitSections(){
@@ -1260,7 +1268,7 @@ function fitSections(){
     return;
   }
   var hz=parseFloat(getComputedStyle(root).zoom)||1;
-  var avail=Math.floor(window.innerHeight/hz); /* 메뉴로 이동하면 섹션 윗단이 화면 맨 위에 오므로 화면 전체 높이를 쓴다 */
+  var avail=Math.floor((window.innerHeight-96)/hz); /* 메뉴가 위에 고정돼 있어 그 아래(scroll-padding 96px)부터 섹션이 시작하므로 그만큼 뺀다 */
   root.style.setProperty("--avail",avail+"px");
   var narrow=window.innerWidth<1280; /* 폭이 좁으면 카드를 줄이지 않고 폭만 줄여 세로로 늘어나게 둔다 */
   secs.forEach(function(sec){
