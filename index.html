@@ -635,12 +635,16 @@ h1.big .kr .nm{color:#ff5a36}
   .pgrid>.proj{aspect-ratio:auto;height:var(--card-h,279px);container-type:size}
   @container (max-height:340px){ .proj:not(.proj-demo) .one{-webkit-line-clamp:2} }
   @container (max-height:340px){ .proj-demo .cover .no{display:none} }
-  @container (max-height:350px){ .proj:not(.proj-demo) .metrics{display:none} }
+  /* 카드 안쪽 빈 공간: 소개 카드는 지표를 작게 보여 채우고, 너무 낮을 때만 숨김 */
+  .pgrid>.proj:not(.proj-demo) .metrics{display:flex;gap:16px;padding-top:8px}
+  .pgrid>.proj:not(.proj-demo) .metrics div b{font-size:22px}
+  .pgrid>.proj:not(.proj-demo) .metrics div span{font-size:11px}
+  @container (max-height:224px){ .proj:not(.proj-demo) .metrics{display:none} }
   @container (max-height:280px){ .proj-demo .one{display:none} .pgrid>.proj .pbody{padding-top:10px;padding-bottom:12px} }
   @container (max-height:250px){ .pgrid>.proj .one{-webkit-line-clamp:2;font-size:15px;line-height:1.5} .pgrid>.proj .cover{padding-top:8px;padding-bottom:8px} }
 }
 .pgrid>.proj .proj-actions{gap:10px}
-.pgrid>.proj .proj-actions .btn{font-size:16px;padding:10px 18px}
+.pgrid>.proj .proj-actions .btn{font-size:12px;padding:7.5px 13.5px}
 /* 폭별 배치: 1280 이상 4열 / 1000~1279 4열(내용 줄임) / 1000 미만 2열(프로젝트+실행 화면이 한 줄) */
 @media (max-width:999px){.pgrid.team,.pgrid.solo{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1000px) and (max-width:1279px){
@@ -651,7 +655,7 @@ h1.big .kr .nm{color:#ff5a36}
   .pgrid>.proj .pbody{padding:12px 14px 14px;gap:8px}
   .pgrid>.proj .one{font-size:14px;-webkit-line-clamp:3}
   .pgrid>.proj .proj-actions{gap:8px}
-  .pgrid>.proj .proj-actions .btn{font-size:13px;padding:7px 11px}
+  .pgrid>.proj .proj-actions .btn{font-size:10px;padding:5px 8px}
   .pgrid>.proj:not(.proj-demo) .proj-actions .btn:nth-child(n+3){display:none}
 }
 
@@ -816,7 +820,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
   .pgrid>.proj{min-width:0}
   .pgrid>.proj .metrics{display:none}
   .pgrid>.proj .one{font-size:12.5px;-webkit-line-clamp:2}
-  .pgrid>.proj .proj-actions .btn{font-size:13.5px;padding:8px 12px}
+  .pgrid>.proj .proj-actions .btn{font-size:10px;padding:6px 9px}
   .pgrid>.proj .cover h3{font-size:17px}
   .pgrid>.proj .cover{flex:0 0 auto;min-height:0;padding:8px 12px 10px}
   .pgrid>.proj .one{flex:0 0 auto}
