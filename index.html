@@ -854,7 +854,14 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 .sec-head>div:first-child .sec-sub{flex-basis:100%;margin-top:2px}
 .sec-head{align-items:center}
 .sec-head .btn{flex:none}
-</style>
+/* 소개 카드 표지 글자 키움: 프로젝트명 +30%, 나머지 +20% (실행 화면 카드는 그대로) */
+.pgrid>.proj:not(.proj-demo) .cover h3{font-size:clamp(26px,2.6vw,33.8px)}
+.pgrid>.proj:not(.proj-demo) .cover .tag{font-size:14.4px}
+.pgrid>.proj:not(.proj-demo) .cover .no{font-size:24px}
+.pgrid>.proj:not(.proj-demo) .cover-range{font-size:14.4px}
+@media (min-width:1280px){.pgrid>.proj:not(.proj-demo) .cover{min-height:101px}} /* 긴 프로젝트명이 줄바꿈돼도 4장의 표지 높이를 같게 */
+@media (min-width:1000px) and (max-width:1279px){.pgrid>.proj:not(.proj-demo) .cover h3{font-size:24.7px}}
+@media (max-width:760px){.pgrid>.proj:not(.proj-demo) .cover h3{font-size:22px}.pgrid>.proj:not(.proj-demo) .cover .tag{font-size:12px}.pgrid>.proj:not(.proj-demo) .cover-range{font-size:12px}}</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -1102,7 +1109,7 @@ var P = [
    }},
  { id:"white-eyes", kind:"team", wide:true, name:"white-eyes",
    one:"드론·CCTV 영상에서 사람 수, 유입/유출, 체류 시간을 분석해 구역별 통계와 혼잡 이벤트 알림으로 보여 주는 유동인구 분석 시스템",
-   intro:"드론·CCTV 영상으로 구역별 유동인구를 분석하는 시스템입니다. 혼잡이 생기면 알림으로 알려 줍니다.",
+   intro:"드론·CCTV 영상으로 구역별 유동인구와 혼잡을 분석하고 알려 주는 시스템입니다.",
    meta:"2차 팀 프로젝트 · 2026.10.06 ~ 11.23 · 6인", role:"담당: 보안 · 계정 · 이벤트",
    stack:["Java 17","Spring Boot","Spring Security","JPA","MySQL","Flask","YOLOv8","Docker"],
    metrics:[["41","PR (39건 dev 병합)"],["27","담당 기능 통과"],["2,248","팀 자동 테스트 (실패 0)"]],
