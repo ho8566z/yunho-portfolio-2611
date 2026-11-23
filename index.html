@@ -1085,6 +1085,7 @@ document.documentElement.classList.add("js");
 var P = [
  { id:"obsidian", kind:"team", name:"obsidian-shield",
    one:"CCTV·드론 영상에서 AI가 보행자를 탐지·추적하고 등록된 대상이 발견되면 실시간으로 알리는 관제 시스템",
+   intro:"CCTV·드론 영상에서 AI가 보행자를 탐지하고 추적하는 관제 시스템입니다. 등록된 대상이 발견되면 실시간으로 알려 줍니다.",
    meta:"1차 팀 프로젝트 · 2026.06.25 ~ 07.24 · 5인", role:"담당: 로그 분석",
    stack:["Python","Flask","OpenCV","YOLOv8n","InsightFace","SSE"],
    metrics:[["23","PR (19건 병합)"],["6","담당 기능"]],
@@ -1100,6 +1101,7 @@ var P = [
    }},
  { id:"white-eyes", kind:"team", wide:true, name:"white-eyes",
    one:"드론·CCTV 영상에서 사람 수, 유입/유출, 체류 시간을 분석해 구역별 통계와 혼잡 이벤트 알림으로 보여 주는 유동인구 분석 시스템",
+   intro:"드론·CCTV 영상으로 구역별 유동인구를 분석하는 시스템입니다. 혼잡이 생기면 알림으로 알려 줍니다.",
    meta:"2차 팀 프로젝트 · 2026.10.06 ~ 11.23 · 6인", role:"담당: 보안 · 계정 · 이벤트",
    stack:["Java 17","Spring Boot","Spring Security","JPA","MySQL","Flask","YOLOv8","Docker"],
    metrics:[["41","PR (39건 dev 병합)"],["27","담당 기능 통과"],["2,248","팀 자동 테스트 (실패 0)"]],
@@ -1115,6 +1117,7 @@ var P = [
    }},
  { id:"calendar", kind:"solo", name:"nado-ham",
    one:"월간 달력으로 일정을 관리하고, 매주 일요일 21시에 다음 주 일정을 텔레그램으로 보내주는 서비스",
+   intro:"월간 달력으로 일정을 관리하는 서비스입니다. 매주 일요일 21시에 다음 주 일정을 텔레그램으로 보내 줍니다.",
    meta:"1차 개인 프로젝트 · 2026.11.07 ~ 11.12 · 1인", role:"기획 · 설계 · 구현 · 테스트 · 문서",
    stack:["Java 17","Spring Boot","Spring Security","JPA","MyBatis","MySQL"],
    metrics:[["318","자동 테스트"],["29","트러블슈팅 기록"]],
@@ -1130,6 +1133,7 @@ var P = [
    }},
  { id:"nadogam", kind:"solo", name:"nado-gam",
    one:"여행지를 고르면 항공편·투어·호텔·크루즈를 보여 주고, 비행 경로를 3D 지구본으로 보여 주며 장바구니·모의 결제·QR 예약 확인까지 이어지는 여행사 웹",
+   intro:"여행지를 고르면 항공편·투어·호텔·크루즈를 보여 주는 여행사 웹입니다. 비행 경로를 3D 지구본으로 보여 주고 모의 결제와 QR 예약 확인까지 이어집니다.",
    meta:"2차 개인 프로젝트 · 2026.11.19 ~ 11.22 · 1인", role:"기획 · 설계 · 구현 · 테스트 · 문서 · 발표",
    stack:["Java 17","Spring Boot","Spring Security","JPA / JdbcClient","MySQL / H2","Thymeleaf","globe.gl"],
    metrics:[["169","자동 테스트"],["98곳","해외 여행지"]],
@@ -1173,7 +1177,7 @@ P.forEach(function(p,i){
    '<div class="cover" style="'+(p.id==="nadogam"?'--cv:var(--mint)':'--cv:var(--c'+CI[p.id]+')')+'">'+
      '<div class="cover-top"><span class="tag">'+(p.kind==="team"?"TEAM":"SOLO")+'</span><span class="no">0'+(i+1)+'</span><h3>'+esc(p.name)+'</h3></div>'+
      '<div class="cover-range">'+(p.kind==="team"?"팀":"개인")+' · '+PERIOD[p.id]+'</div></div>'+
-   '<div class="pbody"><p class="one">'+esc(p.one)+' <span class="sum">'+esc(p.detail.summary)+'</span></p>'+
+   '<div class="pbody"><p class="one">'+esc(p.intro)+'</p>'+
    '<div class="meta">'+esc(p.meta)+'</div><div class="role">'+esc(p.role)+'</div>'+
    '<div class="chips">'+p.stack.map(function(s){return"<span>"+esc(s)+"</span>";}).join("")+'</div>'+
    '<div class="metrics">'+p.metrics.map(function(m){return"<div><b>"+esc(m[0])+"</b><span>"+esc(m[1])+"</span></div>";}).join("")+'</div>'+
