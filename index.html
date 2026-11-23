@@ -635,11 +635,7 @@ h1.big .kr .nm{color:#ff5a36}
   .pgrid>.proj{aspect-ratio:auto;height:var(--card-h,279px);container-type:size}
   @container (max-height:340px){ .proj:not(.proj-demo) .one{-webkit-line-clamp:2} }
   @container (max-height:340px){ .proj-demo .cover .no{display:none} }
-  /* 카드 안쪽 빈 공간: 소개 카드는 지표를 작게 보여 채우고, 너무 낮을 때만 숨김 */
-  .pgrid>.proj:not(.proj-demo) .metrics{display:flex;gap:16px;padding-top:8px}
-  .pgrid>.proj:not(.proj-demo) .metrics div b{font-size:22px}
-  .pgrid>.proj:not(.proj-demo) .metrics div span{font-size:11px}
-  @container (max-height:224px){ .proj:not(.proj-demo) .metrics{display:none} }
+  .pgrid>.proj:not(.proj-demo) .metrics{display:none} /* 소개 카드 가운데 수치는 표시하지 않음 */
   @container (max-height:280px){ .proj-demo .one{display:none} .pgrid>.proj .pbody{padding-top:10px;padding-bottom:12px} }
   @container (max-height:250px){ .pgrid>.proj .one{-webkit-line-clamp:2;font-size:15px;line-height:1.5} .pgrid>.proj .cover{padding-top:8px;padding-bottom:8px} }
 }
