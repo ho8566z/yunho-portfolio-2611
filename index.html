@@ -617,6 +617,15 @@ h1.big .kr .nm{color:#ff5a36}
 @media (max-width:700px){
   .pgrid.team,.pgrid.solo{grid-template-columns:1fr}
 }
+/* 실행 화면 카드: 프로젝트 카드와 같은 모양, 표지 아래에 실제 앱 화면 썸네일 */
+.pgrid.demo{grid-template-columns:repeat(4,1fr)}
+.demo-thumb{display:block;aspect-ratio:16/9;overflow:hidden;border-bottom:var(--bd);background:var(--ink)}
+.demo-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform .4s}
+.proj:hover .demo-thumb img{transform:scale(1.05)}
+.proj[data-kind="demo"] .pbody{gap:8px}
+.proj[data-kind="demo"] .meta{font-size:13px}
+@media (max-width:1000px){.pgrid.demo{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.pgrid.demo{grid-template-columns:1fr}}
 
 /* PPT에서 직접 조정한 히어로 배치 (2026-11-18): art 기준 % 좌표 */
 .art .sq{left:-20.24%;top:11.02%;right:auto;bottom:auto}
@@ -966,6 +975,7 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
         <button class="chip-btn" data-f="all" aria-pressed="true">전체</button>
         <button class="chip-btn" data-f="team" aria-pressed="false">팀</button>
         <button class="chip-btn" data-f="solo" aria-pressed="false">개인</button>
+        <button class="chip-btn" data-f="demo" aria-pressed="false">실행 화면</button>
       </div>
     </div>
     <div class="tl reveal" id="tl" aria-label="프로젝트 타임라인"></div>
@@ -1038,7 +1048,7 @@ var P = [
    meta:"1차 팀 프로젝트 · 2026.06.25 ~ 07.24 · 5인", role:"담당: 로그 분석",
    stack:["Python","Flask","OpenCV","YOLOv8n","InsightFace","SSE"],
    metrics:[["23","PR (19건 병합)"],["6","담당 기능"]],
-   links:[["Repo","https://github.com/Kanabig/obsidian-shield"],["Notion","https://app.notion.com/p/41400b1cd77d800fb83bcc3a81c240c1"]],
+   links:[["실행 화면","projects/obsidian-shield.html"],["Repo","https://github.com/Kanabig/obsidian-shield"],["Notion","https://app.notion.com/p/41400b1cd77d800fb83bcc3a81c240c1"]],
    detail:{
      images:[["서비스 구성도","images/projects/obsidian-architecture.png","obsidian-shield 서비스 구성도: 웹 브라우저, Flask 서버, AI 탐지, 로그 저장, 관리자 기능"]],
      summary:"이벤트 로그 히스토리 기능 전체를 맡았습니다. AI 탐지 이벤트를 저장하고, 조회·검색·필터·읽음 처리·엑셀 내보내기·실시간 알림까지 구현했습니다.",
@@ -1053,7 +1063,7 @@ var P = [
    meta:"2차 팀 프로젝트 · 2026.10.06 ~ 11.23 · 6인", role:"담당: 보안 · 계정 · 이벤트",
    stack:["Java 17","Spring Boot","Spring Security","JPA","MySQL","Flask","YOLOv8","Docker"],
    metrics:[["41","PR (39건 dev 병합)"],["27","담당 기능 통과"],["2,248","팀 자동 테스트 (실패 0)"]],
-   links:[["소개 Repo","https://github.com/white-eyes1/white-eyes-introduce"],["코드 Repo","https://github.com/white-eyes1/white-eyes-spring"],["Notion","https://app.notion.com/p/41400b1cd77d8003b89edf0efe261379"]],
+   links:[["실행 화면","projects/white-eyes.html"],["소개 Repo","https://github.com/white-eyes1/white-eyes-introduce"],["코드 Repo","https://github.com/white-eyes1/white-eyes-spring"],["Notion","https://app.notion.com/p/41400b1cd77d8003b89edf0efe261379"]],
    detail:{
      images:[["시스템 구성도","images/projects/white-eyes-architecture.png","white-eyes 서비스 구성도: nginx, 사용자 앱·관리자 앱, 분석 서버, MySQL, NFS 스토리지"],["ERD (주요 컬럼)","images/projects/white-eyes-erd.png","white-eyes ERD: 계정·세션, 지역·구역·캠, 이벤트·기록, 통계 테이블"],["실행 화면 · 사용자 대시보드 (데모 계정)","images/projects/white-eyes-user-dashboard.jpg","white-eyes 사용자 앱 대시보드: 지도 위 구역별 현재 인원과 통계 패널"]],
      summary:"사용자 앱·관리자 앱(Spring Boot)과 분석 서버(Flask, YOLOv8 + OpenCV)를 분리한 멀티 서비스 구조입니다. 저는 인증·권한 보안, 계정 관리, 혼잡·급증·캠 이상 이벤트 판정과 실시간 알림을 맡았습니다.",
@@ -1068,7 +1078,7 @@ var P = [
    meta:"1차 개인 프로젝트 · 2026.11.07 ~ 11.12 · 1인", role:"기획 · 설계 · 구현 · 테스트 · 문서",
    stack:["Java 17","Spring Boot","Spring Security","JPA","MyBatis","MySQL"],
    metrics:[["318","자동 테스트"],["29","트러블슈팅 기록"]],
-   links:[["코드","https://github.com/ho8566z/nado-ham"],["문서","https://github.com/ho8566z/nado-ham_word"],["Notion","https://app.notion.com/p/41400b1cd77d80a1a8faf9bc78e7d37d"]],
+   links:[["실행 화면","projects/nado-ham.html"],["코드","https://github.com/ho8566z/nado-ham"],["문서","https://github.com/ho8566z/nado-ham_word"],["Notion","https://app.notion.com/p/41400b1cd77d80a1a8faf9bc78e7d37d"]],
    detail:{
      images:[["시스템 구성도","images/projects/calendar-architecture.png","nado-ham 시스템 구성도: 브라우저에서 Spring Boot, MySQL·텔레그램·Gmail·로컬 디스크로 연결"],["DB 테이블 구조","images/projects/calendar-database.png","nado-ham DB 테이블 6개 구조"]],
      summary:"일정을 등록해 두고 다시 열어 보지 않으면 놓치는 문제를 주간 브리핑으로 풀었습니다. 단순 CRUD에서 끝내지 않고 시간·검색·통계·보안·모바일까지 기본기를 채웠습니다.",
@@ -1083,7 +1093,7 @@ var P = [
    meta:"2차 개인 프로젝트 · 2026.11.19 ~ 11.22 · 1인", role:"기획 · 설계 · 구현 · 테스트 · 문서 · 발표",
    stack:["Java 17","Spring Boot","Spring Security","JPA / JdbcClient","MySQL / H2","Thymeleaf","globe.gl"],
    metrics:[["169","자동 테스트"],["98곳","해외 여행지"]],
-   links:[["코드","https://github.com/ho8566z/nado-gam"],["문서","https://github.com/ho8566z/nado-gam_word"],["Notion","https://app.notion.com/p/41f00b1cd77d8020a023e67adbd29f95"]],
+   links:[["실행 화면","projects/nado-gam.html"],["코드","https://github.com/ho8566z/nado-gam"],["문서","https://github.com/ho8566z/nado-gam_word"],["Notion","https://app.notion.com/p/41f00b1cd77d8020a023e67adbd29f95"]],
    detail:{
      images:[["메인 화면","images/projects/nadogam-home.jpg","nado-gam 메인: 왼쪽 3D 지구본, 오른쪽 이달의 특별전·베스트셀러"],["서비스 구성도","images/projects/nadogam-architecture.png","nado-gam 서비스 구성도: Spring Boot 앱 1개, DB, 정적 파일, 외부 CDN"],["ERD (테이블 25개)","images/projects/nadogam-erd.png","nado-gam ERD"]],
      summary:"항공권·투어·숙소를 따로 찾고 노선이 표로만 보이는 불편을 풀고자 만든 여행사 웹입니다. 여행지 → 출발지 → 항공편 순서로 좁히고, 담기 → 모의 결제 → 좌석 차감 → QR 예약 확인·체크인까지 한 흐름으로 만들었습니다. 모든 항공사·상품·가격은 가상 데이터입니다.",
@@ -1115,7 +1125,8 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;
 var CI={"white-eyes":1,"obsidian":2,"calendar":3,"nadogam":6}; /* 카드·타임라인 색은 프로젝트별로 고정 (순서를 바꿔도 유지) */
 var bento=document.getElementById("bento");
 var groups={team:el('<div class="pgrid team"></div>'),solo:el('<div class="pgrid solo"></div>')};
-bento.appendChild(groups.team);bento.appendChild(groups.solo);
+groups.demo=el('<div class="pgrid demo"></div>');
+bento.appendChild(groups.team);bento.appendChild(groups.solo);bento.appendChild(groups.demo);
 P.forEach(function(p,i){
   var h='<article class="card proj reveal" data-kind="'+p.kind+'">'+
    '<div class="cover" style="'+(p.id==="nadogam"?'--cv:var(--mint)':'--cv:var(--c'+CI[p.id]+')')+'">'+
@@ -1127,6 +1138,25 @@ P.forEach(function(p,i){
    '<div class="proj-actions"><button class="btn primary stretch" type="button" data-open="'+p.id+'">자세히 보기</button>'+
    p.links.map(function(l){return'<a class="btn" href="'+l[1]+'" target="_blank" rel="noopener" style="position:relative;z-index:1">'+esc(l[0])+'</a>';}).join("")+'</div></div></article>';
   groups[p.kind].appendChild(el(h));
+});
+
+/* ---------- 실행 화면 카드: 프로젝트별 실제 앱 화면(단독 HTML)으로 연결 ---------- */
+var DEMO_BASE="projects/";
+var DEMOS=[
+ {id:"obsidian",name:"obsidian-shield",file:"obsidian-shield.html",kind:"TEAM",one:"관제 대시보드 · 탐지 대상 · 이벤트 로그 · 지도를 실제 앱 그대로 눌러 볼 수 있어요.",meta:"시연용 가상 데이터 · 지도는 인터넷 연결 필요"},
+ {id:"white-eyes",name:"white-eyes",file:"white-eyes.html",kind:"TEAM",one:"사용자·관리자 앱의 혼잡 지도, 구역별 인원, 통계를 실제 화면으로 볼 수 있어요.",meta:"시연용 데이터 · 영상 분석은 실행하지 않음"},
+ {id:"calendar",name:"nado-ham",file:"nado-ham.html",kind:"SOLO",one:"월간·주간 달력, 목표 실행 캘린더, 오늘 할 일 카드를 실제 앱 그대로 눌러 볼 수 있어요.",meta:"일정·목표는 예시 · 저장되지 않음"},
+ {id:"nadogam",name:"nado-gam",file:"nado-gam.html",kind:"SOLO",one:"돌아가는 지구본과 이달의 기획전·베스트셀러를 실제 앱 그대로 볼 수 있어요.",meta:"지구본은 인터넷 연결 필요"}
+];
+DEMOS.forEach(function(d){
+  var url=DEMO_BASE+d.file;
+  var h='<article class="card proj reveal" data-kind="demo">'+
+   '<div class="cover" style="'+(d.id==="nadogam"?'--cv:var(--mint)':'--cv:var(--c'+CI[d.id]+')')+'">'+
+     '<div class="cover-top"><span class="tag">LIVE</span><span class="no">'+(d.kind==="TEAM"?"TEAM":"SOLO")+'</span><h3>'+esc(d.name)+'</h3></div></div>'+
+   '<a class="demo-thumb" href="'+url+'" target="_blank" rel="noopener" aria-label="'+esc(d.name)+' 실행 화면 열기" tabindex="-1"><img src="images/projects/demo-'+(d.id==="calendar"?"nado-ham":d.id==="nadogam"?"nado-gam":d.id)+'.jpg" alt="'+esc(d.name)+' 실행 화면 미리보기" loading="lazy"></a>'+
+   '<div class="pbody"><p class="one">'+esc(d.one)+'</p><div class="meta">'+esc(d.meta)+'</div>'+
+   '<div class="proj-actions"><a class="btn primary stretch" href="'+url+'" target="_blank" rel="noopener">실행 화면 열기</a></div></div></article>';
+  groups.demo.appendChild(el(h));
 });
 
 /* ---------- 타임라인: 하나의 가로선 위에 코뿔소를 시작 순서대로 같은 간격으로 배치, 코뿔소 사이는 레벨업 화살표 ---------- */
@@ -1248,7 +1278,7 @@ fbtns.forEach(function(b){b.addEventListener("click",function(){
   var f=b.getAttribute("data-f");
   document.querySelectorAll(".proj").forEach(function(c){c.hidden=!(f==="all"||c.getAttribute("data-kind")===f);});
   document.querySelectorAll(".pgrid").forEach(function(g){g.hidden=!g.querySelector(".proj:not([hidden])");});
-  document.querySelectorAll("#tl [data-kind]").forEach(function(r){var on=(f==="all"||(r.getAttribute("data-kind")===f&&(!r.hasAttribute("data-from")||r.getAttribute("data-from")===f)));if(r.tagName==="button"||r.tagName==="BUTTON")r.hidden=!on;else r.style.display=on?"":"none";});
+  document.querySelectorAll("#tl [data-kind]").forEach(function(r){var on=(f==="all"||f==="demo"||(r.getAttribute("data-kind")===f&&(!r.hasAttribute("data-from")||r.getAttribute("data-from")===f)));if(r.tagName==="button"||r.tagName==="BUTTON")r.hidden=!on;else r.style.display=on?"":"none";});
   bento.scrollLeft=0;buildDots();
 });});
 
