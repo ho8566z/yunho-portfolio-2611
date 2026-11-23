@@ -626,6 +626,15 @@ h1.big .kr .nm{color:#ff5a36}
 .cover-range{position:relative;z-index:1;margin-top:6px;font:700 12px/1.2 var(--font);color:var(--fix);opacity:.8}
 .proj-demo .pbody{flex:0 0 auto}
 .proj-demo .one{-webkit-line-clamp:2}
+/* 1280px 이상: 8장이 한 화면에 들어오도록 카드 높이를 JS(fitSections)가 --card-h 로 정함. 카드가 낮아지면 내용을 단계적으로 줄임 */
+@media (min-width:1280px){
+  .pgrid>.proj{aspect-ratio:auto;height:var(--card-h,279px);container-type:size}
+  @container (max-height:340px){ .proj:not(.proj-demo) .one{-webkit-line-clamp:2} }
+  @container (max-height:340px){ .proj-demo .cover .no{display:none} }
+  @container (max-height:350px){ .proj:not(.proj-demo) .metrics{display:none} }
+  @container (max-height:280px){ .proj-demo .one{display:none} .pgrid>.proj .pbody{padding-top:10px;padding-bottom:12px} }
+  @container (max-height:250px){ .pgrid>.proj .one{-webkit-line-clamp:2;font-size:15px;line-height:1.5} .pgrid>.proj .cover{padding-top:8px;padding-bottom:8px} }
+}
 .pgrid>.proj .proj-actions{gap:10px}
 .pgrid>.proj .proj-actions .btn{font-size:16px;padding:10px 18px}
 /* 폭별 배치: 1280 이상 4열 / 1000~1279 4열(내용 줄임) / 1000 미만 2열(프로젝트+실행 화면이 한 줄) */
@@ -1325,7 +1334,7 @@ function fitSections(){
   var secs=document.querySelectorAll("#about,#projects,#skills");
   var root=document.documentElement;
   if(window.innerWidth<761){
-    root.style.removeProperty("--avail");
+    root.style.removeProperty("--avail");root.style.removeProperty("--card-h");
     secs.forEach(function(sec){var w=sec.querySelector(".wrap");if(w){w.style.zoom="";w.style.width="";}});
     return;
   }
@@ -1335,10 +1344,21 @@ function fitSections(){
   var avail=Math.floor(window.innerHeight/hz-navH);
   root.style.setProperty("--avail",avail+"px");
   var narrow=window.innerWidth<1280; /* 폭이 좁으면 카드를 줄이지 않고 폭만 줄여 세로로 늘어나게 둔다 */
+  if(narrow)root.style.removeProperty("--card-h");
   secs.forEach(function(sec){
     var w=sec.querySelector(".wrap");if(!w)return;
     w.style.zoom="";w.style.width="";
     if(narrow)return;
+    if(sec.id==="projects"){ /* 보이는 카드 줄 수로 나눠 8장(필터 시 4장)이 한 화면에 들어오는 카드 높이를 정함 */
+      var gs=Array.prototype.filter.call(sec.querySelectorAll(".pgrid"),function(g){return !g.hidden;});
+      if(gs.length){
+        var span=gs[gs.length-1].offsetTop+gs[gs.length-1].offsetHeight-gs[0].offsetTop;
+        var gap=gs.length>1?gs[1].offsetTop-gs[0].offsetTop-gs[0].offsetHeight:0;
+        var others=w.offsetHeight-span;
+        var ch=Math.floor((avail-others-gap*(gs.length-1))/gs.length);
+        root.style.setProperty("--card-h",Math.max(300,Math.min(340,ch))+"px");
+      }
+    }
     /* 줄인 만큼 안쪽 폭을 넓혀서, 세 섹션의 화면상 좌우 길이가 같게 유지 */
     var vis=Math.min(1200,sec.clientWidth-48),z=1;
     for(var i=0;i<6;i++){
