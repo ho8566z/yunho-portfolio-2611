@@ -859,7 +859,8 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
 .pgrid>.proj:not(.proj-demo) .cover .tag{font-size:14.4px}
 .pgrid>.proj:not(.proj-demo) .cover .no{font-size:24px}
 .pgrid>.proj:not(.proj-demo) .cover-range{font-size:14.4px}
-@media (min-width:1280px){.pgrid>.proj:not(.proj-demo) .cover{min-height:90px}.pgrid>.proj:not(.proj-demo) .cover h3{line-height:.95}.pgrid>.proj:not(.proj-demo) .cover-range{position:absolute;left:16px;bottom:12px;margin:0}} /* 이름이 2줄이어도 표지가 커지지 않게 날짜를 왼쪽 아래로 */
+@media (min-width:1280px){.pgrid>.proj:not(.proj-demo) .cover{min-height:90px}.pgrid>.proj:not(.proj-demo) .cover h3{line-height:.95}.pgrid>.proj:not(.proj-demo) .cover-range{position:absolute;left:16px;bottom:12px;margin:0}
+.pgrid>.proj[data-id=obsidian] .cover-top{align-items:flex-start} .pgrid>.proj[data-id=obsidian] .cover .tag,.pgrid>.proj[data-id=obsidian] .cover .no{margin-top:3px} /* 이름이 2줄이어도 TEAM·번호는 첫 줄에 맞춤 */} /* 이름이 2줄이어도 표지가 커지지 않게 날짜를 왼쪽 아래로 */
 @media (min-width:1000px) and (max-width:1279px){.pgrid>.proj:not(.proj-demo) .cover h3{font-size:24.7px}}
 @media (max-width:760px){.pgrid>.proj:not(.proj-demo) .cover h3{font-size:22px}.pgrid>.proj:not(.proj-demo) .cover .tag{font-size:12px}.pgrid>.proj:not(.proj-demo) .cover-range{font-size:12px}}</style>
 </head>
@@ -1181,7 +1182,7 @@ var groups={team:el('<div class="pgrid team"></div>'),solo:el('<div class="pgrid
 bento.appendChild(groups.team);bento.appendChild(groups.solo);
 var cardEl={};
 P.forEach(function(p,i){
-  var h='<article class="card proj reveal" data-kind="'+p.kind+'">'+
+  var h='<article class="card proj reveal" data-kind="'+p.kind+'" data-id="'+p.id+'">'+
    '<div class="cover" style="'+(p.id==="nadogam"?'--cv:var(--mint)':'--cv:var(--c'+CI[p.id]+')')+'">'+
      '<div class="cover-top"><span class="tag">'+(p.kind==="team"?"TEAM":"SOLO")+'</span><span class="no">0'+(i+1)+'</span><h3>'+esc(p.name).replace('obsidian-shield','obsidian<br>-shield')+'</h3></div>'+
      '<div class="cover-range">'+(p.kind==="team"?"팀":"개인")+' · '+PERIOD[p.id]+'</div></div>'+
