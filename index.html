@@ -1183,7 +1183,7 @@ var cardEl={};
 P.forEach(function(p,i){
   var h='<article class="card proj reveal" data-kind="'+p.kind+'">'+
    '<div class="cover" style="'+(p.id==="nadogam"?'--cv:var(--mint)':'--cv:var(--c'+CI[p.id]+')')+'">'+
-     '<div class="cover-top"><span class="tag">'+(p.kind==="team"?"TEAM":"SOLO")+'</span><span class="no">0'+(i+1)+'</span><h3>'+esc(p.name)+'</h3></div>'+
+     '<div class="cover-top"><span class="tag">'+(p.kind==="team"?"TEAM":"SOLO")+'</span><span class="no">0'+(i+1)+'</span><h3>'+esc(p.name).replace('obsidian-shield','obsidian<br>-shield')+'</h3></div>'+
      '<div class="cover-range">'+(p.kind==="team"?"팀":"개인")+' · '+PERIOD[p.id]+'</div></div>'+
    '<div class="pbody"><p class="one">'+esc(p.intro)+'</p>'+
    '<div class="meta">'+esc(p.meta)+'</div><div class="role">'+esc(p.role)+'</div>'+
