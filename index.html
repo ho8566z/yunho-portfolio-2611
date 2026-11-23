@@ -602,8 +602,8 @@ h1.big .kr .nm{color:#ff5a36}
 
 /* 프로젝트: 팀 2개(윗줄) / 개인 2개(아랫줄), 코뿔소(Lv)는 커버 안 프로젝트명 반대편 */
 .pgrid{display:grid;gap:34px 28px;align-items:stretch}
-.pgrid.team{grid-template-columns:repeat(2,1fr)}
-.pgrid.solo{grid-template-columns:repeat(2,1fr)}
+.pgrid.team{grid-template-columns:repeat(4,1fr)}
+.pgrid.solo{grid-template-columns:repeat(4,1fr)}
 .pgrid[hidden]{display:none}
 .pgrid>.proj{grid-column:auto!important;margin-top:0!important;rotate:0deg}
 .pgrid>.proj:hover{rotate:0deg}
@@ -612,19 +612,19 @@ h1.big .kr .nm{color:#ff5a36}
 .cover-top{justify-content:flex-start;gap:10px}
 .cover h3{max-width:none}
 @media (max-width:760px){
-  .pgrid.solo{grid-template-columns:repeat(2,1fr)} /* 마지막 카드를 전체 폭으로 늘리지 않음 */
+  .pgrid.team,.pgrid.solo{grid-template-columns:repeat(2,1fr)} /* 좁은 화면: 한 줄에 2장씩 쌓기 */
 }
-@media (max-width:700px){
-  .pgrid.team,.pgrid.solo{grid-template-columns:1fr}
-}
-/* 실행 화면 카드: 프로젝트 카드와 같은 모양, 표지 아래에 실제 앱 화면 썸네일 */
-.pgrid.demo{grid-template-columns:repeat(2,1fr)} /* 위쪽 팀·개인 카드와 같은 2열 */
-.demo-thumb{display:block;aspect-ratio:21/9;overflow:hidden;border-bottom:var(--bd);background:var(--ink)}
+/* 프로젝트 카드 8장(프로젝트 + 실행 화면)을 같은 크기의 정사각형으로: 팀 4장 / 개인 4장 */
+.pgrid{align-items:start}
+.pgrid>.proj{aspect-ratio:1/1;min-height:0;overflow:hidden}
+.pgrid>.proj .pbody{min-height:0;overflow:hidden}
+.pgrid>.proj .meta,.pgrid>.proj .role,.pgrid>.proj .pbody .chips{display:none}
+.pgrid>.proj .one{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;font-size:16px;line-height:1.6}
+.demo-thumb{display:block;flex:1 1 0;min-height:0;overflow:hidden;border-bottom:var(--bd);background:var(--ink)}
 .demo-thumb img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform .4s}
 .proj:hover .demo-thumb img{transform:scale(1.05)}
-.proj[data-kind="demo"] .pbody{gap:8px}
-.proj[data-kind="demo"] .meta{font-size:13px}
-@media (max-width:700px){.pgrid.demo{grid-template-columns:1fr}}
+.proj-demo .pbody{flex:0 0 auto}
+.proj-demo .one{-webkit-line-clamp:2}
 
 /* PPT에서 직접 조정한 히어로 배치 (2026-11-18): art 기준 % 좌표 */
 .art .sq{left:-20.24%;top:11.02%;right:auto;bottom:auto}
@@ -781,13 +781,26 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
   .tl{--u:96px;padding:28px 16px 6px;margin-bottom:20px;overflow-x:auto;scrollbar-width:thin}
   .tl-in{min-width:700px}
   /* 프로젝트 카드: 옆으로 밀어서 넘기기 */
-  .bento{position:relative;flex-direction:row;align-items:stretch;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:4px;padding:6px 8px 20px 4px;margin:0 -8px 0 -4px;scrollbar-width:none;overscroll-behavior-x:contain}
+  .bento{position:relative;gap:20px;padding:6px 0 20px;margin:0}
   .bento::-webkit-scrollbar{display:none}
-  .pgrid{display:contents}
-  .pgrid>.proj{flex:0 0 86%;min-width:0;scroll-snap-align:start}
+  .pgrid{display:grid;gap:14px}
+  .pgrid>.proj{min-width:0}
+  .pgrid>.proj .metrics{display:none}
+  .pgrid>.proj .one{font-size:12.5px;-webkit-line-clamp:2}
+  .pgrid>.proj .proj-actions .btn{font-size:12px;padding:5px 10px}
+  .pgrid>.proj .cover h3{font-size:17px}
+  .pgrid>.proj .cover{flex:0 0 auto;min-height:0;padding:8px 12px 10px}
+  .pgrid>.proj .one{flex:0 0 auto}
+  .pgrid>.proj-demo .one{display:none}
+  .pgrid>.proj .proj-actions .btn:not(.primary){display:none}
+  .pgrid>.proj .pbody{padding:10px 12px 12px;gap:6px}
+  .demo-thumb{min-height:56px}
+  .pgrid>.proj-demo .cover .no{display:none}
+  .pgrid>.proj .cover-top{gap:8px}
+  .pgrid>.proj .tag{font-size:10px;padding:2px 8px}
   .js .bento .reveal{opacity:1;transform:none}
   .cover,.proj.wide .cover{min-height:110px}
-  .swipe-dots{display:flex;justify-content:center;gap:8px;margin-top:-4px}
+  .swipe-dots{display:none}
   .swipe-dots i{width:9px;height:9px;border-radius:50%;border:2px solid var(--ink);background:transparent;transition:background .2s,width .2s}
   .swipe-dots i.on{background:var(--ink);width:22px;border-radius:6px}
 }
@@ -974,7 +987,6 @@ h1.big .kr{position:relative;left:calc(.27*var(--f0));top:calc(-.61*var(--f0))}
         <button class="chip-btn" data-f="all" aria-pressed="true">전체</button>
         <button class="chip-btn" data-f="team" aria-pressed="false">팀</button>
         <button class="chip-btn" data-f="solo" aria-pressed="false">개인</button>
-        <button class="chip-btn" data-f="demo" aria-pressed="false">실행 화면</button>
       </div>
     </div>
     <div class="tl reveal" id="tl" aria-label="프로젝트 타임라인"></div>
@@ -1124,8 +1136,8 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;
 var CI={"white-eyes":1,"obsidian":2,"calendar":3,"nadogam":6}; /* 카드·타임라인 색은 프로젝트별로 고정 (순서를 바꿔도 유지) */
 var bento=document.getElementById("bento");
 var groups={team:el('<div class="pgrid team"></div>'),solo:el('<div class="pgrid solo"></div>')};
-groups.demo=el('<div class="pgrid demo"></div>');
-bento.appendChild(groups.team);bento.appendChild(groups.solo);bento.appendChild(groups.demo);
+bento.appendChild(groups.team);bento.appendChild(groups.solo);
+var cardEl={};
 P.forEach(function(p,i){
   var h='<article class="card proj reveal" data-kind="'+p.kind+'">'+
    '<div class="cover" style="'+(p.id==="nadogam"?'--cv:var(--mint)':'--cv:var(--c'+CI[p.id]+')')+'">'+
@@ -1135,8 +1147,8 @@ P.forEach(function(p,i){
    '<div class="chips">'+p.stack.map(function(s){return"<span>"+esc(s)+"</span>";}).join("")+'</div>'+
    '<div class="metrics">'+p.metrics.map(function(m){return"<div><b>"+esc(m[0])+"</b><span>"+esc(m[1])+"</span></div>";}).join("")+'</div>'+
    '<div class="proj-actions"><button class="btn primary stretch" type="button" data-open="'+p.id+'">자세히 보기</button>'+
-   p.links.map(function(l){return'<a class="btn" href="'+l[1]+'" target="_blank" rel="noopener" style="position:relative;z-index:1">'+esc(l[0])+'</a>';}).join("")+'</div></div></article>';
-  groups[p.kind].appendChild(el(h));
+   p.links.filter(function(l){return l[1].indexOf("projects/")!==0;}).map(function(l){return'<a class="btn" href="'+l[1]+'" target="_blank" rel="noopener" style="position:relative;z-index:1">'+esc(l[0])+'</a>';}).join("")+'</div></div></article>';
+  cardEl[p.id]=el(h);groups[p.kind].appendChild(cardEl[p.id]);
 });
 
 /* ---------- 실행 화면 카드: 프로젝트별 실제 앱 화면(단독 HTML)으로 연결 ---------- */
@@ -1149,13 +1161,14 @@ var DEMOS=[
 ];
 DEMOS.forEach(function(d){
   var url=DEMO_BASE+d.file;
-  var h='<article class="card proj reveal" data-kind="demo">'+
+  var kind=(d.kind==="TEAM"?"team":"solo");
+  var h='<article class="card proj proj-demo reveal" data-kind="'+kind+'">'+
    '<div class="cover" style="'+(d.id==="nadogam"?'--cv:var(--mint)':'--cv:var(--c'+CI[d.id]+')')+'">'+
-     '<div class="cover-top"><span class="tag">LIVE</span><span class="no">'+(d.kind==="TEAM"?"TEAM":"SOLO")+'</span><h3>'+esc(d.name)+'</h3></div></div>'+
+     '<div class="cover-top"><span class="tag">LIVE</span><span class="no">실행 화면</span><h3>'+esc(d.name)+'</h3></div></div>'+
    '<a class="demo-thumb" href="'+url+'" target="_blank" rel="noopener" aria-label="'+esc(d.name)+' 실행 화면 열기" tabindex="-1"><img src="images/projects/demo-'+(d.id==="calendar"?"nado-ham":d.id==="nadogam"?"nado-gam":d.id)+'.jpg" alt="'+esc(d.name)+' 실행 화면 미리보기" loading="lazy"></a>'+
    '<div class="pbody"><p class="one">'+esc(d.one)+'</p><div class="meta">'+esc(d.meta)+'</div>'+
    '<div class="proj-actions"><a class="btn primary stretch" href="'+url+'" target="_blank" rel="noopener">실행 화면 열기</a></div></div></article>';
-  groups.demo.appendChild(el(h));
+  cardEl[d.id].after(el(h));   /* 프로젝트 카드 바로 오른쪽에 */
 });
 
 /* ---------- 타임라인: 하나의 가로선 위에 코뿔소를 시작 순서대로 같은 간격으로 배치, 코뿔소 사이는 레벨업 화살표 ---------- */
@@ -1277,7 +1290,7 @@ fbtns.forEach(function(b){b.addEventListener("click",function(){
   var f=b.getAttribute("data-f");
   document.querySelectorAll(".proj").forEach(function(c){c.hidden=!(f==="all"||c.getAttribute("data-kind")===f);});
   document.querySelectorAll(".pgrid").forEach(function(g){g.hidden=!g.querySelector(".proj:not([hidden])");});
-  document.querySelectorAll("#tl [data-kind]").forEach(function(r){var on=(f==="all"||f==="demo"||(r.getAttribute("data-kind")===f&&(!r.hasAttribute("data-from")||r.getAttribute("data-from")===f)));if(r.tagName==="button"||r.tagName==="BUTTON")r.hidden=!on;else r.style.display=on?"":"none";});
+  document.querySelectorAll("#tl [data-kind]").forEach(function(r){var on=(f==="all"||(r.getAttribute("data-kind")===f&&(!r.hasAttribute("data-from")||r.getAttribute("data-from")===f)));if(r.tagName==="button"||r.tagName==="BUTTON")r.hidden=!on;else r.style.display=on?"":"none";});
   bento.scrollLeft=0;buildDots();
 });});
 
