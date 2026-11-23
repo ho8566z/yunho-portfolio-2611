@@ -1173,7 +1173,7 @@ P.forEach(function(p,i){
    '<div class="cover" style="'+(p.id==="nadogam"?'--cv:var(--mint)':'--cv:var(--c'+CI[p.id]+')')+'">'+
      '<div class="cover-top"><span class="tag">'+(p.kind==="team"?"TEAM":"SOLO")+'</span><span class="no">0'+(i+1)+'</span><h3>'+esc(p.name)+'</h3></div>'+
      '<div class="cover-range">'+(p.kind==="team"?"팀":"개인")+' · '+PERIOD[p.id]+'</div></div>'+
-   '<div class="pbody"><p class="one">'+esc(p.one)+'</p>'+
+   '<div class="pbody"><p class="one">'+esc(p.one)+' <span class="sum">'+esc(p.detail.summary)+'</span></p>'+
    '<div class="meta">'+esc(p.meta)+'</div><div class="role">'+esc(p.role)+'</div>'+
    '<div class="chips">'+p.stack.map(function(s){return"<span>"+esc(s)+"</span>";}).join("")+'</div>'+
    '<div class="metrics">'+p.metrics.map(function(m){return"<div><b>"+esc(m[0])+"</b><span>"+esc(m[1])+"</span></div>";}).join("")+'</div>'+
@@ -1395,12 +1395,25 @@ function fitEyebrow(){
     h.style.paddingTop=(parseFloat(getComputedStyle(h).paddingTop)+def/z)+"px";
   }
 }
-function fitAll(){fitScale();fitEyebrow();fitSections();}
+/* 소개 카드: 설명 글(한 줄 소개 + 담당 요약)을 버튼 위 빈 공간이 허용하는 줄 수만큼 보여줌 */
+function fitDesc(){
+  document.querySelectorAll(".proj:not(.proj-demo)").forEach(function(c){
+    var o=c.querySelector(".one"),pb=c.querySelector(".pbody"),a=c.querySelector(".proj-actions");
+    if(!o||!pb||!a||c.hidden)return;
+    o.style.webkitLineClamp="";
+    if(getComputedStyle(o).display==="none")return;
+    var cs=getComputedStyle(pb),gap=parseFloat(cs.rowGap)||0,lh=parseFloat(getComputedStyle(o).lineHeight)||24;
+    var inner=pb.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+    var lines=Math.floor((inner-a.offsetHeight-gap)/lh);
+    o.style.webkitLineClamp=Math.max(2,lines);
+  });
+}
+function fitAll(){fitScale();fitEyebrow();fitSections();fitDesc();}
 fitAll();
 window.addEventListener("resize",fitAll);
 window.addEventListener("load",fitAll);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitAll);
-document.querySelectorAll(".chip-btn").forEach(function(b){b.addEventListener("click",function(){setTimeout(fitSections,0);});});
+document.querySelectorAll(".chip-btn").forEach(function(b){b.addEventListener("click",function(){setTimeout(function(){fitSections();fitDesc();},0);});});
 </script>
 </body>
 </html>
