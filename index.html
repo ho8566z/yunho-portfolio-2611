@@ -382,6 +382,10 @@ h2{font-weight:900;letter-spacing:-.05em}
 
 /* dialog */
 dialog{border-radius:var(--radius);box-shadow:14px 14px 0 var(--ink)}
+/* center peek: 가로는 그대로, 세로는 화면의 85%로 고정하고 내용만 스크롤 */
+dialog[open]{display:flex;flex-direction:column;height:85dvh;max-height:85dvh;margin:auto;overflow:hidden}
+dialog[open] .dlg-head{position:static;flex:none}
+dialog[open] .dlg-body{flex:1 1 auto;min-height:0;overflow-y:auto;align-content:start}
 .dlg-head h3{font-family:var(--display);font-weight:700}
 .dlg-body pre,.warn{border-radius:6px}
 .dgrid .card{box-shadow:6px 6px 0 var(--ink)}
