@@ -640,6 +640,7 @@ h1.big .kr .nm{color:#ff5a36}
   @container (max-height:250px){ .pgrid>.proj .one{-webkit-line-clamp:2;font-size:15px;line-height:1.5} .pgrid>.proj .cover{padding-top:8px;padding-bottom:8px} }
 }
 .pgrid>.proj .proj-actions{gap:10px}
+.pgrid>.proj:not(.proj-demo) .proj-actions{margin-top:auto} /* 소개 카드 버튼은 카드 아래쪽에 붙임 */
 .pgrid>.proj .proj-actions .btn{font-size:12px;padding:7.5px 13.5px}
 /* 폭별 배치: 1280 이상 4열 / 1000~1279 4열(내용 줄임) / 1000 미만 2열(프로젝트+실행 화면이 한 줄) */
 @media (max-width:999px){.pgrid.team,.pgrid.solo{grid-template-columns:repeat(2,1fr)}}
@@ -1189,10 +1190,10 @@ P.forEach(function(p,i){
 /* ---------- 실행 화면 카드: 프로젝트별 실제 앱 화면(단독 HTML)으로 연결 ---------- */
 var DEMO_BASE="projects/";
 var DEMOS=[
- {id:"obsidian",name:"obsidian-shield",file:"obsidian-shield.html",kind:"TEAM",one:"관제 대시보드 · 탐지 대상 · 이벤트 로그 · 지도를 실제 앱 그대로 눌러 볼 수 있어요.",meta:"시연용 가상 데이터 · 지도는 인터넷 연결 필요"},
- {id:"white-eyes",name:"white-eyes",file:"white-eyes.html",kind:"TEAM",one:"사용자·관리자 앱의 혼잡 지도, 구역별 인원, 통계를 실제 화면으로 볼 수 있어요.",meta:"시연용 데이터 · 영상 분석은 실행하지 않음"},
- {id:"calendar",name:"nado-ham",file:"nado-ham.html",kind:"SOLO",one:"월간·주간 달력, 목표 실행 캘린더, 오늘 할 일 카드를 실제 앱 그대로 눌러 볼 수 있어요.",meta:"일정·목표는 예시 · 저장되지 않음"},
- {id:"nadogam",name:"nado-gam",file:"nado-gam.html",kind:"SOLO",one:"돌아가는 지구본과 이달의 기획전·베스트셀러를 실제 앱 그대로 볼 수 있어요.",meta:"지구본은 인터넷 연결 필요"}
+ {id:"obsidian",name:"obsidian-shield",file:"obsidian-shield.html",kind:"TEAM",one:"관제 대시보드 · 탐지 대상 · 이벤트 로그 · 지도를 실제 앱 그대로 눌러 볼 수 있습니다.",meta:"시연용 가상 데이터 · 지도는 인터넷 연결 필요"},
+ {id:"white-eyes",name:"white-eyes",file:"white-eyes.html",kind:"TEAM",one:"사용자·관리자 앱의 혼잡 지도, 구역별 인원, 통계를 실제 화면으로 볼 수 있습니다.",meta:"시연용 데이터 · 영상 분석은 실행하지 않음"},
+ {id:"calendar",name:"nado-ham",file:"nado-ham.html",kind:"SOLO",one:"월간·주간 달력, 목표 실행 캘린더, 오늘 할 일 카드를 실제 앱 그대로 눌러 볼 수 있습니다.",meta:"일정·목표는 예시 · 저장되지 않음"},
+ {id:"nadogam",name:"nado-gam",file:"nado-gam.html",kind:"SOLO",one:"돌아가는 지구본과 이달의 기획전·베스트셀러를 실제 앱 그대로 볼 수 있습니다.",meta:"지구본은 인터넷 연결 필요"}
 ];
 DEMOS.forEach(function(d){
   var url=DEMO_BASE+d.file;
